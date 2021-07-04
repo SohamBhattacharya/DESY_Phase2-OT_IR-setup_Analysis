@@ -386,7 +386,6 @@ class ImageInfo :
         self.tbar_allImages.update()
         self.fig_allImages.canvas.get_tk_widget().pack(side = tkinter.TOP, fill = tkinter.BOTH, expand = 1)
         
-        #self.label_allImages = tkinter.Label(master = self.tkroot_allImages, text = "Image: xxx", takefocus = 0)
         self.label_allImages = tkinter.Entry(master = self.tkroot_allImages, state = "readonly")
         self.label_allImages.pack(side = tkinter.LEFT, fill = tkinter.X, expand = True)
         #ttk.Separator(self.tkroot_allImages, orient = tkinter.VERTICAL).pack(side = tkinter.LEFT, fill = tkinter.Y, padx = 5, pady = 5)
