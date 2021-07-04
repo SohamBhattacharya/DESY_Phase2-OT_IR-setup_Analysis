@@ -1,0 +1,10 @@
+*__pycache__*
+*__init__.py
+*.pyc
+.*.swp
+.#*
+*~
+*.pb
+*.root
+*.log
+
