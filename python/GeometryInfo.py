@@ -110,7 +110,7 @@ class GeometryInfo :
         
         print("origin_x0, origin_y0:", origin_x0, origin_y0)
         
-        self.imgInfo.setOrigin(xy = (origin_x0, origin_y0))
+        self.imgInfo.set_origin(xy = (origin_x0, origin_y0))
         
         
         color = (1, 0, 0, 1)
@@ -120,6 +120,7 @@ class GeometryInfo :
         self.l_cfoamLabel = []
         
         self.d_geomObj = {}
+        self.imgInfo.set_cfoamInfo(self.d_geomObj)
         
         for idx in range(0, nFoam) :
             
@@ -206,7 +207,7 @@ class GeometryInfo :
             
             
             # Attach image
-            nearestImgIdx = imgInfo.getNearestImageIdx(0.5*(xMid1+xMid2), 0.5*(yMid1+yMid2))
+            nearestImgIdx = imgInfo.get_nearestImageIdx(0.5*(xMid1+xMid2), 0.5*(yMid1+yMid2))
             
             self.d_geomObj[cfoamLabel] = CarbonFoamInfo.CarbonFoamInfo(
                 imgInfo = self.imgInfo,
@@ -314,7 +315,7 @@ class GeometryInfo :
     #        
     #        return
     #    
-    #    imgIdx = self.imgInfo.getNearestImageIdx(clickX, clickY)
+    #    imgIdx = self.imgInfo.get_nearestImageIdx(clickX, clickY)
     #    
     #    
     #    if (imgIdx >= 0) :

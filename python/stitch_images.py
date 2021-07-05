@@ -95,12 +95,13 @@ def main() :
     
     
     tkroot = tkinter.Tk()
-    #tkoot.wm_title("Stitched image")
+    tkroot.wm_title("Main")
     #tkroot.bind('<Control-c>', tkroot.quit)
+    tkroot.iconphoto(True, tkinter.PhotoImage(file = "data/dee_icon.png"))
+    #self.tk.call('wm', 'iconphoto', self._w, self.icon)
     
     
     imgInfo = ImageInfo.ImageInfo(
-        #tkroot = tkroot,
         args = args
     )
     imgInfo.draw()

@@ -62,17 +62,11 @@ class CarbonFoamInfo :
         self.l_cid_dragImg = []
     
     
-    def resetArtist(self, artist) :
-        
-        artist.axes = None
-        artist.figure = None
-    
-    
     def resetAllArtists(self) :
         
         for key in self.d_geomArtist :
             
-            self.resetArtist(self.d_geomArtist[key])
+            utils.reset_artist(self.d_geomArtist[key])
     
     
     def add_geometryArtist(self, artist, label) :
@@ -80,7 +74,7 @@ class CarbonFoamInfo :
         #print("Adding artist:", artist)
         
         self.d_geomArtist[label] = copy.copy(artist)
-        self.resetArtist(self.d_geomArtist[label])
+        utils.reset_artist(self.d_geomArtist[label])
     
     
     def add_profileLine(self, r1, c1, r2, c2, label) :
@@ -223,12 +217,33 @@ class CarbonFoamInfo :
         return "\n".join(title)
     
     
-    def drawGeomArtists(self) :
+    def drawGeomArtists(self, axis = None, reset_artists = False, get_artists = False) :
+        
+        ax = axis if (axis is not None) else self.axis_img
+        
+        l_artist = []
         
         for key in self.d_geomArtist :
             
-            self.axis_img.add_artist(self.d_geomArtist[key])
+            artist = self.d_geomArtist[key]
+            
+            if (reset_artists) :
+                
+                artist = copy.copy(artist)
+                utils.reset_artist(artist)
+            
+            artist.set_transform(ax.transData)
+            
+            ax.add_artist(artist)
             #self.axis_img.draw_artist(self.d_geomArtist[key])
+            
+            if (get_artists) :
+                
+                l_artist.append(artist)
+        
+        if (get_artists) :
+            
+            return l_artist
     
     
     def draw(self) :
@@ -288,11 +303,11 @@ class CarbonFoamInfo :
             self.background = self.fig_img.canvas.copy_from_bbox(self.axis_img.get_figure().bbox)
             
             
-            for key in self.d_geomArtist :
-                
-                print(self.d_geomArtist[key].get_label(), self.d_geomArtist[key], self.d_geomArtist[key].get_visible(), self.d_geomArtist[key].get_figure())
-                
-                self.d_geomArtist[key].set_transform(self.axis_img.transData)
+            #for key in self.d_geomArtist :
+            #    
+            #    print(self.d_geomArtist[key].get_label(), self.d_geomArtist[key], self.d_geomArtist[key].get_visible(), self.d_geomArtist[key].get_figure())
+            #    
+            #    self.d_geomArtist[key].set_transform(self.axis_img.transData)
             
             self.drawGeomArtists()
             

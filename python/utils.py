@@ -1,3 +1,6 @@
+import re
+
+
 def motor_stepX_to_mm(val, inv = False) :
     
     f = 1920.0/34952
@@ -72,3 +75,14 @@ def clean_string(s, l_clean = [" "]) :
     
     
     return s
+
+
+def reset_artist(artist) :
+    
+    artist.axes = None
+    artist.figure = None
+
+
+def naturalsort(l) :
+    
+    return sorted(l, key = lambda s: [int(c) if c.isdigit() else c for c in re.split("(\d+)", s)])

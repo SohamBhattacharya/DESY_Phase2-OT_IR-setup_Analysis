@@ -217,7 +217,7 @@ class ImageInfo :
         return (dX, dY)
     
     
-    def getNearestImageIdx(self, pixelX, pixelY, maxDist = None) :
+    def get_nearestImageIdx(self, pixelX, pixelY, maxDist = None) :
         
         minDist2 = sys.float_info.max
         nearestIdx = -1
@@ -235,6 +235,20 @@ class ImageInfo :
         
         
         return nearestIdx
+    
+    
+    def get_cfoamInfo(self, fName) :
+        
+        cfoamInfo = None
+        
+        for key in self.d_cfoamInfo :
+            
+            if (self.l_inputFileName[self.d_cfoamInfo[key].imgIdx] == fName) :
+                
+                cfoamInfo = self.d_cfoamInfo[key]
+                break
+        
+        return cfoamInfo
     
     
     def draw(self) :
@@ -311,15 +325,93 @@ class ImageInfo :
         self.button_show_allImages.pack(side = tkinter.LEFT)
         ttk.Separator(self.tkroot_stitchedDee, orient = tkinter.VERTICAL).pack(side = tkinter.LEFT, fill = tkinter.Y, padx = 5, pady = 5)
         
+        self.button_show_allImages = tkinter.Button(master = self.tkroot_stitchedDee, text = "All C-foams", takefocus = 0, command = self.show_allCfoams)
+        self.button_show_allImages.pack(side = tkinter.LEFT)
+        ttk.Separator(self.tkroot_stitchedDee, orient = tkinter.VERTICAL).pack(side = tkinter.LEFT, fill = tkinter.Y, padx = 5, pady = 5)
+        
         self.tbox_origin = tkinter.Entry(master = self.tkroot_stitchedDee, width = 20)
         self.tbox_origin.pack(side = tkinter.LEFT)
         
-        self.button_getOrigin = tkinter.Button(master = self.tkroot_stitchedDee, text = "Get origin", takefocus = 0, command = self.getOrigin)
+        self.button_getOrigin = tkinter.Button(master = self.tkroot_stitchedDee, text = "Get origin", takefocus = 0, command = self.get_origin)
         self.button_getOrigin.pack(side = tkinter.LEFT)
         
-        self.button_setOrigin = tkinter.Button(master = self.tkroot_stitchedDee, text = "Set origin [x, y]", takefocus = 0, command = self.setOrigin)
+        self.button_setOrigin = tkinter.Button(master = self.tkroot_stitchedDee, text = "Set origin [x, y]", takefocus = 0, command = self.set_origin)
         self.button_setOrigin.pack(side = tkinter.LEFT)
         ttk.Separator(self.tkroot_stitchedDee, orient = tkinter.VERTICAL).pack(side = tkinter.LEFT, fill = tkinter.Y, padx = 5, pady = 5)
+    
+    
+    def show_allCfoams(self) :
+        
+        self.tkroot_allCfoams = tkinter.Toplevel()
+        self.tkroot_allCfoams.wm_title("All carbon foams")
+        self.tkroot_stitchedDee.bind_all("<Button-1>", lambda event: event.widget.focus_set())
+        
+        self.fig_allCfoams = matplotlib.figure.Figure(figsize = [10, 8])
+        self.fig_allCfoams.canvas = FigureCanvasTkAgg(self.fig_allCfoams, master = self.tkroot_allCfoams)
+        
+        #self.fig_allCfoams.canvas.mpl_connect("pick_event", self.on_pick_image)
+        
+        nPlot = len(self.d_cfoamInfo)
+        nPlot_row = 10
+        nPlot_col = int(nPlot/nPlot_row) + int(nPlot%nPlot_row > 0)
+        
+        self.l_axis_allCfoams = self.fig_allCfoams.subplots(nrows = nPlot_row, ncols = nPlot_col)
+        #print(nPlot, self.l_axis_allCfoams.shape)
+        
+        #self.fig_allCfoams.subplots_adjust(hspace = 0.01, wspace = 0.01)
+        
+        cenX = self.origin_x0
+        cenY = self.origin_y0
+        
+        l_sortedKey = utils.naturalsort(list(self.d_cfoamInfo.keys()))
+        
+        for count, key in enumerate(l_sortedKey) :
+            
+            imgIdx = self.d_cfoamInfo[key].imgIdx
+            
+            arr_img = self.l_inputData[imgIdx]
+            
+            r = int(count / nPlot_col)
+            c = (count - (r*nPlot_col)) % nPlot_col
+            #print((r, c))
+            print((self.l_imgCenter_pixelY[imgIdx], self.l_imgCenter_pixelX[imgIdx]), (r, c))
+            
+            label = self.l_inputFileName[imgIdx]
+            
+            self.l_axis_allCfoams[r, c].imshow(
+                arr_img,
+                origin = "upper",
+                extent = self.l_imgExtent_pixelX[imgIdx]+self.l_imgExtent_pixelY[imgIdx][::-1],
+                cmap = self.colormap,
+                vmin = self.minTemp,
+                vmax = self.maxTemp,
+                #zorder = constants.zorder_deeImage,
+                picker = True,
+                label = label,
+            )
+            
+            self.d_cfoamInfo[key].drawGeomArtists(axis = self.l_axis_allCfoams[r, c], reset_artists = True)
+            
+            self.l_axis_allCfoams[r, c].set_title(self.d_cfoamInfo[key].label, fontsize = 7, pad = 0.1)
+        
+        for ax in self.l_axis_allCfoams.flat :
+            
+            ax.axis("off")
+            #ax.set_frame_on(True)
+        
+        self.fig_allCfoams.tight_layout(pad = 0.1, h_pad = 0.1, w_pad = 0.0)
+        
+        self.fig_allCfoams.canvas.draw()
+        
+        
+        # Toolbar
+        self.tbar_allCfoams = NavigationToolbar2Tk(self.fig_allCfoams.canvas, self.tkroot_allCfoams)
+        self.tbar_allCfoams.update()
+        self.fig_allCfoams.canvas.get_tk_widget().pack(side = tkinter.TOP, fill = tkinter.BOTH, expand = 1)
+        
+        self.label_allCfoams = tkinter.Entry(master = self.tkroot_allCfoams, state = "readonly")
+        self.label_allCfoams.pack(side = tkinter.LEFT, fill = tkinter.X, expand = True)
+        #ttk.Separator(self.tkroot_allCfoams, orient = tkinter.VERTICAL).pack(side = tkinter.LEFT, fill = tkinter.Y, padx = 5, pady = 5)
     
     
     def show_allImages(self) :
@@ -348,33 +440,52 @@ class ImageInfo :
         l_sortedIdx = list(range(nPlot))
         l_sortedIdx.sort(key = lambda x: ((self.l_imgCenter_pixelY[x]-cenY)**2 + (self.l_imgCenter_pixelX[x]-cenX)**2, self.l_imgCenter_pixelY[x]))
         
+        self.l_artists_temp = []
+        
         for count, imgIdx in enumerate(l_sortedIdx) :
             
             arr_img = self.l_inputData[imgIdx]
-            
-            #self.l_axis_allImages.append(self.fig_allImages.add_subplot(nPlot_row, nPlot_col, imgIdx+1))
             
             r = int(count / nPlot_col)
             c = (count - (r*nPlot_col)) % nPlot_col
             #print((r, c))
             print((self.l_imgCenter_pixelY[imgIdx], self.l_imgCenter_pixelX[imgIdx]), (r, c))
             
+            label = self.l_inputFileName[imgIdx]
+            
             self.l_axis_allImages[r, c].imshow(
                 arr_img,
                 origin = "upper",
-                #extent = self.l_imgExtent_pixelX[imgIdx]+self.l_imgExtent_pixelY[imgIdx][::-1],
+                extent = self.l_imgExtent_pixelX[imgIdx]+self.l_imgExtent_pixelY[imgIdx][::-1],
                 cmap = self.colormap,
                 vmin = self.minTemp,
                 vmax = self.maxTemp,
                 #zorder = constants.zorder_deeImage,
                 picker = True,
-                label = self.l_inputFileName[imgIdx],
+                label = label,
             )
             
+            cfoamInfo = self.get_cfoamInfo(label)
+            
+            if (cfoamInfo is not None) :
+                
+                #self.l_artists_temp.extend(cfoamInfo.drawGeomArtists(axis = self.l_axis_allImages[r, c], reset_artists = True, get_artists = True))
+                cfoamInfo.drawGeomArtists(axis = self.l_axis_allImages[r, c], reset_artists = True)
+            
+            #self.l_axis_allImages[r, c].set_xlim((
+            #    self.l_imgExtent_pixelX[imgIdx]
+            #))
+            #
+            #self.l_axis_allImages[r, c].set_ylim((
+            #    self.l_imgExtent_pixelY[imgIdx][::-1]
+            #))
+            #
+            #self.l_axis_allImages[r, c].set_aspect("equal", "box")
         
         for ax in self.l_axis_allImages.flat :
             
             ax.axis("off")
+            #ax.set_frame_on(True)
         
         self.fig_allImages.tight_layout(pad = 0.1, h_pad = 0.1, w_pad = 0.1)
         
@@ -391,15 +502,14 @@ class ImageInfo :
         #ttk.Separator(self.tkroot_allImages, orient = tkinter.VERTICAL).pack(side = tkinter.LEFT, fill = tkinter.Y, padx = 5, pady = 5)
     
     
-    
-    def getOrigin(self) :
+    def get_origin(self) :
         
         text = "%0.1f, %0.1f" %(self.origin_x0, self.origin_y0)
         self.tbox_origin.delete(0, tkinter.END)
         self.tbox_origin.insert(0, text)
     
     
-    def setOrigin(self, xy = None) :
+    def set_origin(self, xy = None) :
         
         if (xy is None) :
             
@@ -416,6 +526,10 @@ class ImageInfo :
         self.origin_x0 = float(xy[0])
         self.origin_y0 = float(xy[1])
     
+    
+    def set_cfoamInfo(self, d_cfoamInfo) :
+        
+        self.d_cfoamInfo = d_cfoamInfo
     
     
     def on_pick_image(self, event) :
@@ -438,7 +552,12 @@ class ImageInfo :
         label = artist.get_label()
         zorder = artist.get_zorder()
         
-        text = "Picked image: %s" %(label)
+        
+        cfoamInfo = self.get_cfoamInfo(label)
+        assoc_cfoam = cfoamInfo.label if (cfoamInfo is not None) else "none"
+        
+        
+        text = "Picked image (cfoam: %s): %s" %(assoc_cfoam, label)
         print(text)
         
         #self.label_allImages["text"] = text
@@ -448,6 +567,8 @@ class ImageInfo :
         self.label_allImages.delete(0, tkinter.END)
         self.label_allImages.insert(0, text)
         self.label_allImages.config(state = "readonly")
+        
+        
         
         #if (zorder == constants.zorder_deeImage) :
         #    
