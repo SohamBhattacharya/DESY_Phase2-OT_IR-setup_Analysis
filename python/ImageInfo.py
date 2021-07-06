@@ -26,6 +26,7 @@ from tkinter import ttk
 
 import colors
 import constants
+import ScrollableFrame
 import utils
 
 
@@ -340,28 +341,182 @@ class ImageInfo :
         ttk.Separator(self.tkroot_stitchedDee, orient = tkinter.VERTICAL).pack(side = tkinter.LEFT, fill = tkinter.Y, padx = 5, pady = 5)
     
     
+    #def show_allCfoams(self) :
+    #    
+    #    self.tkroot_allCfoams = tkinter.Toplevel()
+    #    self.tkroot_allCfoams.wm_title("All carbon foams")
+    #    self.tkroot_stitchedDee.bind_all("<Button-1>", lambda event: event.widget.focus_set())
+    #    
+    #    self.fig_allCfoams = matplotlib.figure.Figure(figsize = [10, 8])#, constrained_layout = True)
+    #    self.fig_allCfoams.canvas = FigureCanvasTkAgg(self.fig_allCfoams, master = self.tkroot_allCfoams)
+    #    
+    #    #self.fig_allCfoams.set_constrained_layout_pads(w_pad = 0, h_pad = 0, wspace = 0, hspace = 0)
+    #    
+    #    #self.fig_allCfoams.canvas.mpl_connect("pick_event", self.on_pick_image)
+    #    
+    #    nPlot = len(self.d_cfoamInfo)
+    #    #nPlot_row = 10
+    #    #nPlot_col = int(nPlot/nPlot_row) + int(nPlot%nPlot_row > 0)
+    #    
+    #    nPlot_col = 10
+    #    nPlot_row = int(nPlot/nPlot_col) + int(nPlot%nPlot_col > 0)
+    #    
+    #    self.l_axis_allCfoams = self.fig_allCfoams.subplots(nrows = nPlot_row, ncols = nPlot_col)
+    #    #print(nPlot, self.l_axis_allCfoams.shape)
+    #    
+    #    #self.fig_allCfoams.subplots_adjust(hspace = 0.01, wspace = 0.01)
+    #    
+    #    cenX = self.origin_x0
+    #    cenY = self.origin_y0
+    #    
+    #    l_sortedKey = utils.naturalsort(list(self.d_cfoamInfo.keys()))
+    #    
+    #    for count, key in enumerate(l_sortedKey) :
+    #        
+    #        imgIdx = self.d_cfoamInfo[key].imgIdx
+    #        
+    #        arr_img = self.l_inputData[imgIdx]
+    #        
+    #        r = int(count / nPlot_col)
+    #        c = (count - (r*nPlot_col)) % nPlot_col
+    #        #print((r, c))
+    #        print((self.l_imgCenter_pixelY[imgIdx], self.l_imgCenter_pixelX[imgIdx]), (r, c))
+    #        
+    #        label = self.l_inputFileName[imgIdx]
+    #        
+    #        self.l_axis_allCfoams[r, c].imshow(
+    #            arr_img,
+    #            origin = "upper",
+    #            extent = self.l_imgExtent_pixelX[imgIdx]+self.l_imgExtent_pixelY[imgIdx][::-1],
+    #            cmap = self.colormap,
+    #            vmin = self.minTemp,
+    #            vmax = self.maxTemp,
+    #            #zorder = constants.zorder_deeImage,
+    #            picker = True,
+    #            label = label,
+    #        )
+    #        
+    #        self.d_cfoamInfo[key].drawGeomArtists(axis = self.l_axis_allCfoams[r, c], reset_artists = True)
+    #        
+    #        self.l_axis_allCfoams[r, c].set_title(self.d_cfoamInfo[key].label, fontsize = 7, pad = 0.1)
+    #        
+    #        #self.l_axis_allCfoams[r, c].set_xlabel("", labelpad = 0)
+    #        #self.l_axis_allCfoams[r, c].set_ylabel("", labelpad = 0)
+    #    
+    #    for ax in self.l_axis_allCfoams.flat :
+    #        
+    #        ax.axis("off")
+    #        #ax.set_frame_on(True)
+    #    
+    #    self.fig_allCfoams.tight_layout(pad = 0.01, h_pad = 0.01, w_pad = 0.01)
+    #    
+    #    self.fig_allCfoams.canvas.draw()
+    #    
+    #    
+    #    # Toolbar
+    #    self.tbar_allCfoams = NavigationToolbar2Tk(self.fig_allCfoams.canvas, self.tkroot_allCfoams)
+    #    self.tbar_allCfoams.update()
+    #    self.fig_allCfoams.canvas.get_tk_widget().pack(side = tkinter.TOP, fill = tkinter.BOTH, expand = 1)
+    #    
+    #    self.label_allCfoams = tkinter.Entry(master = self.tkroot_allCfoams, state = "readonly")
+    #    self.label_allCfoams.pack(side = tkinter.LEFT, fill = tkinter.X, expand = True)
+    #    #ttk.Separator(self.tkroot_allCfoams, orient = tkinter.VERTICAL).pack(side = tkinter.LEFT, fill = tkinter.Y, padx = 5, pady = 5)
+    
+    
+    #def show_allCfoams(self) :
+    #    
+    #    self.tkroot_allCfoams = tkinter.Toplevel()
+    #    self.tkroot_allCfoams.wm_title("All carbon foams")
+    #    self.tkroot_stitchedDee.bind_all("<Button-1>", lambda event: event.widget.focus_set())
+    #    
+    #    self.fig_allCfoams = matplotlib.figure.Figure(figsize = [10, 8])#, constrained_layout = True)
+    #    self.fig_allCfoams.canvas = FigureCanvasTkAgg(self.fig_allCfoams, master = self.tkroot_allCfoams)
+    #    
+    #    #self.fig_allCfoams.set_constrained_layout_pads(w_pad = 0, h_pad = 0, wspace = 0, hspace = 0)
+    #    
+    #    #self.fig_allCfoams.canvas.mpl_connect("pick_event", self.on_pick_image)
+    #    
+    #    nPlot = len(self.d_cfoamInfo)
+    #    #nPlot_row = 10
+    #    #nPlot_col = int(nPlot/nPlot_row) + int(nPlot%nPlot_row > 0)
+    #    
+    #    nPlot_col = 10
+    #    nPlot_row = int(nPlot/nPlot_col) + int(nPlot%nPlot_col > 0)
+    #    
+    #    self.l_axis_allCfoams = self.fig_allCfoams.subplots(nrows = nPlot_row, ncols = nPlot_col)
+    #    #print(nPlot, self.l_axis_allCfoams.shape)
+    #    
+    #    #self.fig_allCfoams.subplots_adjust(hspace = 0.01, wspace = 0.01)
+    #    
+    #    cenX = self.origin_x0
+    #    cenY = self.origin_y0
+    #    
+    #    l_sortedKey = utils.naturalsort(list(self.d_cfoamInfo.keys()))
+    #    
+    #    for count, key in enumerate(l_sortedKey) :
+    #        
+    #        imgIdx = self.d_cfoamInfo[key].imgIdx
+    #        
+    #        arr_img = self.l_inputData[imgIdx]
+    #        
+    #        r = int(count / nPlot_col)
+    #        c = (count - (r*nPlot_col)) % nPlot_col
+    #        #print((r, c))
+    #        print((self.l_imgCenter_pixelY[imgIdx], self.l_imgCenter_pixelX[imgIdx]), (r, c))
+    #        
+    #        label = self.l_inputFileName[imgIdx]
+    #        
+    #        self.l_axis_allCfoams[r, c].imshow(
+    #            arr_img,
+    #            origin = "upper",
+    #            extent = self.l_imgExtent_pixelX[imgIdx]+self.l_imgExtent_pixelY[imgIdx][::-1],
+    #            cmap = self.colormap,
+    #            vmin = self.minTemp,
+    #            vmax = self.maxTemp,
+    #            #zorder = constants.zorder_deeImage,
+    #            picker = True,
+    #            label = label,
+    #        )
+    #        
+    #        self.d_cfoamInfo[key].drawGeomArtists(axis = self.l_axis_allCfoams[r, c], reset_artists = True)
+    #        
+    #        self.l_axis_allCfoams[r, c].set_title(self.d_cfoamInfo[key].label, fontsize = 7, pad = 0.1)
+    #        
+    #        #self.l_axis_allCfoams[r, c].set_xlabel("", labelpad = 0)
+    #        #self.l_axis_allCfoams[r, c].set_ylabel("", labelpad = 0)
+    #    
+    #    for ax in self.l_axis_allCfoams.flat :
+    #        
+    #        ax.axis("off")
+    #        #ax.set_frame_on(True)
+    #    
+    #    self.fig_allCfoams.tight_layout(pad = 0.01, h_pad = 0.01, w_pad = 0.01)
+    #    
+    #    self.fig_allCfoams.canvas.draw()
+    #    
+    #    
+    #    # Toolbar
+    #    self.tbar_allCfoams = NavigationToolbar2Tk(self.fig_allCfoams.canvas, self.tkroot_allCfoams)
+    #    self.tbar_allCfoams.update()
+    #    self.fig_allCfoams.canvas.get_tk_widget().pack(side = tkinter.TOP, fill = tkinter.BOTH, expand = 1)
+    #    
+    #    self.label_allCfoams = tkinter.Entry(master = self.tkroot_allCfoams, state = "readonly")
+    #    self.label_allCfoams.pack(side = tkinter.LEFT, fill = tkinter.X, expand = True)
+    #    #ttk.Separator(self.tkroot_allCfoams, orient = tkinter.VERTICAL).pack(side = tkinter.LEFT, fill = tkinter.Y, padx = 5, pady = 5)
+    
+    
     def show_allCfoams(self) :
         
         self.tkroot_allCfoams = tkinter.Toplevel()
         self.tkroot_allCfoams.wm_title("All carbon foams")
         self.tkroot_stitchedDee.bind_all("<Button-1>", lambda event: event.widget.focus_set())
         
-        self.fig_allCfoams = matplotlib.figure.Figure(figsize = [10, 8])
-        self.fig_allCfoams.canvas = FigureCanvasTkAgg(self.fig_allCfoams, master = self.tkroot_allCfoams)
-        
-        #self.fig_allCfoams.canvas.mpl_connect("pick_event", self.on_pick_image)
+        scrollframe = ScrollableFrame.ScrollableFrame(self.tkroot_allCfoams)
+        frame = scrollframe.scrollable_frame
         
         nPlot = len(self.d_cfoamInfo)
-        nPlot_row = 10
-        nPlot_col = int(nPlot/nPlot_row) + int(nPlot%nPlot_row > 0)
-        
-        self.l_axis_allCfoams = self.fig_allCfoams.subplots(nrows = nPlot_row, ncols = nPlot_col)
-        #print(nPlot, self.l_axis_allCfoams.shape)
-        
-        #self.fig_allCfoams.subplots_adjust(hspace = 0.01, wspace = 0.01)
-        
-        cenX = self.origin_x0
-        cenY = self.origin_y0
+        nPlot_col = 4
+        nPlot_row = int(nPlot/nPlot_col) + int(nPlot%nPlot_col > 0)
         
         l_sortedKey = utils.naturalsort(list(self.d_cfoamInfo.keys()))
         
@@ -376,9 +531,23 @@ class ImageInfo :
             #print((r, c))
             print((self.l_imgCenter_pixelY[imgIdx], self.l_imgCenter_pixelX[imgIdx]), (r, c))
             
+            
+            fig = matplotlib.figure.Figure(figsize = (4, 3.75*self.nRow/self.nCol))
+            
+            fig.canvas = FigureCanvasTkAgg(fig, master = frame)  # A tk.DrawingArea.
+            fig.canvas.draw()
+            fig.canvas.get_tk_widget().grid(row = 2*r, column = c, padx = 5, pady = 5, sticky = "nsew")
+            
+            toolbar = NavigationToolbar2Tk(fig.canvas, frame, pack_toolbar = False)
+            toolbar.update()
+            toolbar.grid(row = 2*r+1, column = c, sticky = "nsew")
+            
+            axis = fig.add_subplot(1, 1, 1)
+            axis.set_aspect("equal", "box")
+            
             label = self.l_inputFileName[imgIdx]
             
-            self.l_axis_allCfoams[r, c].imshow(
+            axis.imshow(
                 arr_img,
                 origin = "upper",
                 extent = self.l_imgExtent_pixelX[imgIdx]+self.l_imgExtent_pixelY[imgIdx][::-1],
@@ -390,28 +559,42 @@ class ImageInfo :
                 label = label,
             )
             
-            self.d_cfoamInfo[key].drawGeomArtists(axis = self.l_axis_allCfoams[r, c], reset_artists = True)
+            self.d_cfoamInfo[key].drawGeomArtists(axis = axis, reset_artists = True)
             
-            self.l_axis_allCfoams[r, c].set_title(self.d_cfoamInfo[key].label, fontsize = 7, pad = 0.1)
-        
-        for ax in self.l_axis_allCfoams.flat :
+            axis.set_title(self.d_cfoamInfo[key].label, fontsize = 9, pad = 0.05)
             
-            ax.axis("off")
+            axis.tick_params(axis = "both", which = "major", labelsize = 7)
+            
+            #axis.axis("off")
             #ax.set_frame_on(True)
+            
+            #fig.tight_layout()
+            fig.tight_layout(pad = 0.1, h_pad = 0.05, w_pad = 0.1)
         
-        self.fig_allCfoams.tight_layout(pad = 0.1, h_pad = 0.1, w_pad = 0.0)
+        print("Finished creating canvases.")
         
-        self.fig_allCfoams.canvas.draw()
+        #time.sleep(10)
+        #
+        #print("Destroying...")
+        #
+        #for child in scrollframe.winfo_children():
+        #    child.destroy()
+        #
+        ##for child in frame.winfo_children():
+        ##    child.destroy()
+        #
+        #self.tkroot_allCfoams.destroy()
+        #
+        #gc.collect()
         
-        
-        # Toolbar
-        self.tbar_allCfoams = NavigationToolbar2Tk(self.fig_allCfoams.canvas, self.tkroot_allCfoams)
-        self.tbar_allCfoams.update()
-        self.fig_allCfoams.canvas.get_tk_widget().pack(side = tkinter.TOP, fill = tkinter.BOTH, expand = 1)
-        
-        self.label_allCfoams = tkinter.Entry(master = self.tkroot_allCfoams, state = "readonly")
-        self.label_allCfoams.pack(side = tkinter.LEFT, fill = tkinter.X, expand = True)
-        #ttk.Separator(self.tkroot_allCfoams, orient = tkinter.VERTICAL).pack(side = tkinter.LEFT, fill = tkinter.Y, padx = 5, pady = 5)
+        ## Toolbar
+        #self.tbar_allCfoams = NavigationToolbar2Tk(self.fig_allCfoams.canvas, self.tkroot_allCfoams)
+        #self.tbar_allCfoams.update()
+        #self.fig_allCfoams.canvas.get_tk_widget().pack(side = tkinter.TOP, fill = tkinter.BOTH, expand = 1)
+        #
+        #self.label_allCfoams = tkinter.Entry(master = self.tkroot_allCfoams, state = "readonly")
+        #self.label_allCfoams.pack(side = tkinter.LEFT, fill = tkinter.X, expand = True)
+        ##ttk.Separator(self.tkroot_allCfoams, orient = tkinter.VERTICAL).pack(side = tkinter.LEFT, fill = tkinter.Y, padx = 5, pady = 5)
     
     
     def show_allImages(self) :
