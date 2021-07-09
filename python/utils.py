@@ -86,3 +86,11 @@ def reset_artist(artist) :
 def naturalsort(l) :
     
     return sorted(l, key = lambda s: [int(c) if c.isdigit() else c for c in re.split("(\d+)", s)])
+
+
+def setAxisBoxColor(ax, color) :
+    
+    ax.spines["bottom"].set_color(color)
+    ax.spines["top"].set_color(color) 
+    ax.spines["right"].set_color(color)
+    ax.spines["left"].set_color(color)

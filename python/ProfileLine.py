@@ -32,6 +32,8 @@ class ProfileLine :
         r2, c2,
         dRow = 0,
         dCol = 0,
+        offsetRow = 0,
+        offsetCol = 0,
     ) :
         
         self.r1 = r1
@@ -40,23 +42,44 @@ class ProfileLine :
         self.r2 = r2
         self.c2 = c2
         
+        self.offsetRow = offsetRow
+        self.offsetCol = offsetCol
+        
         self.dRow_sum = 0
         self.dCol_sum = 0
         
-        self.rr, self.cc = self.setAndGetLine(dRow = dRow, dCol = dCol)
+        self.rr, self.cc = self.setAndGetLine(
+            dRow = dRow,
+            dCol = dCol,
+        )
     
     
     
-    def setAndGetLine(self, dRow = 0, dCol = 0) :
+    def setAndGetLine(
+        self,
+        dRow = 0,
+        dCol = 0,
+        offsetRow = None,
+        offsetCol = None,
+    ) :
+        self.offsetRow = self.offsetRow if (offsetRow is None) else offsetRow
+        self.offsetCol = self.offsetCol if (offsetCol is None) else offsetCol
         
         self.dRow_sum += dRow
         self.dCol_sum += dCol
         
+        #print(
+        #    ("r1", self.r1, self.dRow_sum, self.offsetRow),
+        #    ("c1", self.c1, self.dCol_sum, self.offsetCol),
+        #    ("r2", self.r2, self.dRow_sum, self.offsetRow),
+        #    ("c2", self.c2, self.dCol_sum, self.offsetCol),
+        #)
+        
         self.rr, self.cc = skimage.draw.line(
-            int(numpy.round(self.r1 + self.dRow_sum)),
-            int(numpy.round(self.c1 + self.dCol_sum)),
-            int(numpy.round(self.r2 + self.dRow_sum)),
-            int(numpy.round(self.c2 + self.dCol_sum))
+            int(numpy.round(self.r1 + self.dRow_sum + self.offsetRow)),
+            int(numpy.round(self.c1 + self.dCol_sum + self.offsetCol)),
+            int(numpy.round(self.r2 + self.dRow_sum + self.offsetRow)),
+            int(numpy.round(self.c2 + self.dCol_sum + self.offsetCol)),
         )
         
         return (self.rr, self.cc)

@@ -37,14 +37,55 @@ class GeometryInfo :
         args,
         imgInfo,
     ) :
+        self.args = args
         self.imgInfo = imgInfo
-        self.axis_imgDee = imgInfo.axis_stitchedDee
         
-        self.axis_imgDee.figure.canvas.mpl_connect("pick_event", self.on_pick)
+        self.origin_x0 = None
+        self.origin_y0 = None
         
+        self.set_origin_and_draw(args.originX, args.originY)
+    
+    
+    def set_origin_and_draw(self, x0, y0) :
+        
+        #if ((x0, y0) == self.get_origin()) :
+        #    
+        #    return
+        
+        self.set_origin(x0, y0)
+        self.draw(recreate = True)
+    
+    
+    def set_origin(self, x0, y0) :
+        
+        self.origin_x0 = x0
+        self.origin_y0 = y0
+    
+    
+    def get_origin(self) :
+        
+        return (self.origin_x0, self.origin_y0)
+    
+    
+    def draw(self, recreate = False) :
+        
+        if (recreate and hasattr(self, "tkroot_profile")) :
+            
+            self.tkroot_profile.destroy()
+            
+            for key in self.d_geomObj :
+                
+                self.d_geomObj[key].destroy()
+            
+            gc.collect()
+            
+            self.imgInfo.draw(recreate = True)
+        
+        axis_imgDee = self.imgInfo.axis_stitchedDee
+        axis_imgDee.figure.canvas.mpl_connect("pick_event", self.on_pick)
         
         # Profile figure
-        self.tkroot_profile = tkinter.Toplevel()
+        self.tkroot_profile = tkinter.Toplevel(class_ = "Carbon foam profiles")
         self.tkroot_profile.wm_title("Carbon foam profiles")
         
         self.fig_profile = matplotlib.figure.Figure(figsize = [10, 8])
@@ -52,6 +93,10 @@ class GeometryInfo :
         #self.fig_profile = matplotlib.pyplot.figure("Carbon foam profiles", figsize = [10, 8])
         
         self.axis_profile = self.fig_profile.add_subplot(1, 1, 1)
+        
+        self.axis_profile.set_xlabel("Pixel")
+        self.axis_profile.set_ylabel("Temperature [°C]")
+        
         
         
         # Buttons
@@ -71,7 +116,7 @@ class GeometryInfo :
         
         self.marker_profile = BlittedCursor.BlittedCursor_mod1(ax = self.axis_profile)
         
-        self.xls_cfoam = pandas.ExcelFile(args.geomFile)
+        self.xls_cfoam = pandas.ExcelFile(self.args.geomFile)
         
         self.dframe_cfoam = self.xls_cfoam.parse(0)
         
@@ -95,22 +140,22 @@ class GeometryInfo :
         nFoam = len(self.d_cfoam["r"])
         
         
-        arr_dee_shape = imgInfo.arr_stitchedDeeImg.shape+(4,)
+        arr_dee_shape = self.imgInfo.arr_stitchedDeeImg.shape+(4,)
         print(arr_dee_shape)
         
         # (y, x)
-        #origin_x0 = int(motor_stepX_to_pix(812 - imgInfo.min_motorX))
-        #origin_y0 = int(motor_stepY_to_pix(258527 - imgInfo.min_motorY))
+        #self.origin_x0 = int(motor_stepX_to_pix(812 - self.imgInfo.min_motorX))
+        #self.origin_y0 = int(motor_stepY_to_pix(258527 - self.imgInfo.min_motorY))
         
-        origin_x0 = 3390
-        origin_y0 = 320
+        #self.origin_x0 = 3390
+        #self.origin_y0 = 320
         
-        #origin_x0 = 3824
-        #origin_y0 = 335
+        #self.origin_x0 = 3824
+        #self.origin_y0 = 335
         
-        print("origin_x0, origin_y0:", origin_x0, origin_y0)
+        print("self.origin_x0, self.origin_y0:", self.origin_x0, self.origin_y0)
         
-        self.imgInfo.set_origin(xy = (origin_x0, origin_y0))
+        self.imgInfo.set_origin(x0 = self.origin_x0, y0 = self.origin_y0)
         
         
         color = (1, 0, 0, 1)
@@ -132,11 +177,11 @@ class GeometryInfo :
             radL = utils.mm_to_pix(self.d_cfoam["radL"][idx])
             
             # Odd/even rings
-            if (args.ringOpt == constants.odd_str and not ring%2) :
+            if (self.args.ringOpt == constants.odd_str and not ring%2) :
                 
                 continue
             
-            elif (args.ringOpt == constants.even_str and ring%2) :
+            elif (self.args.ringOpt == constants.even_str and ring%2) :
                 
                 continue
             
@@ -180,23 +225,23 @@ class GeometryInfo :
             
             color = (not color[0], 0, not color[2], 1)
             
-            xInn1 = origin_x0+rInn*numpy.cos(phiInn1)
-            yInn1 = origin_y0+rInn*numpy.sin(phiInn1)
+            xInn1 = self.origin_x0+rInn*numpy.cos(phiInn1)
+            yInn1 = self.origin_y0+rInn*numpy.sin(phiInn1)
             
-            xInn2 = origin_x0+rInn*numpy.cos(phiInn2)
-            yInn2 = origin_y0+rInn*numpy.sin(phiInn2)
+            xInn2 = self.origin_x0+rInn*numpy.cos(phiInn2)
+            yInn2 = self.origin_y0+rInn*numpy.sin(phiInn2)
             
-            xOut1 = origin_x0+rOut*numpy.cos(phiOut1)
-            yOut1 = origin_y0+rOut*numpy.sin(phiOut1)
+            xOut1 = self.origin_x0+rOut*numpy.cos(phiOut1)
+            yOut1 = self.origin_y0+rOut*numpy.sin(phiOut1)
             
-            xOut2 = origin_x0+rOut*numpy.cos(phiOut2)
-            yOut2 = origin_y0+rOut*numpy.sin(phiOut2)
+            xOut2 = self.origin_x0+rOut*numpy.cos(phiOut2)
+            yOut2 = self.origin_y0+rOut*numpy.sin(phiOut2)
             
-            xMid1 = origin_x0+r*numpy.cos(phiMid1)
-            yMid1 = origin_y0+r*numpy.sin(phiMid1)
+            xMid1 = self.origin_x0+r*numpy.cos(phiMid1)
+            yMid1 = self.origin_y0+r*numpy.sin(phiMid1)
             
-            xMid2 = origin_x0+r*numpy.cos(phiMid2)
-            yMid2 = origin_y0+r*numpy.sin(phiMid2)
+            xMid2 = self.origin_x0+r*numpy.cos(phiMid2)
+            yMid2 = self.origin_y0+r*numpy.sin(phiMid2)
             
             #print([xInn1, xInn2, xOut2, xOut1], [yInn1, yInn2, yOut2, yOut1])
             
@@ -207,7 +252,7 @@ class GeometryInfo :
             
             
             # Attach image
-            nearestImgIdx = imgInfo.get_nearestImageIdx(0.5*(xMid1+xMid2), 0.5*(yMid1+yMid2))
+            nearestImgIdx = self.imgInfo.get_nearestImageIdx(0.5*(xMid1+xMid2), 0.5*(yMid1+yMid2))
             
             self.d_geomObj[cfoamLabel] = CarbonFoamInfo.CarbonFoamInfo(
                 imgInfo = self.imgInfo,
@@ -228,7 +273,7 @@ class GeometryInfo :
             
             cfoamBox = numpy.array([[pt[0], pt[1]] for pt in zip(cfoamBox_xx, cfoamBox_yy)])
             cfoamBox = matplotlib.patches.Polygon(cfoamBox, color = color, fill = False, picker = None, label = cfoamBoxLabel, zorder = constants.zorder_geometryMesh)
-            self.axis_imgDee.add_patch(cfoamBox)
+            axis_imgDee.add_patch(cfoamBox)
             
             self.d_geomObj[cfoamLabel].add_geometryArtist(cfoamBox, cfoamBoxLabel)
             
@@ -236,16 +281,16 @@ class GeometryInfo :
             # Longitudinal central profile
             profLabel = "%s_prof" %(cfoamLabel)
             
-            profLine = self.axis_imgDee.plot([xMid1, xMid2], [yMid1, yMid2], color = color, linewidth = 1, picker = True, pickradius = 3, label = profLabel, zorder = constants.zorder_geometryMesh)[0]
+            profLine = axis_imgDee.plot([xMid1, xMid2], [yMid1, yMid2], color = color, linewidth = 1, picker = True, pickradius = 3, label = profLabel, zorder = constants.zorder_geometryMesh)[0]
             
             rr_profLine, cc_profLine = skimage.draw.line(int(numpy.round(yMid2)), int(numpy.round(xMid2)), int(numpy.round(yMid1)), int(numpy.round(xMid1)))
             
-            rr_profLine = rr_profLine - imgInfo.l_imgExtent_pixelY[nearestImgIdx][0]
-            cc_profLine = cc_profLine - imgInfo.l_imgExtent_pixelX[nearestImgIdx][0]
+            rr_profLine = rr_profLine - self.imgInfo.l_imgExtent_pixelY[nearestImgIdx][0]
+            cc_profLine = cc_profLine - self.imgInfo.l_imgExtent_pixelX[nearestImgIdx][0]
             
             #for idx in range(0, len(rr_profLine)) :
             #    
-            #    if (rr_profLine[idx] < 0 or rr_profLine[idx] >= imgInfo.nRow or cc_profLine[idx] < 0 or cc_profLine[idx] >= imgInfo.nCol) :
+            #    if (rr_profLine[idx] < 0 or rr_profLine[idx] >= self.imgInfo.nRow or cc_profLine[idx] < 0 or cc_profLine[idx] >= self.imgInfo.nCol) :
             #        
             #        rr_profLine[idx] = 0
             #        cc_profLine[idx] = 0
@@ -254,16 +299,18 @@ class GeometryInfo :
             
             #self.d_geomObj[cfoamLabel].add_profileLine(rr_profLine, cc_profLine, profLabel)
             self.d_geomObj[cfoamLabel].add_profileLine(
-                r1 = numpy.round(yMid2) - imgInfo.l_imgExtent_pixelY[nearestImgIdx][0],
-                c1 = numpy.round(xMid2) - imgInfo.l_imgExtent_pixelX[nearestImgIdx][0],
-                r2 = numpy.round(yMid1) - imgInfo.l_imgExtent_pixelY[nearestImgIdx][0],
-                c2 = numpy.round(xMid1) - imgInfo.l_imgExtent_pixelX[nearestImgIdx][0],
+                r1 = numpy.round(yMid2),
+                c1 = numpy.round(xMid2),
+                r2 = numpy.round(yMid1),
+                c2 = numpy.round(xMid1),
+                #offsetRow = -self.imgInfo.l_imgExtent_pixelY[nearestImgIdx][0],
+                #offsetCol = -self.imgInfo.l_imgExtent_pixelX[nearestImgIdx][0],
                 label = profLabel
             )
             
             
             # C-foam text
-            self.axis_imgDee.text(
+            axis_imgDee.text(
                 0.5*(xInn1+xInn2),
                 0.5*(yInn1+yInn2),
                 cfoamLabel,
@@ -275,7 +322,13 @@ class GeometryInfo :
             )
         
         
-        #self.axis_imgDee.figure.canvas.draw()
+        axis_imgDee.set_xticks([self.origin_x0], minor = True)
+        axis_imgDee.set_yticks([self.origin_y0], minor = True)
+        
+        axis_imgDee.xaxis.grid(True, which = "minor")
+        axis_imgDee.yaxis.grid(True, which = "minor")
+        
+        axis_imgDee.figure.canvas.draw()
     
     
     def on_pick(self, event) :
@@ -321,3 +374,21 @@ class GeometryInfo :
     #    if (imgIdx >= 0) :
     #        
     #        print("Image:", self.imgInfo.l_inputFileName[imgIdx])
+    
+    
+    def attach_cfoam_image(self, cfoamLabel, imgName) :
+        
+        imgIdx = self.imgInfo.get_imgIdx_from_fName(fName = imgName)
+        
+        self.d_geomObj[cfoamLabel].set_imgIdx(imgIdx)
+        
+        #print((-self.imgInfo.l_imgExtent_pixelY[imgIdx][0], -self.imgInfo.l_imgExtent_pixelX[imgIdx][0]))
+        
+        
+    
+    
+    #def __del__(self) :
+    #    
+    #    print("Destroying:", type(self))
+    #    
+    #    self.tkroot_profile.destroy()

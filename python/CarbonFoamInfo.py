@@ -45,6 +45,9 @@ class CarbonFoamInfo :
         self.imgIdx = imgIdx
         self.label = label
         
+        self.offsetRow = -self.imgInfo.l_imgExtent_pixelY[imgIdx][0],
+        self.offsetCol = -self.imgInfo.l_imgExtent_pixelX[imgIdx][0],
+        
         self.d_geomArtist = {}
         self.d_profileLine = {}
         
@@ -62,6 +65,52 @@ class CarbonFoamInfo :
         self.l_cid_dragImg = []
     
     
+    def destroy(self) :
+        
+        if (self.tkroot_img is not None and tkinter.Toplevel.winfo_exists(self.tkroot_img)) :
+            
+            self.tkroot_img.destroy()
+    
+    
+    def attach_image(self, imgName) :
+        
+        imgName = utils.clean_string(imgName)
+        
+        imgIdx = self.imgInfo.get_imgIdx_from_fName(fName = imgName)
+        
+        self.set_imgIdx(imgIdx)
+        
+        #if (self.fig_img is not None) :
+        #    
+        #    self.on_fig_close(event = None)
+        #    self.draw()
+        
+        self.destroy()
+        self.draw()
+    
+    
+    def set_imgIdx(self, imgIdx) :
+        
+        #self.reset()
+        
+        self.imgIdx = imgIdx
+        
+        self.offsetRow = -self.imgInfo.l_imgExtent_pixelY[imgIdx][0],
+        self.offsetCol = -self.imgInfo.l_imgExtent_pixelX[imgIdx][0],
+        
+        #self.reset()
+        
+        self.update_features(dRow = 0, dCol = 0)
+        
+        self.centerImage()
+        
+        #self.update_features(
+        #    dRow = 0,
+        #    dCol = 0,
+        #)
+        
+    
+    
     def resetAllArtists(self) :
         
         for key in self.d_geomArtist :
@@ -77,17 +126,27 @@ class CarbonFoamInfo :
         utils.reset_artist(self.d_geomArtist[label])
     
     
-    def add_profileLine(self, r1, c1, r2, c2, label) :
+    def add_profileLine(
+        self,
+        r1, c1,
+        r2, c2,
+        label,
+    ) :
         
         self.d_profileLine[label] = ProfileLine.ProfileLine(
             r1, c1,
             r2, c2,
+            offsetRow = self.offsetRow,
+            offsetCol = self.offsetCol,
         )
     
     
     def on_fig_close(self, event) :
         
-        if (self.fig_img == event.canvas.figure) :
+        #if (self.fig_img == event.canvas.figure) :
+        #if (self.fig_img is not None) :
+        
+        try :
             
             self.fig_img.clf()
             matplotlib.pyplot.close(self.fig_img)
@@ -107,12 +166,18 @@ class CarbonFoamInfo :
             gc.collect()
             
             print("Closed image %s" %(self.label))
+        
+        except :
+            
+            pass
     
     
     def get_profile(self, label) :
         
         rr = self.d_profileLine[label].rr
         cc = self.d_profileLine[label].cc
+        
+        #print(rr, cc)
         
         nPix = len(rr)
         
@@ -124,7 +189,24 @@ class CarbonFoamInfo :
             r = rr[iPix]
             c = cc[iPix]
             
+            if (r >= self.imgInfo.nRow or c >= self.imgInfo.nCol) :
+                
+                continue
+            
+            if (r < 0 or c < 0) :
+                
+                continue
+            
             val = self.imgInfo.l_inputData[self.imgIdx][r, c]
+            
+            #try :
+            #    
+            #    val = self.imgInfo.l_inputData[self.imgIdx][r, c]
+            #
+            #except :
+            #    
+            #    return ([], [])
+            
             xx.append(iPix)
             yy.append(val)
             
@@ -252,11 +334,12 @@ class CarbonFoamInfo :
             
             figName = "%s" %(self.label)
             
-            self.tkroot_img = tkinter.Toplevel()
+            self.tkroot_img = tkinter.Toplevel(class_ = figName)
             self.tkroot_img.wm_title(figName)
             
-            self.fig_img = matplotlib.figure.Figure(figsize = [5, 5])
+            self.fig_img = matplotlib.figure.Figure(figsize = [8, 5])
             self.fig_img.canvas = FigureCanvasTkAgg(self.fig_img, master = self.tkroot_img)
+            self.fig_img.canvas.get_tk_widget().pack(side = tkinter.TOP, fill = tkinter.BOTH, expand = True)
             
             #self.fig_img = matplotlib.pyplot.figure(figName, figsize = [5, 5])
             
@@ -297,7 +380,8 @@ class CarbonFoamInfo :
             self.fig_img.colorbar(
                 self.img,
                 ax = self.axis_img,
-                fraction = 0.046*(arr_inputImg.shape[0]/arr_inputImg.shape[1])
+                fraction = 0.046*(arr_inputImg.shape[0]/arr_inputImg.shape[1]),
+                label = "Temperature [°C]",
             )
             
             self.background = self.fig_img.canvas.copy_from_bbox(self.axis_img.get_figure().bbox)
@@ -331,13 +415,30 @@ class CarbonFoamInfo :
             #matplotlib.pyplot.show(block = False)
             
             
-            # Toolbar
-            self.tbar_img = NavigationToolbar2Tk(self.fig_img.canvas, self.tkroot_img)
-            self.tbar_img.update()
-            self.fig_img.canvas.get_tk_widget().pack(side = tkinter.TOP, fill = tkinter.BOTH, expand = 1)
+            frame = tkinter.Frame(master = self.tkroot_img)
+            frame.pack(side = tkinter.TOP, fill = tkinter.X)
             
-            self.button_show_allImages = tkinter.Button(master = self.tkroot_img, text = "Reset", takefocus = 0, command = self.reset)
-            self.button_show_allImages.pack(side = tkinter.LEFT)
+            button = tkinter.Button(master = frame, text = "Reset", takefocus = 0, command = self.reset)
+            button.pack(side = tkinter.LEFT)
+            
+            button = tkinter.Button(master = frame, text = "Center image", takefocus = 0, command = self.centerImage)
+            button.pack(side = tkinter.LEFT)
+            
+            frame = tkinter.Frame(master = self.tkroot_img)
+            frame.pack(side = tkinter.TOP, fill = tkinter.X)
+            
+            self.svar_imgName = tkinter.StringVar()
+            entry = tkinter.Entry(master = frame, textvariable = self.svar_imgName)
+            entry.pack(side = tkinter.LEFT, fill = tkinter.X, expand = True)
+            
+            button = tkinter.Button(master = frame, text = "Set image [full path]", takefocus = 0, command = lambda: self.attach_image(self.svar_imgName.get()))
+            button.pack(side = tkinter.LEFT, fill = tkinter.X)
+            
+            
+            # Toolbar
+            toolbar = NavigationToolbar2Tk(self.fig_img.canvas, self.tkroot_img, pack_toolbar = False)
+            toolbar.update()
+            toolbar.pack(side = tkinter.BOTTOM, fill = tkinter.X)
         
         else :
             
@@ -505,11 +606,20 @@ class CarbonFoamInfo :
             )
     
     
-    def update_features(self, dRow, dCol) :
+    def update_features(
+        self,
+        dRow,
+        dCol,
+    ) :
         
         for key in self.d_profileLine :
             
-            rr, cc = self.d_profileLine[key].setAndGetLine(dRow = dRow, dCol = dCol)
+            rr, cc = self.d_profileLine[key].setAndGetLine(
+                dRow = dRow,
+                dCol = dCol,
+                offsetRow = self.offsetRow,
+                offsetCol = self.offsetCol,
+            )
             
             #arr_img = self.imgInfo.l_inputData[self.imgIdx].copy()
             #
@@ -532,24 +642,18 @@ class CarbonFoamInfo :
         
         #self.fig_img.canvas.restore_region(self.background)
         
-        self.img.set_extent(new_extent)
-        
-        self.axis_img.set_xlim(*new_extent[0: 2])
-        self.axis_img.set_ylim(*new_extent[2: 4])
-        
-        self.fig_img._suptitle.set_text(self.get_title())
-        
-        #self.fig_img.canvas.update()
-        self.fig_img.canvas.draw()
-        #self.fig_img.canvas.blit(self.axis_img.bbox)
-        
-        #self.drawGeomArtists()
-        
-        #self.fig_img.canvas.blit(self.axis_img.clipbox)
-        
-        #self.fig_img.canvas.flush_events()
-        
         self.imgInfo.updateImageExtent(idx = self.imgIdx, imgExtent_pixelX = new_extent[0: 2], imgExtent_pixelY = new_extent[2: 4][::-1])
+        
+        if (hasattr(self, "img")) :
+            
+            self.img.set_extent(new_extent)
+            
+            self.axis_img.set_xlim(*new_extent[0: 2])
+            self.axis_img.set_ylim(*new_extent[2: 4])
+            
+            self.fig_img._suptitle.set_text(self.get_title())
+            
+            self.fig_img.canvas.draw()
         
         self.update_features(dY, dX)
     
@@ -558,6 +662,40 @@ class CarbonFoamInfo :
         
         dX, dY = self.imgInfo.resetImageExtent(idx = self.imgIdx)
         self.update_imgExtent(self.imgInfo.l_imgExtent_pixelX[self.imgIdx] + self.imgInfo.l_imgExtent_pixelY[self.imgIdx][::-1], dX, dY)
+    
+    
+    def centerImage(self) :
+        
+        cenX = 0
+        cenY = 0
+        
+        # Use the average center position
+        for key in self.d_profileLine :
+            
+            prof = self.d_profileLine[key]
+            
+            cenX += 0.5*(prof.c1 + prof.c2)
+            cenY += 0.5*(prof.r1 + prof.r2)
+        
+        cenX /= len(self.d_profileLine)
+        cenY /= len(self.d_profileLine)
+        
+        dX = self.imgInfo.l_imgCenter_pixelX[self.imgIdx] - cenX
+        dY = self.imgInfo.l_imgCenter_pixelY[self.imgIdx] - cenY
+        
+        #extent = self.img.get_extent()
+        extent = self.imgInfo.l_imgExtent_pixelX[self.imgIdx] + self.imgInfo.l_imgExtent_pixelY[self.imgIdx][::-1]
+        
+        new_extent = (
+            extent[0] - dX,
+            extent[1] - dX,
+            extent[2] - dY,
+            extent[3] - dY,
+        )
+        
+        print(extent, new_extent, (dX, dY), (cenX, cenY), (self.imgInfo.l_imgCenter_pixelX[self.imgIdx], self.imgInfo.l_imgCenter_pixelY[self.imgIdx]))
+        
+        self.update_imgExtent(new_extent, dX, dY)
     
     
     def start_drag(self, event) :
