@@ -36,14 +36,29 @@ class GeometryInfo :
         self,
         args,
         imgInfo,
+        loadInfo = None,
     ) :
         self.args = args
         self.imgInfo = imgInfo
         
-        self.origin_x0 = None
-        self.origin_y0 = None
+        self.originVarName_x0 = "origin_x0"
+        self.originVarName_y0 = "origin_y0"
         
-        self.set_origin_and_draw(args.originX, args.originY)
+        #self.origin_x0 = None
+        #self.origin_y0 = None
+        
+        setattr(self, self.originVarName_x0, None)
+        setattr(self, self.originVarName_y0, None)
+        
+        self.loadInfo = loadInfo
+        
+        if (self.loadInfo is None) :
+            
+            self.set_origin_and_draw(args.originX, args.originY)
+        
+        else :
+            
+            self.set_origin_and_draw(loadInfo[self.originVarName_x0], loadInfo[self.originVarName_y0])
     
     
     def set_origin_and_draw(self, x0, y0) :
@@ -91,6 +106,8 @@ class GeometryInfo :
         self.fig_profile = matplotlib.figure.Figure(figsize = [10, 8])
         self.fig_profile.canvas = FigureCanvasTkAgg(self.fig_profile, master = self.tkroot_profile)
         #self.fig_profile = matplotlib.pyplot.figure("Carbon foam profiles", figsize = [10, 8])
+        
+        self.fig_profile.canvas.mpl_connect("pick_event", self.on_pick)
         
         self.axis_profile = self.fig_profile.add_subplot(1, 1, 1)
         
@@ -140,8 +157,8 @@ class GeometryInfo :
         nFoam = len(self.d_cfoam["r"])
         
         
-        arr_dee_shape = self.imgInfo.arr_stitchedDeeImg.shape+(4,)
-        print(arr_dee_shape)
+        #arr_dee_shape = self.imgInfo.arr_stitchedDeeImg.shape+(4,)
+        #print(arr_dee_shape)
         
         # (y, x)
         #self.origin_x0 = int(motor_stepX_to_pix(812 - self.imgInfo.min_motorX))
@@ -252,7 +269,13 @@ class GeometryInfo :
             
             
             # Attach image
-            nearestImgIdx = self.imgInfo.get_nearestImageIdx(0.5*(xMid1+xMid2), 0.5*(yMid1+yMid2))
+            if (self.loadInfo is None) :
+                
+                nearestImgIdx = self.imgInfo.get_nearestImageIdx(0.5*(xMid1+xMid2), 0.5*(yMid1+yMid2))
+            
+            else :
+                
+                nearestImgIdx = self.imgInfo.get_imgIdx_from_fName(self.loadInfo[cfoamLabel])
             
             self.d_geomObj[cfoamLabel] = CarbonFoamInfo.CarbonFoamInfo(
                 imgInfo = self.imgInfo,
@@ -385,6 +408,20 @@ class GeometryInfo :
         #print((-self.imgInfo.l_imgExtent_pixelY[imgIdx][0], -self.imgInfo.l_imgExtent_pixelX[imgIdx][0]))
         
         
+    
+    
+    def get_saveInfo(self) :
+        
+        d_saveInfo = {}
+        
+        d_saveInfo[self.originVarName_x0] = self.origin_x0
+        d_saveInfo[self.originVarName_y0] = self.origin_y0
+        
+        for key in self.d_geomObj :
+            
+            d_saveInfo[key] = self.d_geomObj[key].get_imgName()
+        
+        return d_saveInfo
     
     
     #def __del__(self) :

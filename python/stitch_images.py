@@ -1,4 +1,5 @@
 import argparse
+import collections
 import copy
 import gc
 import glob
@@ -20,8 +21,10 @@ import sys
 import textwrap
 import time
 import tkinter
+import yaml
 
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2Tk
+from tkinter import filedialog
 from tkinter import font
 
 import colors
@@ -41,13 +44,15 @@ def main() :
         "--inputDir",
         help = "Location of the input files",
         type = str,
-        required = True,
+        #required = True,
+        required = False,
     )
     
     parser.add_argument(
         "--inputPattern",
         help = "Input file name pattern (use XXX and YYY as the coordinate placeholders): image_XXX_YYY.asc",
         type = str,
+        #required = True,
         required = False,
         default = "cfoam_m20deg_lampoff_XXX_YYY.asc",
     )
@@ -56,6 +61,7 @@ def main() :
         "--inputExt",
         help = "Input file extension",
         type = str,
+        #required = True,
         required = False,
         default = ".asc",
     )
@@ -64,6 +70,7 @@ def main() :
         "--inputEncoding",
         help = "Input file encoding",
         type = str,
+        #required = True,
         required = False,
         default = "ISO-8859-1",
     )
@@ -97,19 +104,63 @@ def main() :
         "--originX",
         help = "Origin x (pixel position)",
         type = float,
-        required = True,
+        #required = True,
+        required = False,
     )
     
     parser.add_argument(
         "--originY",
         help = "Origin y (pixel position)",
         type = float,
-        required = True,
+        #required = True,
+        required = False,
+    )
+    
+    parser.add_argument(
+        "--loadSave",
+        help = "Load save file",
+        type = str,
+        required = False,
+        default = None,
     )
     
     
     args = parser.parse_args()
     d_args = vars(args)
+    
+    
+    d_loadInfo = None
+    
+    if (args.loadSave is not None) :
+        
+        loadFileName = args.loadSave
+        print("Loading configuration from: %s" %(loadFileName))
+        
+        with open(loadFileName, "r") as fopen :
+            
+            d_loadInfo = yaml.load(fopen.read(), Loader = yaml.FullLoader)
+            #print("Loaded:", d_loadInfo)
+            
+            d_args.update(d_loadInfo["args"])
+            
+            #args = d_args
+            
+            #print(args.inputDir)
+    
+    
+    def get_saveInfo() :
+        
+        l_save_argsInfo = [
+            "inputDir",
+            "inputPattern",
+            "nCol",
+            "geomFile",
+            "ringOpt",
+        ]
+        
+        d_save_argsInfo = {key: d_args[key] for key in l_save_argsInfo}
+        
+        return d_save_argsInfo
     
     
     tkroot = tkinter.Tk(className = "Main")
@@ -143,14 +194,16 @@ def main() :
     
     
     imgInfo = ImageInfo.ImageInfo(
-        args = args
+        args = args,
+        loadInfo = d_loadInfo[ImageInfo.ImageInfo.__name__] if (d_loadInfo is not None) else None,
     )
     imgInfo.draw()
     
     
     geomInfo = GeometryInfo.GeometryInfo(
         args = args,
-        imgInfo = imgInfo
+        imgInfo = imgInfo,
+        loadInfo = d_loadInfo[GeometryInfo.GeometryInfo.__name__] if (d_loadInfo is not None) else None,
     )
     
     
@@ -262,7 +315,39 @@ def main() :
     row += 1
     
     
-    button = tkinter.Button(master = tkroot, text = "Save configuration", takefocus = 0, command = lambda: print("Saving..."))
+    def save_config() :
+        
+        d_save_argsInfo = get_saveInfo()
+        d_save_imgInfo = imgInfo.get_saveInfo()
+        d_save_geomInfo = geomInfo.get_saveInfo()
+        
+        d_save = {}
+        #d_save = collections.OrderedDict()
+        #d_save = collections.UserDict()
+        
+        d_save["args"] = d_save_argsInfo
+        d_save[type(imgInfo).__name__] = d_save_imgInfo
+        d_save[type(geomInfo).__name__] = d_save_geomInfo
+        
+        yaml_save = yaml.dump(d_save)
+        
+        #print(yaml_save)
+        
+        saveFileName = tkinter.filedialog.asksaveasfilename(
+            parent = tkroot,
+            #multiple = False,
+            defaultextension = constants.save_extension, filetypes = [("", "*%s" %(constants.save_extension))],
+            title = "Save configuration"
+        )
+        
+        print(saveFileName)
+        
+        with open(saveFileName, "w") as fopen :
+            
+            fopen.write(yaml_save)
+    
+    
+    button = tkinter.Button(master = tkroot, text = "Save configuration", takefocus = 0, command = lambda: save_config())
     button.grid(row = row, column = 0, sticky = "ew")
     row += 1
     

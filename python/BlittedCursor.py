@@ -67,7 +67,7 @@ class BlittedCursor_mod1:
     """
     A cross hair cursor using blitting for faster redraw.
     """
-    def __init__(self, ax, marker_size = 10):
+    def __init__(self, ax, marker_size = 10, picker = False):
         self.ax = ax
         self.background = None
         self.horizontal_line = ax.axhline(color="k", lw=0.8, ls="--")
@@ -94,8 +94,11 @@ class BlittedCursor_mod1:
         
         ax.figure.canvas.mpl_connect("draw_event", self.on_draw)
         ax.figure.canvas.mpl_connect("motion_notify_event", self.on_mouse_move)
-        ax.figure.canvas.mpl_connect("pick_event", self.on_pick)
         ax.figure.canvas.mpl_connect("button_press_event", self.on_click)
+        
+        if (picker) :
+            
+            ax.figure.canvas.mpl_connect("pick_event", self.on_pick)
 
     def on_draw(self, event):
         self.create_new_background()

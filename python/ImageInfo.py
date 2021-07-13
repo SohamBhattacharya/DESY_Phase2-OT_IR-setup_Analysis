@@ -8,6 +8,7 @@ matplotlib.use('TkAgg')
 import matplotlib.pyplot
 import matplotlib.ticker
 import mplcursors
+import mpl_toolkits.axes_grid1
 import numpy
 import pandas
 import PIL
@@ -36,7 +37,10 @@ class ImageInfo :
         self,
         #tkroot,
         args,
+        loadInfo = None,
     ) :
+        self.loadInfo = loadInfo
+        
         self.origin_x0 = 0
         self.origin_y0 = 0
         
@@ -127,8 +131,8 @@ class ImageInfo :
         #print(l_inputData[50].shape)
         
         
-        self.arr_stitchedDeeImg = numpy.full((self.widthY_pix, self.widthX_pix), fill_value = numpy.nan, dtype = numpy.float)#, dtype = numpy.float16)
-        print("arr_stitchedDeeImg.shape", self.arr_stitchedDeeImg.shape)
+        #self.arr_stitchedDeeImg = numpy.full((self.widthY_pix, self.widthX_pix), fill_value = numpy.nan, dtype = numpy.float32)#, dtype = numpy.float16)
+        #print("arr_stitchedDeeImg.shape", self.arr_stitchedDeeImg.shape)
         
         self.minTemp = +9999
         self.maxTemp = -9999
@@ -141,14 +145,25 @@ class ImageInfo :
         
         for iImg, arr_img in enumerate(self.l_inputData) :
             
+            fName = self.l_inputFileName[iImg]
+            
             motorX = self.l_motorX[iImg] - self.min_motorX
             motorY = self.l_motorY[iImg] - self.min_motorY
             
-            pixelX_lwr = int(utils.motor_stepX_to_pix(motorX))# - self.nCol/2)
-            pixelY_lwr = int(utils.motor_stepY_to_pix(motorY))
+            if (self.loadInfo is None) :
+                
+                pixelX_lwr = int(utils.motor_stepX_to_pix(motorX))# - self.nCol/2)
+                pixelY_lwr = int(utils.motor_stepY_to_pix(motorY))
+                
+                pixelX_upr = int(pixelX_lwr + self.nCol)
+                pixelY_upr = int(pixelY_lwr + self.nRow)
             
-            pixelX_upr = int(pixelX_lwr + self.nCol)
-            pixelY_upr = int(pixelY_lwr + self.nRow)
+            else :
+                
+                pixelX_lwr, pixelX_upr = self.loadInfo[fName]["imgExtent_pixelX"]
+                pixelY_lwr, pixelY_upr = self.loadInfo[fName]["imgExtent_pixelY"]
+                
+                #print(fName, self.loadInfo[fName]["imgExtent_pixelX"], self.loadInfo[fName]["imgExtent_pixelY"])
             
             imgCenter_pixelX = 0.5*(pixelX_lwr+pixelX_upr)
             imgCenter_pixelY = 0.5*(pixelY_lwr+pixelY_upr)
@@ -160,11 +175,13 @@ class ImageInfo :
             self.l_imgCenter_pixelY.append(imgCenter_pixelY)
             
             
+            
             #print(pixelX, pixelX+nCol)
             #print(pixelY, pixelY+nRow)
             #print(arr_stitchedDeeImg[pixelY: pixelY+nRow, pixelX: pixelX+nCol].shape)
             #print(arr_img.shape)
-            self.arr_stitchedDeeImg[pixelY_lwr: pixelY_upr, pixelX_lwr: pixelX_upr] = arr_img
+            
+            #self.arr_stitchedDeeImg[pixelY_lwr: pixelY_upr, pixelX_lwr: pixelX_upr] = arr_img
             
             
             #self.minTemp = arr_img.min() if (arr_img.min() < self.minTemp) else self.minTemp
@@ -178,8 +195,11 @@ class ImageInfo :
         self.l_imgExtent_pixelY_backup = self.l_imgExtent_pixelY.copy()
         
         
-        temp_mean = numpy.nanmean(self.arr_stitchedDeeImg)
-        temp_std = numpy.nanstd(self.arr_stitchedDeeImg)
+        #temp_mean = numpy.nanmean(self.arr_stitchedDeeImg)
+        #temp_std = numpy.nanstd(self.arr_stitchedDeeImg)
+        
+        temp_mean = numpy.nanmean(self.l_inputData)
+        temp_std = numpy.nanstd(self.l_inputData)
         
         self.minTemp = temp_mean - 3*temp_std
         self.maxTemp = temp_mean + 3*temp_std
@@ -200,6 +220,10 @@ class ImageInfo :
         
         self.l_imgExtent_pixelX[idx] = tuple(imgExtent_pixelX)
         self.l_imgExtent_pixelY[idx] = tuple(imgExtent_pixelY)
+        
+        #self.l_imgExtent_pixelX[idx] = (imgExtent_pixelX[0], imgExtent_pixelX[1])
+        #self.l_imgExtent_pixelY[idx] = (imgExtent_pixelY[0], imgExtent_pixelY[1])
+        #print(self.l_imgExtent_pixelX[idx], self.l_imgExtent_pixelY[idx], type(self.l_imgExtent_pixelX[idx][0]), type(self.l_imgExtent_pixelY[idx][0]))
         
         self.l_imgCenter_pixelX[idx] = imgCenter_pixelX
         self.l_imgCenter_pixelY[idx] = imgCenter_pixelY
@@ -328,10 +352,14 @@ class ImageInfo :
             
             if (not imgIdx) :
                 
+                divider = mpl_toolkits.axes_grid1.make_axes_locatable(self.axis_stitchedDee)
+                cax = divider.append_axes("right", size = "3%", pad = 0.1)
+                
                 self.fig_stitchedDee.colorbar(
                     axis,
-                    ax = self.axis_stitchedDee,
-                    fraction = 0.046*(self.arr_stitchedDeeImg.shape[0]/self.arr_stitchedDeeImg.shape[1]),
+                    cax = cax,
+                    #ax = self.axis_stitchedDee,
+                    #fraction = 0.046*(self.arr_stitchedDeeImg.shape[0]/self.arr_stitchedDeeImg.shape[1]),
                     label = "Temperature [°C]",
                 )
         
@@ -652,6 +680,25 @@ class ImageInfo :
         #
         #artist.draw(self.fig_stitchedDee.canvas.renderer)
         #self.fig_stitchedDee.canvas.update()
+    
+    
+    def get_saveInfo(self) :
+        
+        self.l_inputFileName
+        self.l_imgExtent_pixelX
+        self.l_imgExtent_pixelY
+        
+        d_saveInfo = {}
+        
+        for iFile, fName in enumerate(self.l_inputFileName) :
+            
+            d_saveInfo[fName] = {}
+            
+            # Convert to native python dtype
+            d_saveInfo[fName]["imgExtent_pixelX"] = tuple(int(ele) for ele in self.l_imgExtent_pixelX[iFile])
+            d_saveInfo[fName]["imgExtent_pixelY"] = tuple(int(ele) for ele in self.l_imgExtent_pixelY[iFile])
+        
+        return d_saveInfo
     
     
     #def __del__(self) :

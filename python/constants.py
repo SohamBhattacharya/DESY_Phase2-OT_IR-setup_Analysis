@@ -6,3 +6,6 @@ zorder_geometryText = 30
 
 odd_str = "odd"
 even_str = "even"
+
+
+save_extension = ".sav"

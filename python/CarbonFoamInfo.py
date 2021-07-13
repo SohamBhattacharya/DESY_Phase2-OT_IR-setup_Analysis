@@ -8,6 +8,7 @@ matplotlib.use('TkAgg')
 import matplotlib.pyplot
 import matplotlib.ticker
 import mplcursors
+import mpl_toolkits.axes_grid1
 import numpy
 import pandas
 import PIL
@@ -70,6 +71,11 @@ class CarbonFoamInfo :
         if (self.tkroot_img is not None and tkinter.Toplevel.winfo_exists(self.tkroot_img)) :
             
             self.tkroot_img.destroy()
+    
+    
+    def get_imgName(self) :
+        
+        return self.imgInfo.l_inputFileName[self.imgIdx]
     
     
     def attach_image(self, imgName) :
@@ -234,7 +240,7 @@ class CarbonFoamInfo :
         
         else :
             
-            self.d_drawnArtist[label] = axis.plot(xx, yy, color = color, linewidth = 2, label = label)[0]
+            self.d_drawnArtist[label] = axis.plot(xx, yy, color = color, linewidth = 2, label = label, picker = True, pickradius = 3)[0]
             axis.legend()
         
         axis.relim()
@@ -377,10 +383,14 @@ class CarbonFoamInfo :
                 vmax = self.imgInfo.maxTemp,
             )
             
+            divider = mpl_toolkits.axes_grid1.make_axes_locatable(self.axis_img)
+            cax = divider.append_axes("right", size = "3%", pad = 0.1)
+            
             self.fig_img.colorbar(
                 self.img,
-                ax = self.axis_img,
-                fraction = 0.046*(arr_inputImg.shape[0]/arr_inputImg.shape[1]),
+                cax = cax,
+                #ax = self.axis_img,
+                #fraction = 0.046*(arr_inputImg.shape[0]/arr_inputImg.shape[1]),
                 label = "Temperature [°C]",
             )
             
@@ -410,7 +420,7 @@ class CarbonFoamInfo :
             
             self.fig_img.tight_layout()
             
-            self.marker_img = BlittedCursor.BlittedCursor_mod1(ax = self.axis_img)
+            self.marker_img = BlittedCursor.BlittedCursor_mod1(ax = self.axis_img, picker = True)
             
             #matplotlib.pyplot.show(block = False)
             
