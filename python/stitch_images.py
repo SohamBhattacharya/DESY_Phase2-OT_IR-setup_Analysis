@@ -32,6 +32,8 @@ import constants
 import BlittedCursor
 import GeometryInfo
 import ImageInfo
+import Module2SInfo
+import UnitConversion
 import utils
 
 
@@ -116,6 +118,27 @@ def main() :
     )
     
     parser.add_argument(
+        "--stepxtomm",
+        help = "Conversion factor (can be valid math operations): mm/(motor step x)",
+        type = str,
+        required = False,
+    )
+    
+    parser.add_argument(
+        "--stepytomm",
+        help = "Conversion factor (can be valid math operations): mm/(motor step y)",
+        type = str,
+        required = False,
+    )
+    
+    parser.add_argument(
+        "--mmtopix",
+        help = "Conversion factor (can be valid math operations): pixel/mm",
+        type = str,
+        required = False,
+    )
+    
+    parser.add_argument(
         "--loadSave",
         help = "Load save file",
         type = str,
@@ -192,8 +215,12 @@ def main() :
     #tkroot.option_add("*font", "TkDefaultFont")
     
     
+    unitConv = UnitConversion.UnitConversion(args)
+    
+    
     imgInfo = ImageInfo.ImageInfo(
         args = args,
+        unitConv = unitConv,
         loadInfo = d_loadInfo[ImageInfo.ImageInfo.__name__] if (d_loadInfo is not None) else None,
     )
     imgInfo.draw()
@@ -202,6 +229,7 @@ def main() :
     geomInfo = GeometryInfo.GeometryInfo(
         args = args,
         imgInfo = imgInfo,
+        unitConv = unitConv,
         loadInfo = d_loadInfo[GeometryInfo.GeometryInfo.__name__] if (d_loadInfo is not None) else None,
     )
     
@@ -266,49 +294,6 @@ def main() :
     button.grid(row = row, column = 1, sticky = "ew")
     #ttk.Separator(tkroot, orient = tkinter.VERTICAL).pack(side = tkinter.LEFT, fill = tkinter.Y, padx = 5, pady = 5)
     row += 1
-    
-    
-    #tkroot.grid_rowconfigure(index = row, minsize = 30)
-    #row += 1
-    #
-    #
-    #label = tkinter.Label(master = tkroot, text = "C-foam number [R<num>/CF<num>]:")
-    #label.grid(row = row, column = 0, sticky = "w")
-    #
-    #svar_cfoam = tkinter.StringVar()
-    #entry_cfoam = tkinter.Entry(master = tkroot, textvariable = svar_cfoam, width = 10)
-    #entry_cfoam.grid(row = row, column = 1, sticky = "ew")
-    #row += 1
-    #
-    #
-    #label = tkinter.Label(master = tkroot, text = "Image name (full path):")
-    #label.grid(row = row, column = 0, sticky = "w")
-    #
-    #svar_imgName = tkinter.StringVar()
-    #entry_imgName = tkinter.Entry(master = tkroot, textvariable = svar_imgName, width = 120)
-    #entry_imgName.grid(row = row, column = 1, columnspan = 5, sticky = "ew")
-    #row += 1
-    #
-    #
-    #def attach_cfoam_image() :
-    #    
-    #    cfoamLabel = utils.clean_string(svar_cfoam.get())
-    #    imgName = utils.clean_string(svar_imgName.get())
-    #    
-    #    if (not len(cfoamLabel) or not len(imgName)) :
-    #        
-    #        return
-    #    
-    #    geomInfo.attach_cfoam_image(
-    #        cfoamLabel = cfoamLabel,
-    #        imgName = imgName,
-    #    )
-    #
-    #
-    #button = tkinter.Button(master = tkroot, text = "Associate image to c-foam", takefocus = 0, command = attach_cfoam_image)
-    #button.grid(row = row, column = 0, sticky = "ew")
-    #row += 1
-    
     
     tkroot.grid_rowconfigure(index = row, minsize = 30)
     row += 1

@@ -27,6 +27,7 @@ import colors
 import constants
 import BlittedCursor
 import CarbonFoamInfo
+import Module2SInfo
 import utils
 
 
@@ -36,10 +37,13 @@ class GeometryInfo :
         self,
         args,
         imgInfo,
+        unitConv,
         loadInfo = None,
     ) :
         self.args = args
         self.imgInfo = imgInfo
+        
+        self.unitConv = unitConv
         
         self.originVarName_x0 = "origin_x0"
         self.originVarName_y0 = "origin_y0"
@@ -133,28 +137,29 @@ class GeometryInfo :
         
         self.marker_profile = BlittedCursor.BlittedCursor_mod1(ax = self.axis_profile)
         
-        self.xls_cfoam = pandas.ExcelFile(self.args.geomFile)
+        self.xls_geometry = pandas.ExcelFile(self.args.geomFile)
         
-        self.dframe_cfoam = self.xls_cfoam.parse(0)
+        self.dframe_geometry = self.xls_geometry.parse(0)
         
         # Clean the headers
-        self.dframe_cfoam.rename(columns = lambda x: x.strip(), inplace = True)
+        self.dframe_geometry.rename(columns = lambda x: x.strip(), inplace = True)
         
         # Skip empty lines
-        self.dframe_cfoam.dropna(how = "all", inplace = True)
+        self.dframe_geometry.dropna(how = "all", inplace = True)
         
-        #print(self.dframe_cfoam)
-        #print(self.dframe_cfoam.keys())
+        #print(self.dframe_geometry)
+        #print(self.dframe_geometry.keys())
         
-        self.d_cfoam = {
-            "ring"      : self.dframe_cfoam["Ring"].to_numpy(),
-            "r"         : self.dframe_cfoam["r(mm)"].to_numpy(),
-            "phi"       : self.dframe_cfoam["phi(deg)"].to_numpy(),
-            "arcL"      : self.dframe_cfoam["meanWidth(mm) (orthoradial)"].to_numpy(),
-            "radL"      : self.dframe_cfoam["length(mm) (radial)"].to_numpy(),
+        self.d_geometry = {
+            "ring"             : self.dframe_geometry["Ring"].to_numpy(),
+            "r"                : self.dframe_geometry["r(mm)"].to_numpy(),
+            "phi"              : self.dframe_geometry["phi(deg)"].to_numpy(),
+            "arcL"             : self.dframe_geometry["meanWidth(mm) (orthoradial)"].to_numpy(),
+            "radL"             : self.dframe_geometry["length(mm) (radial)"].to_numpy(),
+            "insert_outR"      : self.dframe_geometry["insert outer radius (mm)"].to_numpy(),
         }
         
-        nFoam = len(self.d_cfoam["r"])
+        nModule = len(self.d_geometry["r"])
         
         
         #arr_dee_shape = self.imgInfo.arr_stitchedDeeImg.shape+(4,)
@@ -178,20 +183,30 @@ class GeometryInfo :
         color = (1, 0, 0, 1)
         
         self.l_cfoamNum = [0]*50
-        
         self.l_cfoamLabel = []
+        
+        self.l_module2SNum = [0]*50
+        self.l_module2SLabel = []
         
         self.d_geomObj = {}
         self.imgInfo.set_cfoamInfo(self.d_geomObj)
         
-        for idx in range(0, nFoam) :
+        for idx in range(0, nModule) :
             
-            ring = self.d_cfoam["ring"][idx]
-            r = utils.mm_to_pix(self.d_cfoam["r"][idx])
-            phi_deg = self.d_cfoam["phi"][idx]
+            ring = self.d_geometry["ring"][idx]
+            r = self.unitConv.mm_to_pix(self.d_geometry["r"][idx])
+            phi_deg = self.d_geometry["phi"][idx]
             phi = numpy.pi-numpy.radians(phi_deg)
-            arcL = utils.mm_to_pix(self.d_cfoam["arcL"][idx])
-            radL = utils.mm_to_pix(self.d_cfoam["radL"][idx])
+            arcL = self.unitConv.mm_to_pix(self.d_geometry["arcL"][idx])
+            radL = self.unitConv.mm_to_pix(self.d_geometry["radL"][idx])
+            
+            # Module type (PS/2S)
+            if (
+                ring < constants.d_moduleDetails[self.args.moduleType][self.args.ringOpt]["ring_min"] or
+                ring > constants.d_moduleDetails[self.args.moduleType][self.args.ringOpt]["ring_max"]
+            ) :
+                
+                continue
             
             # Odd/even rings
             if (self.args.ringOpt == constants.odd_str and not ring%2) :
@@ -202,20 +217,11 @@ class GeometryInfo :
                 
                 continue
             
-            if (
-                ring < constants.d_moduleDetails[self.args.moduleType][self.args.ringOpt]["ring_min"] or
-                ring > constants.d_moduleDetails[self.args.moduleType][self.args.ringOpt]["ring_max"]
-            ) :
-                
-                continue
-            
             if (numpy.isnan(r)) :
                 
                 continue
             
             ring = int(ring)
-            
-            self.l_cfoamNum[ring-1] += 1
             
             rInn = r - radL/2.0
             rOut = r + radL/2.0
@@ -266,11 +272,6 @@ class GeometryInfo :
             #print([xInn1, xInn2, xOut2, xOut1], [yInn1, yInn2, yOut2, yOut1])
             
             
-            # C-foam label
-            cfoamLabel = "R%d/CF%d" %(ring, self.l_cfoamNum[ring-1])
-            self.l_cfoamLabel.append([0.5*(xInn1+xInn2), 0.5*(yInn1+yInn2), cfoamLabel])
-            
-            
             # Attach image
             if (self.loadInfo is None) :
                 
@@ -280,72 +281,144 @@ class GeometryInfo :
                 
                 nearestImgIdx = self.imgInfo.get_imgIdx_from_fName(self.loadInfo[cfoamLabel])
             
-            self.d_geomObj[cfoamLabel] = CarbonFoamInfo.CarbonFoamInfo(
-                imgInfo = self.imgInfo,
-                imgIdx = nearestImgIdx,
-                label = cfoamLabel,
-                axis_profile = self.axis_profile,
-                marker_profile = self.marker_profile,
-            )
+            
+            if (self.args.moduleType == constants.module_PS_str) :
+                
+                self.l_cfoamNum[ring-1] += 1
+                
+                
+                # C-foam label
+                cfoamLabel = "R%d/CF%d" %(ring, self.l_cfoamNum[ring-1])
+                self.l_cfoamLabel.append([0.5*(xInn1+xInn2), 0.5*(yInn1+yInn2), cfoamLabel])
+                
+                self.d_geomObj[cfoamLabel] = CarbonFoamInfo.CarbonFoamInfo(
+                    imgInfo = self.imgInfo,
+                    imgIdx = nearestImgIdx,
+                    label = cfoamLabel,
+                    axis_profile = self.axis_profile,
+                    marker_profile = self.marker_profile,
+                )
+                
+                
+                # C-foam box
+                cfoamBoxLabel = "%s_box" %(cfoamLabel)
+                
+                cfoamBox_xx = [xInn1, xInn2, xOut2, xOut1]
+                cfoamBox_yy = [yInn1, yInn2, yOut2, yOut1]
+                
+                #rr, cc = skimage.draw.polygon_perimeter(cfoamBox_yy, cfoamBox_xx, shape = arr_dee_shape)
+                
+                cfoamBox = numpy.array([[pt[0], pt[1]] for pt in zip(cfoamBox_xx, cfoamBox_yy)])
+                cfoamBox = matplotlib.patches.Polygon(cfoamBox, color = color, fill = False, picker = None, label = cfoamBoxLabel, zorder = constants.zorder_geometryMesh)
+                axis_imgDee.add_patch(cfoamBox)
+                
+                self.d_geomObj[cfoamLabel].add_geometryArtist(cfoamBox, cfoamBoxLabel)
+                
+                
+                # Longitudinal central profile
+                profLabel = "%s_prof" %(cfoamLabel)
+                
+                profLine = axis_imgDee.plot([xMid1, xMid2], [yMid1, yMid2], color = color, linewidth = 1, picker = True, pickradius = 3, label = profLabel, zorder = constants.zorder_geometryMesh)[0]
+                
+                rr_profLine, cc_profLine = skimage.draw.line(int(numpy.round(yMid2)), int(numpy.round(xMid2)), int(numpy.round(yMid1)), int(numpy.round(xMid1)))
+                
+                rr_profLine = rr_profLine - self.imgInfo.l_imgExtent_pixelY[nearestImgIdx][0]
+                cc_profLine = cc_profLine - self.imgInfo.l_imgExtent_pixelX[nearestImgIdx][0]
+                
+                #for idx in range(0, len(rr_profLine)) :
+                #    
+                #    if (rr_profLine[idx] < 0 or rr_profLine[idx] >= self.imgInfo.nRow or cc_profLine[idx] < 0 or cc_profLine[idx] >= self.imgInfo.nCol) :
+                #        
+                #        rr_profLine[idx] = 0
+                #        cc_profLine[idx] = 0
+                
+                self.d_geomObj[cfoamLabel].add_geometryArtist(profLine, profLabel)
+                
+                #self.d_geomObj[cfoamLabel].add_profileLine(rr_profLine, cc_profLine, profLabel)
+                self.d_geomObj[cfoamLabel].add_profileLine(
+                    r1 = numpy.round(yMid2),
+                    c1 = numpy.round(xMid2),
+                    r2 = numpy.round(yMid1),
+                    c2 = numpy.round(xMid1),
+                    #offsetRow = -self.imgInfo.l_imgExtent_pixelY[nearestImgIdx][0],
+                    #offsetCol = -self.imgInfo.l_imgExtent_pixelX[nearestImgIdx][0],
+                    label = profLabel
+                )
+                
+                
+                # C-foam text
+                axis_imgDee.text(
+                    0.5*(xInn1+xInn2),
+                    0.5*(yInn1+yInn2),
+                    cfoamLabel,
+                    rotation = 90 - (180-phi_deg),
+                    size = "small",
+                    horizontalalignment = "center",
+                    verticalalignment = "center",
+                    zorder = constants.zorder_geometryText,
+                )
             
             
-            # C-foam box
-            cfoamBoxLabel = "%s_box" %(cfoamLabel)
-            
-            cfoamBox_xx = [xInn1, xInn2, xOut2, xOut1]
-            cfoamBox_yy = [yInn1, yInn2, yOut2, yOut1]
-            
-            #rr, cc = skimage.draw.polygon_perimeter(cfoamBox_yy, cfoamBox_xx, shape = arr_dee_shape)
-            
-            cfoamBox = numpy.array([[pt[0], pt[1]] for pt in zip(cfoamBox_xx, cfoamBox_yy)])
-            cfoamBox = matplotlib.patches.Polygon(cfoamBox, color = color, fill = False, picker = None, label = cfoamBoxLabel, zorder = constants.zorder_geometryMesh)
-            axis_imgDee.add_patch(cfoamBox)
-            
-            self.d_geomObj[cfoamLabel].add_geometryArtist(cfoamBox, cfoamBoxLabel)
-            
-            
-            # Longitudinal central profile
-            profLabel = "%s_prof" %(cfoamLabel)
-            
-            profLine = axis_imgDee.plot([xMid1, xMid2], [yMid1, yMid2], color = color, linewidth = 1, picker = True, pickradius = 3, label = profLabel, zorder = constants.zorder_geometryMesh)[0]
-            
-            rr_profLine, cc_profLine = skimage.draw.line(int(numpy.round(yMid2)), int(numpy.round(xMid2)), int(numpy.round(yMid1)), int(numpy.round(xMid1)))
-            
-            rr_profLine = rr_profLine - self.imgInfo.l_imgExtent_pixelY[nearestImgIdx][0]
-            cc_profLine = cc_profLine - self.imgInfo.l_imgExtent_pixelX[nearestImgIdx][0]
-            
-            #for idx in range(0, len(rr_profLine)) :
-            #    
-            #    if (rr_profLine[idx] < 0 or rr_profLine[idx] >= self.imgInfo.nRow or cc_profLine[idx] < 0 or cc_profLine[idx] >= self.imgInfo.nCol) :
-            #        
-            #        rr_profLine[idx] = 0
-            #        cc_profLine[idx] = 0
-            
-            self.d_geomObj[cfoamLabel].add_geometryArtist(profLine, profLabel)
-            
-            #self.d_geomObj[cfoamLabel].add_profileLine(rr_profLine, cc_profLine, profLabel)
-            self.d_geomObj[cfoamLabel].add_profileLine(
-                r1 = numpy.round(yMid2),
-                c1 = numpy.round(xMid2),
-                r2 = numpy.round(yMid1),
-                c2 = numpy.round(xMid1),
-                #offsetRow = -self.imgInfo.l_imgExtent_pixelY[nearestImgIdx][0],
-                #offsetCol = -self.imgInfo.l_imgExtent_pixelX[nearestImgIdx][0],
-                label = profLabel
-            )
-            
-            
-            # C-foam text
-            axis_imgDee.text(
-                0.5*(xInn1+xInn2),
-                0.5*(yInn1+yInn2),
-                cfoamLabel,
-                rotation = 90 - (180-phi_deg),
-                size = "small",
-                horizontalalignment = "center",
-                verticalalignment = "center",
-                zorder = constants.zorder_geometryText,
-            )
+            elif (self.args.moduleType == constants.module_2S_str) :
+                
+                self.l_module2SNum[ring-1] += 1
+                
+                insert_outR = self.unitConv.mm_to_pix(self.d_geometry["insert_outR"][idx])
+                
+                # Module label
+                module2SLabel = "R%d/2S%d" %(ring, self.l_module2SNum[ring-1])
+                self.l_module2SLabel.append([0.5*(xInn1+xInn2), 0.5*(yInn1+yInn2), module2SLabel])
+                
+                self.d_geomObj[module2SLabel] = Module2SInfo.Module2SInfo(
+                    imgInfo = self.imgInfo,
+                    imgIdx = nearestImgIdx,
+                    label = module2SLabel,
+                )
+                
+                
+                # 2S module box
+                module2SBoxLabel = "%s_box" %(module2SLabel)
+                
+                module2SBox_xx = [xInn1, xInn2, xOut2, xOut1]
+                module2SBox_yy = [yInn1, yInn2, yOut2, yOut1]
+                
+                #rr, cc = skimage.draw.polygon_perimeter(module2SBox_yy, module2SBox_xx, shape = arr_dee_shape)
+                
+                module2SBox = numpy.array([[pt[0], pt[1]] for pt in zip(module2SBox_xx, module2SBox_yy)])
+                module2SBox = matplotlib.patches.Polygon(module2SBox, color = color, fill = False, picker = None, label = module2SBoxLabel, zorder = constants.zorder_geometryMesh)
+                axis_imgDee.add_patch(module2SBox)
+                
+                self.d_geomObj[module2SLabel].add_geometryArtist(module2SBox, module2SBoxLabel)
+                
+                
+                insertCenter_xx = [xInn1, xInn2, xMid1, xMid2, xOut2, xOut1]
+                insertCenter_yy = [yInn1, yInn2, yMid1, yMid2, yOut2, yOut1]
+                
+                
+                for iInsert, insertPos in enumerate(zip(insertCenter_xx, insertCenter_yy)) :
+                    
+                    insertLabel = "%s_ins%d" %(module2SLabel, iInsert+1)
+                    
+                    insertCirc = matplotlib.patches.Circle(insertPos, radius = insert_outR, color = color, fill = False, picker = True, label = insertLabel, zorder = constants.zorder_geometryMesh)
+                    axis_imgDee.add_patch(insertCirc)
+                    
+                    self.d_geomObj[module2SLabel].add_geometryArtist(insertCirc, insertLabel)
+                
+                
+                ang = 90 - (180-phi_deg) + 90
+                
+                ang = (ang-180) if (ang > 90) else ang
+                
+                axis_imgDee.text(
+                    0.5*(xMid1+xMid2),
+                    0.5*(yMid1+yMid2),
+                    module2SLabel,
+                    rotation = ang,
+                    size = "small",
+                    horizontalalignment = "center",
+                    verticalalignment = "center",
+                    zorder = constants.zorder_geometryText,
+                )
         
         
         axis_imgDee.set_xticks([self.origin_x0], minor = True)
@@ -353,6 +426,8 @@ class GeometryInfo :
         
         axis_imgDee.xaxis.grid(True, which = "minor")
         axis_imgDee.yaxis.grid(True, which = "minor")
+        
+        axis_imgDee.autoscale_view()
         
         axis_imgDee.figure.canvas.draw()
     

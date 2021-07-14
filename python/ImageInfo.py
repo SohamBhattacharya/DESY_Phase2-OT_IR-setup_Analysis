@@ -35,10 +35,12 @@ class ImageInfo :
     
     def __init__(
         self,
-        #tkroot,
         args,
+        unitConv,
         loadInfo = None,
     ) :
+        self.unitConv = unitConv
+        
         self.loadInfo = loadInfo
         
         self.origin_x0 = 0
@@ -106,11 +108,16 @@ class ImageInfo :
         self.min_motorY = min(self.l_motorY)
         self.max_motorY = max(self.l_motorY)
         
+        
+        #self.min_motorX = 10264
+        #self.min_motorY = 252768
+        
+        
         self.widthX_motor = self.max_motorX - self.min_motorX
         self.widthY_motor = self.max_motorY - self.min_motorY
         
-        self.widthX_pix = int(utils.motor_stepX_to_pix(self.widthX_motor) + self.nCol)
-        self.widthY_pix = int(utils.motor_stepY_to_pix(self.widthY_motor) + self.nRow)
+        self.widthX_pix = int(self.unitConv.motor_stepX_to_pix(self.widthX_motor) + self.nCol)
+        self.widthY_pix = int(self.unitConv.motor_stepY_to_pix(self.widthY_motor) + self.nRow)
         
         #print(min(l_motorX), max(l_motorX), max(l_motorX)-min(l_motorX))
         #print(min(l_motorY), max(l_motorY), max(l_motorY)-min(l_motorY))
@@ -154,8 +161,8 @@ class ImageInfo :
             
             if (self.loadInfo is None) :
                 
-                pixelX_lwr = int(utils.motor_stepX_to_pix(motorX))# - self.nCol/2)
-                pixelY_lwr = int(utils.motor_stepY_to_pix(motorY))
+                pixelX_lwr = int(self.unitConv.motor_stepX_to_pix(motorX))# - self.nCol/2)
+                pixelY_lwr = int(self.unitConv.motor_stepY_to_pix(motorY))
                 
                 pixelX_upr = int(pixelX_lwr + self.nCol)
                 pixelY_upr = int(pixelY_lwr + self.nRow)
@@ -322,7 +329,7 @@ class ImageInfo :
         self.axis_stitchedDee = self.fig_stitchedDee.add_subplot(1, 1, 1)
         self.axis_stitchedDee.set_aspect("equal", "box")
         
-        self.axis_stitchedDee.set_autoscale_on(True)
+        #self.axis_stitchedDee.set_autoscale_on(True)
         
         #img = self.axis_stitchedDee.imshow(
         #    self.arr_stitchedDeeImg,

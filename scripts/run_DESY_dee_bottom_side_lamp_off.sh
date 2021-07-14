@@ -6,3 +6,6 @@ python -u python/stitch_images.py \
     --ringOpt "odd" \
     --originX 3390 \
     --originY 320 \
+    --stepxtomm 1920/34952 \
+    --stepytomm 895/716059 \
+    --mmtopix 319/55.26 \
