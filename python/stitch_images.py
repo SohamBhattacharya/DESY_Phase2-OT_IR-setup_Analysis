@@ -58,15 +58,6 @@ def main() :
     )
     
     parser.add_argument(
-        "--inputExt",
-        help = "Input file extension",
-        type = str,
-        #required = True,
-        required = False,
-        default = ".asc",
-    )
-    
-    parser.add_argument(
         "--inputEncoding",
         help = "Input file encoding",
         type = str,
@@ -89,6 +80,14 @@ def main() :
         type = str,
         required = False,
         default = "geometry_carbonFoam.xlsx",
+    )
+    
+    parser.add_argument(
+        "--moduleType",
+        help = "Module type",
+        type = str,
+        required = False,
+        choices = [constants.module_PS_str, constants.module_2S_str],
     )
     
     parser.add_argument(

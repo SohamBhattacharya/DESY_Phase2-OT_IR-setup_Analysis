@@ -50,23 +50,25 @@ class ImageInfo :
         
         print(self.inputFileNamePattern)
         
-        self.l_inputFileName = glob.glob("%s/**" %(args.inputDir))
-        self.l_inputFileName = [fName for fName in self.l_inputFileName if re.match(self.inputFileNamePattern, fName)]
+        self.l_inputFilePath = glob.glob("%s/**" %(args.inputDir))
+        self.l_inputFilePath = [fName for fName in self.l_inputFilePath if re.match(self.inputFileNamePattern, fName)]
         
-        print(self.l_inputFileName)
+        print(self.l_inputFilePath)
+        
+        self.l_inputFileName = [fName.split("/")[-1] for fName in self.l_inputFilePath]
         
         self.l_inputData = []
         
         self.l_motorX = []
         self.l_motorY = []
         
-        for iFile, fName in enumerate(self.l_inputFileName) :
+        for iFile, fName in enumerate(self.l_inputFilePath) :
             
             #cfoam_m20deg_lampoff_834_677835
             
             print("Opening file: %s" %(fName))
             
-            fName_pattern = r"%s%s" %(args.inputPattern, args.inputExt)
+            fName_pattern = r"%s" %(args.inputPattern)
             
             (motorX, motorY) = re.findall(self.inputFileNamePattern, fName)[0]
             

@@ -202,7 +202,10 @@ class GeometryInfo :
                 
                 continue
             
-            if (ring > 10) :
+            if (
+                ring < constants.d_moduleDetails[self.args.moduleType][self.args.ringOpt]["ring_min"] or
+                ring > constants.d_moduleDetails[self.args.moduleType][self.args.ringOpt]["ring_max"]
+            ) :
                 
                 continue
             

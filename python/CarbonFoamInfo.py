@@ -287,11 +287,11 @@ class CarbonFoamInfo :
         title = []
         
         title.append(
-            "$\\bf{File\\ path:}$ %s" %(self.imgInfo.l_inputFileName[self.imgIdx]),
+            "$\\bf{File\\ path:}$ %s" %(self.imgInfo.l_inputFilePath[self.imgIdx]),
         )
         
         title.append(
-            "$\\bf{File\\ name:}$ %s" %(self.imgInfo.l_inputFileName[self.imgIdx].split("/")[-1]),
+            "$\\bf{File\\ name:}$ %s" %(self.imgInfo.l_inputFilePath[self.imgIdx].split("/")[-1]),
         )
         
         title.append(
@@ -441,7 +441,7 @@ class CarbonFoamInfo :
             entry = tkinter.Entry(master = frame, textvariable = self.svar_imgName)
             entry.pack(side = tkinter.LEFT, fill = tkinter.X, expand = True)
             
-            button = tkinter.Button(master = frame, text = "Set image [full path]", takefocus = 0, command = lambda: self.attach_image(self.svar_imgName.get()))
+            button = tkinter.Button(master = frame, text = "Set image", takefocus = 0, command = lambda: self.attach_image(self.svar_imgName.get()))
             button.pack(side = tkinter.LEFT, fill = tkinter.X)
             
             

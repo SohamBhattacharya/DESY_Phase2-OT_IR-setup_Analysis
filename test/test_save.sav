@@ -1,544 +1,544 @@
 GeometryInfo:
-  R1/CF1: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294964878_287200.asc
-  R1/CF10: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_6247_224680.asc
-  R1/CF11: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_6247_224680.asc
-  R1/CF2: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294964878_287200.asc
-  R1/CF3: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294965683_336533.asc
-  R1/CF4: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294966803_371849.asc
-  R1/CF5: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_797_390283.asc
-  R1/CF6: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_2360_393008.asc
-  R1/CF7: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_3712_374705.asc
-  R1/CF8: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4889_335055.asc
-  R1/CF9: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_5739_284139.asc
-  R3/CF1: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294964878_287200.asc
-  R3/CF10: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_6608_358373.asc
-  R3/CF11: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_7353_296959.asc
-  R3/CF12: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_7753_223222.asc
-  R3/CF13: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_7753_223222.asc
-  R3/CF2: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294964878_287200.asc
-  R3/CF3: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294964181_361709.asc
-  R3/CF4: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294965304_405241.asc
-  R3/CF5: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294966651_442806.asc
-  R3/CF6: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_913_462889.asc
-  R3/CF7: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_2527_463292.asc
-  R3/CF8: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4125_442066.asc
-  R3/CF9: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_5472_406910.asc
-  R5/CF1: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294964878_287200.asc
-  R5/CF10: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_3883_516424.asc
-  R5/CF11: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_5277_490921.asc
-  R5/CF12: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_6494_455644.asc
-  R5/CF13: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_7547_409539.asc
-  R5/CF14: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_8419_355769.asc
-  R5/CF15: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_8987_291217.asc
-  R5/CF16: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_9363_216773.asc
-  R5/CF17: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_9363_216773.asc
-  R5/CF2: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294961473_421675.asc
-  R5/CF3: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294963037_407949.asc
-  R5/CF4: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294963037_407949.asc
-  R5/CF5: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294964039_451559.asc
-  R5/CF6: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294965318_491632.asc
-  R5/CF7: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294966679_513455.asc
-  R5/CF8: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_904_529109.asc
-  R5/CF9: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_2338_529109.asc
-  R7/CF1: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294961473_421675.asc
-  R7/CF10: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_2532_594858.asc
-  R7/CF11: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4058_581416.asc
-  R7/CF12: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_5501_557700.asc
-  R7/CF13: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_6909_518555.asc
-  R7/CF14: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_8147_478713.asc
-  R7/CF15: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_9167_424035.asc
-  R7/CF16: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_9979_365989.asc
-  R7/CF17: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_10518_296691.asc
-  R7/CF18: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_10694_225341.asc
-  R7/CF19: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_10843_206584.asc
-  R7/CF2: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294961473_421675.asc
-  R7/CF3: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294961473_421675.asc
-  R7/CF4: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294961473_421675.asc
-  R7/CF5: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294962453_477633.asc
-  R7/CF6: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294963746_521197.asc
-  R7/CF7: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294965110_555892.asc
-  R7/CF8: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294966625_580165.asc
-  R7/CF9: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_897_594858.asc
-  R9/CF1: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294958521_434992.asc
-  R9/CF10: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294966671_659666.asc
-  R9/CF11: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_2425_660043.asc
-  R9/CF12: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4116_646034.asc
-  R9/CF13: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_5713_623889.asc
-  R9/CF14: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_7148_594506.asc
-  R9/CF15: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_8515_547718.asc
-  R9/CF16: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_9693_501072.asc
-  R9/CF17: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_10720_439009.asc
-  R9/CF18: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_11480_374880.asc
-  R9/CF19: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_11936_307318.asc
-  R9/CF2: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294958521_434992.asc
-  R9/CF20: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_12066_237709.asc
-  R9/CF21: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_11965_204502.asc
-  R9/CF3: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294958521_434992.asc
-  R9/CF4: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294958521_434992.asc
-  R9/CF5: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294959471_493673.asc
-  R9/CF6: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294960633_545153.asc
-  R9/CF7: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294961949_589083.asc
-  R9/CF8: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294963435_621899.asc
-  R9/CF9: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294965057_643969.asc
+  R1/CF1: cfoam_m15deg_lampon_4294964878_287200.asc
+  R1/CF10: cfoam_m15deg_lampon_6247_224680.asc
+  R1/CF11: cfoam_m15deg_lampon_6247_224680.asc
+  R1/CF2: cfoam_m15deg_lampon_4294964878_287200.asc
+  R1/CF3: cfoam_m15deg_lampon_4294965683_336533.asc
+  R1/CF4: cfoam_m15deg_lampon_4294966803_371849.asc
+  R1/CF5: cfoam_m15deg_lampon_797_390283.asc
+  R1/CF6: cfoam_m15deg_lampon_2360_393008.asc
+  R1/CF7: cfoam_m15deg_lampon_3712_374705.asc
+  R1/CF8: cfoam_m15deg_lampon_4889_335055.asc
+  R1/CF9: cfoam_m15deg_lampon_5739_284139.asc
+  R3/CF1: cfoam_m15deg_lampon_4294964878_287200.asc
+  R3/CF10: cfoam_m15deg_lampon_6608_358373.asc
+  R3/CF11: cfoam_m15deg_lampon_7353_296959.asc
+  R3/CF12: cfoam_m15deg_lampon_7753_223222.asc
+  R3/CF13: cfoam_m15deg_lampon_7753_223222.asc
+  R3/CF2: cfoam_m15deg_lampon_4294964878_287200.asc
+  R3/CF3: cfoam_m15deg_lampon_4294964181_361709.asc
+  R3/CF4: cfoam_m15deg_lampon_4294965304_405241.asc
+  R3/CF5: cfoam_m15deg_lampon_4294966651_442806.asc
+  R3/CF6: cfoam_m15deg_lampon_913_462889.asc
+  R3/CF7: cfoam_m15deg_lampon_2527_463292.asc
+  R3/CF8: cfoam_m15deg_lampon_4125_442066.asc
+  R3/CF9: cfoam_m15deg_lampon_5472_406910.asc
+  R5/CF1: cfoam_m15deg_lampon_4294964878_287200.asc
+  R5/CF10: cfoam_m15deg_lampon_3883_516424.asc
+  R5/CF11: cfoam_m15deg_lampon_5277_490921.asc
+  R5/CF12: cfoam_m15deg_lampon_6494_455644.asc
+  R5/CF13: cfoam_m15deg_lampon_7547_409539.asc
+  R5/CF14: cfoam_m15deg_lampon_8419_355769.asc
+  R5/CF15: cfoam_m15deg_lampon_8987_291217.asc
+  R5/CF16: cfoam_m15deg_lampon_9363_216773.asc
+  R5/CF17: cfoam_m15deg_lampon_9363_216773.asc
+  R5/CF2: cfoam_m15deg_lampon_4294961473_421675.asc
+  R5/CF3: cfoam_m15deg_lampon_4294963037_407949.asc
+  R5/CF4: cfoam_m15deg_lampon_4294963037_407949.asc
+  R5/CF5: cfoam_m15deg_lampon_4294964039_451559.asc
+  R5/CF6: cfoam_m15deg_lampon_4294965318_491632.asc
+  R5/CF7: cfoam_m15deg_lampon_4294966679_513455.asc
+  R5/CF8: cfoam_m15deg_lampon_904_529109.asc
+  R5/CF9: cfoam_m15deg_lampon_2338_529109.asc
+  R7/CF1: cfoam_m15deg_lampon_4294961473_421675.asc
+  R7/CF10: cfoam_m15deg_lampon_2532_594858.asc
+  R7/CF11: cfoam_m15deg_lampon_4058_581416.asc
+  R7/CF12: cfoam_m15deg_lampon_5501_557700.asc
+  R7/CF13: cfoam_m15deg_lampon_6909_518555.asc
+  R7/CF14: cfoam_m15deg_lampon_8147_478713.asc
+  R7/CF15: cfoam_m15deg_lampon_9167_424035.asc
+  R7/CF16: cfoam_m15deg_lampon_9979_365989.asc
+  R7/CF17: cfoam_m15deg_lampon_10518_296691.asc
+  R7/CF18: cfoam_m15deg_lampon_10694_225341.asc
+  R7/CF19: cfoam_m15deg_lampon_10843_206584.asc
+  R7/CF2: cfoam_m15deg_lampon_4294961473_421675.asc
+  R7/CF3: cfoam_m15deg_lampon_4294961473_421675.asc
+  R7/CF4: cfoam_m15deg_lampon_4294961473_421675.asc
+  R7/CF5: cfoam_m15deg_lampon_4294962453_477633.asc
+  R7/CF6: cfoam_m15deg_lampon_4294963746_521197.asc
+  R7/CF7: cfoam_m15deg_lampon_4294965110_555892.asc
+  R7/CF8: cfoam_m15deg_lampon_4294966625_580165.asc
+  R7/CF9: cfoam_m15deg_lampon_897_594858.asc
+  R9/CF1: cfoam_m15deg_lampon_4294958521_434992.asc
+  R9/CF10: cfoam_m15deg_lampon_4294966671_659666.asc
+  R9/CF11: cfoam_m15deg_lampon_2425_660043.asc
+  R9/CF12: cfoam_m15deg_lampon_4116_646034.asc
+  R9/CF13: cfoam_m15deg_lampon_5713_623889.asc
+  R9/CF14: cfoam_m15deg_lampon_7148_594506.asc
+  R9/CF15: cfoam_m15deg_lampon_8515_547718.asc
+  R9/CF16: cfoam_m15deg_lampon_9693_501072.asc
+  R9/CF17: cfoam_m15deg_lampon_10720_439009.asc
+  R9/CF18: cfoam_m15deg_lampon_11480_374880.asc
+  R9/CF19: cfoam_m15deg_lampon_11936_307318.asc
+  R9/CF2: cfoam_m15deg_lampon_4294958521_434992.asc
+  R9/CF20: cfoam_m15deg_lampon_12066_237709.asc
+  R9/CF21: cfoam_m15deg_lampon_11965_204502.asc
+  R9/CF3: cfoam_m15deg_lampon_4294958521_434992.asc
+  R9/CF4: cfoam_m15deg_lampon_4294958521_434992.asc
+  R9/CF5: cfoam_m15deg_lampon_4294959471_493673.asc
+  R9/CF6: cfoam_m15deg_lampon_4294960633_545153.asc
+  R9/CF7: cfoam_m15deg_lampon_4294961949_589083.asc
+  R9/CF8: cfoam_m15deg_lampon_4294963435_621899.asc
+  R9/CF9: cfoam_m15deg_lampon_4294965057_643969.asc
   origin_x0: 3824.0
   origin_y0: 335.0
 ImageInfo:
-  /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_10518_296691.asc:
+  cfoam_m15deg_lampon_10518_296691.asc:
     imgExtent_pixelX: !!python/tuple
     - 6117
     - 7141
     imgExtent_pixelY: !!python/tuple
     - 665
     - 1433
-  /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_10694_225341.asc:
+  cfoam_m15deg_lampon_10694_225341.asc:
     imgExtent_pixelX: !!python/tuple
     - 6173
     - 7197
     imgExtent_pixelY: !!python/tuple
     - 150
     - 918
-  /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_10720_439009.asc:
+  cfoam_m15deg_lampon_10720_439009.asc:
     imgExtent_pixelX: !!python/tuple
     - 6182
     - 7206
     imgExtent_pixelY: !!python/tuple
     - 1692
     - 2460
-  /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_10843_206584.asc:
+  cfoam_m15deg_lampon_10843_206584.asc:
     imgExtent_pixelX: !!python/tuple
     - 6221
     - 7245
     imgExtent_pixelY: !!python/tuple
     - 15
     - 783
-  /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_11480_374880.asc:
+  cfoam_m15deg_lampon_11480_374880.asc:
     imgExtent_pixelX: !!python/tuple
     - 6423
     - 7447
     imgExtent_pixelY: !!python/tuple
     - 1229
     - 1997
-  /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_11936_307318.asc:
+  cfoam_m15deg_lampon_11936_307318.asc:
     imgExtent_pixelX: !!python/tuple
     - 6567
     - 7591
     imgExtent_pixelY: !!python/tuple
     - 741
     - 1509
-  /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_11965_204502.asc:
+  cfoam_m15deg_lampon_11965_204502.asc:
     imgExtent_pixelX: !!python/tuple
     - 6576
     - 7600
     imgExtent_pixelY: !!python/tuple
     - 0
     - 768
-  /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_12066_237709.asc:
+  cfoam_m15deg_lampon_12066_237709.asc:
     imgExtent_pixelX: !!python/tuple
     - 6608
     - 7632
     imgExtent_pixelY: !!python/tuple
     - 239
     - 1007
-  /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_2338_529109.asc:
+  cfoam_m15deg_lampon_2338_529109.asc:
     imgExtent_pixelX: !!python/tuple
     - 3524
     - 4548
     imgExtent_pixelY: !!python/tuple
     - 2342
     - 3110
-  /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_2360_393008.asc:
+  cfoam_m15deg_lampon_2360_393008.asc:
     imgExtent_pixelX: !!python/tuple
     - 3531
     - 4555
     imgExtent_pixelY: !!python/tuple
     - 1360
     - 2128
-  /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_2425_660043.asc:
+  cfoam_m15deg_lampon_2425_660043.asc:
     imgExtent_pixelX: !!python/tuple
     - 3551
     - 4575
     imgExtent_pixelY: !!python/tuple
     - 3286
     - 4054
-  /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_2527_463292.asc:
+  cfoam_m15deg_lampon_2527_463292.asc:
     imgExtent_pixelX: !!python/tuple
     - 3583
     - 4607
     imgExtent_pixelY: !!python/tuple
     - 1867
     - 2635
-  /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_2532_594858.asc:
+  cfoam_m15deg_lampon_2532_594858.asc:
     imgExtent_pixelX: !!python/tuple
     - 3585
     - 4609
     imgExtent_pixelY: !!python/tuple
     - 2816
     - 3584
-  /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_3712_374705.asc:
+  cfoam_m15deg_lampon_3712_374705.asc:
     imgExtent_pixelX: !!python/tuple
     - 3959
     - 4983
     imgExtent_pixelY: !!python/tuple
     - 1228
     - 1996
-  /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_3883_516424.asc:
+  cfoam_m15deg_lampon_3883_516424.asc:
     imgExtent_pixelX: !!python/tuple
     - 4013
     - 5037
     imgExtent_pixelY: !!python/tuple
     - 2250
     - 3018
-  /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4058_581416.asc:
+  cfoam_m15deg_lampon_4058_581416.asc:
     imgExtent_pixelX: !!python/tuple
     - 4069
     - 5093
     imgExtent_pixelY: !!python/tuple
     - 2719
     - 3487
-  /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4116_646034.asc:
+  cfoam_m15deg_lampon_4116_646034.asc:
     imgExtent_pixelX: !!python/tuple
     - 4087
     - 5111
     imgExtent_pixelY: !!python/tuple
     - 3185
     - 3953
-  /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4125_442066.asc:
+  cfoam_m15deg_lampon_4125_442066.asc:
     imgExtent_pixelX: !!python/tuple
     - 4090
     - 5114
     imgExtent_pixelY: !!python/tuple
     - 1714
     - 2482
-  ? /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294958521_434992.asc
+  ? cfoam_m15deg_lampon_4294958521_434992.asc
   : imgExtent_pixelX: !!python/tuple
     - 461
     - 1485
     imgExtent_pixelY: !!python/tuple
     - 1698
     - 2466
-  ? /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294959471_493673.asc
+  ? cfoam_m15deg_lampon_4294959471_493673.asc
   : imgExtent_pixelX: !!python/tuple
     - 770
     - 1794
     imgExtent_pixelY: !!python/tuple
     - 2122
     - 2890
-  ? /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294960633_545153.asc
+  ? cfoam_m15deg_lampon_4294960633_545153.asc
   : imgExtent_pixelX: !!python/tuple
     - 1140
     - 2164
     imgExtent_pixelY: !!python/tuple
     - 2493
     - 3261
-  ? /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294961473_421675.asc
+  ? cfoam_m15deg_lampon_4294961473_421675.asc
   : imgExtent_pixelX: !!python/tuple
     - 936
     - 1960
     imgExtent_pixelY: !!python/tuple
     - 1566
     - 2334
-  ? /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294961949_589083.asc
+  ? cfoam_m15deg_lampon_4294961949_589083.asc
   : imgExtent_pixelX: !!python/tuple
     - 1565
     - 2589
     imgExtent_pixelY: !!python/tuple
     - 2801
     - 3569
-  ? /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294962453_477633.asc
+  ? cfoam_m15deg_lampon_4294962453_477633.asc
   : imgExtent_pixelX: !!python/tuple
     - 1246
     - 2270
     imgExtent_pixelY: !!python/tuple
     - 1970
     - 2738
-  ? /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294963037_407949.asc
+  ? cfoam_m15deg_lampon_4294963037_407949.asc
   : imgExtent_pixelX: !!python/tuple
     - 1432
     - 2456
     imgExtent_pixelY: !!python/tuple
     - 1467
     - 2235
-  ? /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294963435_621899.asc
+  ? cfoam_m15deg_lampon_4294963435_621899.asc
   : imgExtent_pixelX: !!python/tuple
     - 2033
     - 3057
     imgExtent_pixelY: !!python/tuple
     - 3040
     - 3808
-  ? /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294963746_521197.asc
+  ? cfoam_m15deg_lampon_4294963746_521197.asc
   : imgExtent_pixelX: !!python/tuple
     - 1656
     - 2680
     imgExtent_pixelY: !!python/tuple
     - 2285
     - 3053
-  ? /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294964039_451559.asc
+  ? cfoam_m15deg_lampon_4294964039_451559.asc
   : imgExtent_pixelX: !!python/tuple
     - 1749
     - 2773
     imgExtent_pixelY: !!python/tuple
     - 1782
     - 2550
-  ? /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294964181_361709.asc
+  ? cfoam_m15deg_lampon_4294964181_361709.asc
   : imgExtent_pixelX: !!python/tuple
     - 1794
     - 2818
     imgExtent_pixelY: !!python/tuple
     - 1134
     - 1902
-  ? /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294964878_287200.asc
+  ? cfoam_m15deg_lampon_4294964878_287200.asc
   : imgExtent_pixelX: !!python/tuple
     - 2015
     - 3039
     imgExtent_pixelY: !!python/tuple
     - 596
     - 1364
-  ? /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294965057_643969.asc
+  ? cfoam_m15deg_lampon_4294965057_643969.asc
   : imgExtent_pixelX: !!python/tuple
     - 2531
     - 3555
     imgExtent_pixelY: !!python/tuple
     - 3201
     - 3969
-  ? /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294965110_555892.asc
+  ? cfoam_m15deg_lampon_4294965110_555892.asc
   : imgExtent_pixelX: !!python/tuple
     - 2089
     - 3113
     imgExtent_pixelY: !!python/tuple
     - 2535
     - 3303
-  ? /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294965304_405241.asc
+  ? cfoam_m15deg_lampon_4294965304_405241.asc
   : imgExtent_pixelX: !!python/tuple
     - 2150
     - 3174
     imgExtent_pixelY: !!python/tuple
     - 1448
     - 2216
-  ? /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294965318_491632.asc
+  ? cfoam_m15deg_lampon_4294965318_491632.asc
   : imgExtent_pixelX: !!python/tuple
     - 2155
     - 3179
     imgExtent_pixelY: !!python/tuple
     - 2071
     - 2839
-  ? /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294965683_336533.asc
+  ? cfoam_m15deg_lampon_4294965683_336533.asc
   : imgExtent_pixelX: !!python/tuple
     - 2271
     - 3295
     imgExtent_pixelY: !!python/tuple
     - 952
     - 1720
-  ? /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294966625_580165.asc
+  ? cfoam_m15deg_lampon_4294966625_580165.asc
   : imgExtent_pixelX: !!python/tuple
     - 2569
     - 3593
     imgExtent_pixelY: !!python/tuple
     - 2710
     - 3478
-  ? /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294966651_442806.asc
+  ? cfoam_m15deg_lampon_4294966651_442806.asc
   : imgExtent_pixelX: !!python/tuple
     - 2578
     - 3602
     imgExtent_pixelY: !!python/tuple
     - 1719
     - 2487
-  ? /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294966671_659666.asc
+  ? cfoam_m15deg_lampon_4294966671_659666.asc
   : imgExtent_pixelX: !!python/tuple
     - 3034
     - 4058
     imgExtent_pixelY: !!python/tuple
     - 3299
     - 4067
-  ? /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294966679_513455.asc
+  ? cfoam_m15deg_lampon_4294966679_513455.asc
   : imgExtent_pixelX: !!python/tuple
     - 2586
     - 3610
     imgExtent_pixelY: !!python/tuple
     - 2229
     - 2997
-  ? /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4294966803_371849.asc
+  ? cfoam_m15deg_lampon_4294966803_371849.asc
   : imgExtent_pixelX: !!python/tuple
     - 2626
     - 3650
     imgExtent_pixelY: !!python/tuple
     - 1207
     - 1975
-  /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_4889_335055.asc:
+  cfoam_m15deg_lampon_4889_335055.asc:
     imgExtent_pixelX: !!python/tuple
     - 4332
     - 5356
     imgExtent_pixelY: !!python/tuple
     - 941
     - 1709
-  /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_5277_490921.asc:
+  cfoam_m15deg_lampon_5277_490921.asc:
     imgExtent_pixelX: !!python/tuple
     - 4456
     - 5480
     imgExtent_pixelY: !!python/tuple
     - 2066
     - 2834
-  /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_5472_406910.asc:
+  cfoam_m15deg_lampon_5472_406910.asc:
     imgExtent_pixelX: !!python/tuple
     - 4517
     - 5541
     imgExtent_pixelY: !!python/tuple
     - 1460
     - 2228
-  /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_5501_557700.asc:
+  cfoam_m15deg_lampon_5501_557700.asc:
     imgExtent_pixelX: !!python/tuple
     - 4527
     - 5551
     imgExtent_pixelY: !!python/tuple
     - 2548
     - 3316
-  /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_5713_623889.asc:
+  cfoam_m15deg_lampon_5713_623889.asc:
     imgExtent_pixelX: !!python/tuple
     - 4594
     - 5618
     imgExtent_pixelY: !!python/tuple
     - 3026
     - 3794
-  /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_5739_284139.asc:
+  cfoam_m15deg_lampon_5739_284139.asc:
     imgExtent_pixelX: !!python/tuple
     - 4602
     - 5626
     imgExtent_pixelY: !!python/tuple
     - 574
     - 1342
-  /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_6247_224680.asc:
+  cfoam_m15deg_lampon_6247_224680.asc:
     imgExtent_pixelX: !!python/tuple
     - 4763
     - 5787
     imgExtent_pixelY: !!python/tuple
     - 145
     - 913
-  /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_6494_455644.asc:
+  cfoam_m15deg_lampon_6494_455644.asc:
     imgExtent_pixelX: !!python/tuple
     - 4841
     - 5865
     imgExtent_pixelY: !!python/tuple
     - 1812
     - 2580
-  /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_6608_358373.asc:
+  cfoam_m15deg_lampon_6608_358373.asc:
     imgExtent_pixelX: !!python/tuple
     - 4878
     - 5902
     imgExtent_pixelY: !!python/tuple
     - 1110
     - 1878
-  /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_6909_518555.asc:
+  cfoam_m15deg_lampon_6909_518555.asc:
     imgExtent_pixelX: !!python/tuple
     - 4973
     - 5997
     imgExtent_pixelY: !!python/tuple
     - 2265
     - 3033
-  /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_7148_594506.asc:
+  cfoam_m15deg_lampon_7148_594506.asc:
     imgExtent_pixelX: !!python/tuple
     - 5049
     - 6073
     imgExtent_pixelY: !!python/tuple
     - 2813
     - 3581
-  /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_7353_296959.asc:
+  cfoam_m15deg_lampon_7353_296959.asc:
     imgExtent_pixelX: !!python/tuple
     - 5114
     - 6138
     imgExtent_pixelY: !!python/tuple
     - 667
     - 1435
-  /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_7547_409539.asc:
+  cfoam_m15deg_lampon_7547_409539.asc:
     imgExtent_pixelX: !!python/tuple
     - 5175
     - 6199
     imgExtent_pixelY: !!python/tuple
     - 1479
     - 2247
-  /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_7753_223222.asc:
+  cfoam_m15deg_lampon_7753_223222.asc:
     imgExtent_pixelX: !!python/tuple
     - 5241
     - 6265
     imgExtent_pixelY: !!python/tuple
     - 135
     - 903
-  /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_797_390283.asc:
+  cfoam_m15deg_lampon_797_390283.asc:
     imgExtent_pixelX: !!python/tuple
     - 3035
     - 4059
     imgExtent_pixelY: !!python/tuple
     - 1340
     - 2108
-  /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_8147_478713.asc:
+  cfoam_m15deg_lampon_8147_478713.asc:
     imgExtent_pixelX: !!python/tuple
     - 5366
     - 6390
     imgExtent_pixelY: !!python/tuple
     - 1978
     - 2746
-  /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_8419_355769.asc:
+  cfoam_m15deg_lampon_8419_355769.asc:
     imgExtent_pixelX: !!python/tuple
     - 5452
     - 6476
     imgExtent_pixelY: !!python/tuple
     - 1091
     - 1859
-  /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_8515_547718.asc:
+  cfoam_m15deg_lampon_8515_547718.asc:
     imgExtent_pixelX: !!python/tuple
     - 5482
     - 6506
     imgExtent_pixelY: !!python/tuple
     - 2476
     - 3244
-  /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_897_594858.asc:
+  cfoam_m15deg_lampon_897_594858.asc:
     imgExtent_pixelX: !!python/tuple
     - 3067
     - 4091
     imgExtent_pixelY: !!python/tuple
     - 2816
     - 3584
-  /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_8987_291217.asc:
+  cfoam_m15deg_lampon_8987_291217.asc:
     imgExtent_pixelX: !!python/tuple
     - 5632
     - 6656
     imgExtent_pixelY: !!python/tuple
     - 625
     - 1393
-  /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_904_529109.asc:
+  cfoam_m15deg_lampon_904_529109.asc:
     imgExtent_pixelX: !!python/tuple
     - 3069
     - 4093
     imgExtent_pixelY: !!python/tuple
     - 2342
     - 3110
-  /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_913_462889.asc:
+  cfoam_m15deg_lampon_913_462889.asc:
     imgExtent_pixelX: !!python/tuple
     - 3072
     - 4096
     imgExtent_pixelY: !!python/tuple
     - 1864
     - 2632
-  /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_9167_424035.asc:
+  cfoam_m15deg_lampon_9167_424035.asc:
     imgExtent_pixelX: !!python/tuple
     - 5689
     - 6713
     imgExtent_pixelY: !!python/tuple
     - 1583
     - 2351
-  /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_9363_216773.asc:
+  cfoam_m15deg_lampon_9363_216773.asc:
     imgExtent_pixelX: !!python/tuple
     - 5751
     - 6775
     imgExtent_pixelY: !!python/tuple
     - 88
     - 856
-  /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_9693_501072.asc:
+  cfoam_m15deg_lampon_9693_501072.asc:
     imgExtent_pixelX: !!python/tuple
     - 5856
     - 6880
     imgExtent_pixelY: !!python/tuple
     - 2139
     - 2907
-  /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on/cfoam_m15deg_lampon_9979_365989.asc:
+  cfoam_m15deg_lampon_9979_365989.asc:
     imgExtent_pixelX: !!python/tuple
     - 5947
     - 6971
@@ -550,4 +550,5 @@ args:
   inputDir: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on
   inputPattern: cfoam_m15deg_lampon_XXX_YYY.asc
   nCol: 1024
+  moduleType: PS
   ringOpt: odd
