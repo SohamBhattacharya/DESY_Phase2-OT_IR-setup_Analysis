@@ -4,8 +4,10 @@ python -u python/stitch_images.py \
     --geomFile "data/geometry_carbonFoam.xlsx" \
     --moduleType "2S" \
     --ringOpt "odd" \
-    --originX 4610 \
-    --originY 220 \
+    --originX 0 \
+    --originY 0 \
+    --motorRefX 27732.5 0 \
+    --motorRefY 254992.5 -80 \
     --stepxtomm 1920/34953 \
     --stepytomm 895/714133.5 \
     --mmtopix 361/93 \

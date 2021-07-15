@@ -6,9 +6,9 @@ class UnitConversion :
         args,
     ) :
         
-        self.stepxtomm = eval(args.stepxtomm)
-        self.stepytomm = eval(args.stepytomm)
-        self.mmtopix = eval(args.mmtopix)
+        self.stepxtomm = eval(str(args.stepxtomm))
+        self.stepytomm = eval(str(args.stepytomm))
+        self.mmtopix = eval(str(args.mmtopix))
     
     
     def motor_stepX_to_mm(self, val, inv = False) :

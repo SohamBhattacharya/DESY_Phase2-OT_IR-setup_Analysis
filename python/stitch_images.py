@@ -118,6 +118,22 @@ def main() :
     )
     
     parser.add_argument(
+        "--motorRefX",
+        help = "Motor x reference (<motor coordinate> <offset from origin in mm>)",
+        type = float,
+        nargs = 2,
+        required = False,
+    )
+    
+    parser.add_argument(
+        "--motorRefY",
+        help = "Motor y reference (<motor coordinate> <offset from origin in mm>)",
+        type = float,
+        nargs = 2,
+        required = False,
+    )
+    
+    parser.add_argument(
         "--stepxtomm",
         help = "Conversion factor (can be valid math operations): mm/(motor step x)",
         type = str,
@@ -168,17 +184,28 @@ def main() :
             #args = d_args
             
             #print(args.inputDir)
+            
+            print(d_args)
     
     
     def get_saveInfo() :
         
-        l_save_argsInfo = [
-            "inputDir",
-            "inputPattern",
-            "nCol",
-            "geomFile",
-            "ringOpt",
-        ]
+        #l_save_argsInfo = [
+        #    "inputDir",
+        #    "inputPattern",
+        #    "nCol",
+        #    "geomFile",
+        #    "ringOpt",
+        #    "originX",
+        #    "originY",
+        #    "motorRefX",
+        #    "motorRefY",
+        #    "stepxtomm",
+        #    "stepytomm",
+        #    "mmtopix",
+        #]
+        
+        l_save_argsInfo = list(d_args.keys())
         
         d_save_argsInfo = {key: d_args[key] for key in l_save_argsInfo}
         

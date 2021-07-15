@@ -272,16 +272,6 @@ class GeometryInfo :
             #print([xInn1, xInn2, xOut2, xOut1], [yInn1, yInn2, yOut2, yOut1])
             
             
-            # Attach image
-            if (self.loadInfo is None) :
-                
-                nearestImgIdx = self.imgInfo.get_nearestImageIdx(0.5*(xMid1+xMid2), 0.5*(yMid1+yMid2))
-            
-            else :
-                
-                nearestImgIdx = self.imgInfo.get_imgIdx_from_fName(self.loadInfo[cfoamLabel])
-            
-            
             if (self.args.moduleType == constants.module_PS_str) :
                 
                 self.l_cfoamNum[ring-1] += 1
@@ -290,6 +280,17 @@ class GeometryInfo :
                 # C-foam label
                 cfoamLabel = "R%d/CF%d" %(ring, self.l_cfoamNum[ring-1])
                 self.l_cfoamLabel.append([0.5*(xInn1+xInn2), 0.5*(yInn1+yInn2), cfoamLabel])
+                
+                
+                # Attach image
+                if (self.loadInfo is None) :
+                    
+                    nearestImgIdx = self.imgInfo.get_nearestImageIdx(0.5*(xMid1+xMid2), 0.5*(yMid1+yMid2))
+                
+                else :
+                    
+                    nearestImgIdx = self.imgInfo.get_imgIdx_from_fName(self.loadInfo[cfoamLabel])
+                
                 
                 self.d_geomObj[cfoamLabel] = CarbonFoamInfo.CarbonFoamInfo(
                     imgInfo = self.imgInfo,
@@ -368,6 +369,17 @@ class GeometryInfo :
                 # Module label
                 module2SLabel = "R%d/2S%d" %(ring, self.l_module2SNum[ring-1])
                 self.l_module2SLabel.append([0.5*(xInn1+xInn2), 0.5*(yInn1+yInn2), module2SLabel])
+                
+                
+                # Attach image
+                if (self.loadInfo is None) :
+                    
+                    nearestImgIdx = self.imgInfo.get_nearestImageIdx(0.5*(xMid1+xMid2), 0.5*(yMid1+yMid2))
+                
+                else :
+                    
+                    nearestImgIdx = self.imgInfo.get_imgIdx_from_fName(self.loadInfo[module2SLabel])
+                
                 
                 self.d_geomObj[module2SLabel] = Module2SInfo.Module2SInfo(
                     imgInfo = self.imgInfo,

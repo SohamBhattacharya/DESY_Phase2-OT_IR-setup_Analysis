@@ -112,6 +112,9 @@ class ImageInfo :
         #self.min_motorX = 10264
         #self.min_motorY = 252768
         
+        self.ref_motorX = args.motorRefX[0] + self.unitConv.motor_stepX_to_mm(args.motorRefX[1], inv = True) + self.unitConv.motor_stepX_to_pix(self.nCol/2, inv = True)
+        self.ref_motorY = args.motorRefY[0] + self.unitConv.motor_stepY_to_mm(args.motorRefY[1], inv = True) + self.unitConv.motor_stepY_to_pix(self.nRow/2, inv = True)
+        
         
         self.widthX_motor = self.max_motorX - self.min_motorX
         self.widthY_motor = self.max_motorY - self.min_motorY
@@ -122,19 +125,19 @@ class ImageInfo :
         #print(min(l_motorX), max(l_motorX), max(l_motorX)-min(l_motorX))
         #print(min(l_motorY), max(l_motorY), max(l_motorY)-min(l_motorY))
         
-        print(
-            "min_motorX %f, max_motorX %f, widthX_motor %f, widthX_pix %f, "
-            
-        %(
-            self.min_motorX, self.max_motorX, self.widthX_motor, self.widthX_pix,
-        ))
-        
-        print(
-            "min_motorY %f, max_motorY %f, widthY_motor %f, widthY_pix %f, "
-            
-        %(
-            self.min_motorY, self.max_motorY, self.widthY_motor, self.widthY_pix,
-        ))
+        #print(
+        #    "min_motorX %f, max_motorX %f, widthX_motor %f, widthX_pix %f, "
+        #    
+        #%(
+        #    self.min_motorX, self.max_motorX, self.widthX_motor, self.widthX_pix,
+        #))
+        #
+        #print(
+        #    "min_motorY %f, max_motorY %f, widthY_motor %f, widthY_pix %f, "
+        #    
+        #%(
+        #    self.min_motorY, self.max_motorY, self.widthY_motor, self.widthY_pix,
+        #))
         
         #print(l_inputData[0].shape)
         #print(l_inputData[50].shape)
@@ -156,8 +159,11 @@ class ImageInfo :
             
             fName = self.l_inputFileName[iImg]
             
-            motorX = self.l_motorX[iImg] - self.min_motorX
-            motorY = self.l_motorY[iImg] - self.min_motorY
+            #motorX = self.l_motorX[iImg] - self.min_motorX
+            #motorY = self.l_motorY[iImg] - self.min_motorY
+            
+            motorX = self.l_motorX[iImg] - self.ref_motorX
+            motorY = self.l_motorY[iImg] - self.ref_motorY
             
             if (self.loadInfo is None) :
                 
