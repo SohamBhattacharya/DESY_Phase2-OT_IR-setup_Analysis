@@ -8,9 +8,8 @@ odd_str = "odd"
 even_str = "even"
 
 
-d_max_ring = {
-}
-max_ring_even = 10
+side_top_str = "top"
+side_bottom_str = "bottom"
 
 
 module_PS_str = "PS"
@@ -37,6 +36,7 @@ d_moduleDetails = {
         odd_str: {
             "ring_min": 11,
             "ring_max": 15,
+            
         },
         
         even_str: {
@@ -44,4 +44,10 @@ d_moduleDetails = {
             "ring_max": 16,
         },
     },
+}
+
+
+d_side_color = {
+    side_top_str: (1, 0, 1, 1),
+    side_bottom_str: (0, 1, 1, 1),
 }

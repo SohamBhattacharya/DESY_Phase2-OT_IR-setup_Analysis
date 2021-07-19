@@ -103,42 +103,7 @@ class GeometryInfo :
         axis_imgDee = self.imgInfo.axis_stitchedDee
         axis_imgDee.figure.canvas.mpl_connect("pick_event", self.on_pick)
         
-        # Profile figure
-        self.tkroot_profile = tkinter.Toplevel(class_ = "Carbon foam profiles")
-        self.tkroot_profile.wm_title("Carbon foam profiles")
-        
-        self.fig_profile = matplotlib.figure.Figure(figsize = [10, 8])
-        self.fig_profile.canvas = FigureCanvasTkAgg(self.fig_profile, master = self.tkroot_profile)
-        #self.fig_profile = matplotlib.pyplot.figure("Carbon foam profiles", figsize = [10, 8])
-        
-        self.fig_profile.canvas.mpl_connect("pick_event", self.on_pick)
-        
-        self.axis_profile = self.fig_profile.add_subplot(1, 1, 1)
-        
-        self.axis_profile.set_xlabel("Pixel")
-        self.axis_profile.set_ylabel("Temperature [°C]")
-        
-        
-        
-        # Buttons
-        #self.axis_buttons = self.fig_profile.add_axes([0.05, 0.95, 0.1, 0.03])
-        #
-        #self.button_clear = matplotlib.widgets.Button(self.axis_buttons, "Clear", color = "white", hovercolor = "lightgrey")
-        #self.button_clear.on_clicked(self.clear)
-        
-        self.tbar_profile = NavigationToolbar2Tk(self.fig_profile.canvas, self.tkroot_profile)
-        self.tbar_profile.update()
-        self.fig_profile.canvas.get_tk_widget().pack(side = tkinter.TOP, fill = tkinter.BOTH, expand = 1)
-        
-        
-        self.button_show_allImages = tkinter.Button(master = self.tkroot_profile, text = "Clear", command = self.clear)
-        self.button_show_allImages.pack(side = tkinter.LEFT)
-        
-        
-        self.marker_profile = BlittedCursor.BlittedCursor_mod1(ax = self.axis_profile)
-        
         self.xls_geometry = pandas.ExcelFile(self.args.geomFile)
-        
         self.dframe_geometry = self.xls_geometry.parse(0)
         
         # Clean the headers
@@ -148,7 +113,7 @@ class GeometryInfo :
         self.dframe_geometry.dropna(how = "all", inplace = True)
         
         #print(self.dframe_geometry)
-        #print(self.dframe_geometry.keys())
+        print(self.dframe_geometry.keys())
         
         self.d_geometry = {
             "ring"             : self.dframe_geometry["Ring"].to_numpy(),
@@ -157,23 +122,10 @@ class GeometryInfo :
             "arcL"             : self.dframe_geometry["meanWidth(mm) (orthoradial)"].to_numpy(),
             "radL"             : self.dframe_geometry["length(mm) (radial)"].to_numpy(),
             "insert_outR"      : self.dframe_geometry["insert outer radius (mm)"].to_numpy(),
+            "side"             : self.dframe_geometry["side"].to_numpy(),
         }
         
         nModule = len(self.d_geometry["r"])
-        
-        
-        #arr_dee_shape = self.imgInfo.arr_stitchedDeeImg.shape+(4,)
-        #print(arr_dee_shape)
-        
-        # (y, x)
-        #self.origin_x0 = int(motor_stepX_to_pix(812 - self.imgInfo.min_motorX))
-        #self.origin_y0 = int(motor_stepY_to_pix(258527 - self.imgInfo.min_motorY))
-        
-        #self.origin_x0 = 3390
-        #self.origin_y0 = 320
-        
-        #self.origin_x0 = 3824
-        #self.origin_y0 = 335
         
         print("self.origin_x0, self.origin_y0:", self.origin_x0, self.origin_y0)
         
@@ -191,6 +143,64 @@ class GeometryInfo :
         self.d_geomObj = {}
         self.imgInfo.set_cfoamInfo(self.d_geomObj)
         
+        
+        if (self.args.moduleType == constants.module_PS_str) :
+            
+            # Profile figure
+            self.tkroot_profile = tkinter.Toplevel(class_ = "Carbon foam temperature profiles")
+            self.tkroot_profile.wm_title("Carbon foam temperature profiles")
+            
+            self.fig_profile = matplotlib.figure.Figure(figsize = [10, 8])
+            self.fig_profile.canvas = FigureCanvasTkAgg(self.fig_profile, master = self.tkroot_profile)
+            
+            self.fig_profile.canvas.mpl_connect("pick_event", self.on_pick)
+            
+            self.axis_profile = self.fig_profile.add_subplot(1, 1, 1)
+            
+            self.axis_profile.set_xlabel("Pixel")
+            self.axis_profile.set_ylabel("Temperature [°C]")
+            
+            tbar = NavigationToolbar2Tk(self.fig_profile.canvas, self.tkroot_profile)
+            tbar.update()
+            self.fig_profile.canvas.get_tk_widget().pack(side = tkinter.TOP, fill = tkinter.BOTH, expand = 1)
+            
+            button = tkinter.Button(master = self.tkroot_profile, text = "Clear", command = lambda: self.clear(axis = self.axis_profile))
+            button.pack(side = tkinter.LEFT)
+            
+            self.marker_profile = BlittedCursor.BlittedCursor_mod1(ax = self.axis_profile)
+        
+        elif (self.args.moduleType == constants.module_2S_str) :
+            
+            # Insert figure
+            self.tkroot_2Sinsert = tkinter.Toplevel(class_ = "2S insert temperature")
+            self.tkroot_2Sinsert.wm_title("2S insert temperature")
+            
+            self.fig_2Sinsert = matplotlib.figure.Figure(figsize = [10, 8])
+            self.fig_2Sinsert.canvas = FigureCanvasTkAgg(self.fig_2Sinsert, master = self.tkroot_2Sinsert)
+            #self.fig_2Sinsert = matplotlib.pyplot.figure("Carbon foam profiles", figsize = [10, 8])
+            
+            self.fig_2Sinsert.canvas.mpl_connect("pick_event", self.on_pick)
+            
+            self.axis_2Sinsert = self.fig_2Sinsert.add_subplot(1, 1, 1)
+            
+            self.axis_2Sinsert.set_xlabel("Insert")
+            self.axis_2Sinsert.set_ylabel("Temperature [°C]")
+            
+            tbar = NavigationToolbar2Tk(self.fig_2Sinsert.canvas, self.tkroot_2Sinsert)
+            tbar.update()
+            self.fig_2Sinsert.canvas.get_tk_widget().pack(side = tkinter.TOP, fill = tkinter.BOTH, expand = 1)
+            
+            button = tkinter.Button(master = self.tkroot_2Sinsert, text = "Clear", command = lambda: self.clear(axis = self.axis_2Sinsert))
+            button.pack(side = tkinter.LEFT)
+            
+            #self.marker_2Sinsert = BlittedCursor.BlittedCursor_mod1(ax = self.axis_2Sinsert)
+            
+            #self.mplcursor = mplcursors.Cursor(artists = [], hover = mplcursors.HoverMode.Transient)
+        
+        
+        l_pickableArtist = []
+        
+        
         for idx in range(0, nModule) :
             
             ring = self.d_geometry["ring"][idx]
@@ -199,6 +209,15 @@ class GeometryInfo :
             phi = numpy.pi-numpy.radians(phi_deg)
             arcL = self.unitConv.mm_to_pix(self.d_geometry["arcL"][idx])
             radL = self.unitConv.mm_to_pix(self.d_geometry["radL"][idx])
+            
+            side = self.d_geometry["side"][idx]
+            
+            
+            if (side == constants.side_bottom_str) :
+                
+                phi_deg = 180 - phi_deg
+                phi = numpy.pi - phi
+            
             
             # Module type (PS/2S)
             if (
@@ -319,7 +338,18 @@ class GeometryInfo :
                 # Longitudinal central profile
                 profLabel = "%s_prof" %(cfoamLabel)
                 
-                profLine = axis_imgDee.plot([xMid1, xMid2], [yMid1, yMid2], color = color, linewidth = 1, picker = True, pickradius = 3, label = profLabel, zorder = constants.zorder_geometryMesh)[0]
+                profLine = axis_imgDee.plot(
+                    [xMid1, xMid2],
+                    [yMid1, yMid2],
+                    color = color,
+                    linewidth = 1,
+                    picker = True,
+                    pickradius = 3,
+                    label = profLabel,
+                    zorder = constants.zorder_geometryMesh,
+                )[0]
+                
+                l_pickableArtist.append(profLine)
                 
                 rr_profLine, cc_profLine = skimage.draw.line(int(numpy.round(yMid2)), int(numpy.round(xMid2)), int(numpy.round(yMid1)), int(numpy.round(xMid1)))
                 
@@ -343,7 +373,7 @@ class GeometryInfo :
                     c2 = numpy.round(xMid1),
                     #offsetRow = -self.imgInfo.l_imgExtent_pixelY[nearestImgIdx][0],
                     #offsetCol = -self.imgInfo.l_imgExtent_pixelX[nearestImgIdx][0],
-                    label = profLabel
+                    label = profLabel,
                 )
                 
                 
@@ -363,6 +393,13 @@ class GeometryInfo :
             elif (self.args.moduleType == constants.module_2S_str) :
                 
                 self.l_module2SNum[ring-1] += 1
+                #print(side)
+                
+                if (side != self.args.side) :
+                    
+                    continue
+                
+                color = constants.d_side_color[side]
                 
                 insert_outR = self.unitConv.mm_to_pix(self.d_geometry["insert_outR"][idx])
                 
@@ -385,6 +422,7 @@ class GeometryInfo :
                     imgInfo = self.imgInfo,
                     imgIdx = nearestImgIdx,
                     label = module2SLabel,
+                    axis_2Sinsert = self.axis_2Sinsert,
                 )
                 
                 
@@ -403,18 +441,65 @@ class GeometryInfo :
                 self.d_geomObj[module2SLabel].add_geometryArtist(module2SBox, module2SBoxLabel)
                 
                 
-                insertCenter_xx = [xInn1, xInn2, xMid1, xMid2, xOut2, xOut1]
-                insertCenter_yy = [yInn1, yInn2, yMid1, yMid2, yOut2, yOut1]
+                #insertCenter_xx = [xInn1, xInn2, xMid1, xMid2, xOut1, xOut2]
+                #insertCenter_yy = [yInn1, yInn2, yMid1, yMid2, yOut1, yOut2]
+                
+                insertCenter_xx = [xInn2, xInn1, xMid2, xOut2, xOut1]
+                insertCenter_yy = [yInn2, yInn1, yMid2, yOut2, yOut1]
                 
                 
                 for iInsert, insertPos in enumerate(zip(insertCenter_xx, insertCenter_yy)) :
                     
                     insertLabel = "%s_ins%d" %(module2SLabel, iInsert+1)
                     
-                    insertCirc = matplotlib.patches.Circle(insertPos, radius = insert_outR, color = color, fill = False, picker = True, label = insertLabel, zorder = constants.zorder_geometryMesh)
-                    axis_imgDee.add_patch(insertCirc)
+                    insertDisk = matplotlib.patches.Circle(insertPos, radius = insert_outR, color = color, fill = False, picker = True, label = insertLabel, zorder = constants.zorder_geometryMesh)
+                    axis_imgDee.add_patch(insertDisk)
+                    l_pickableArtist.append(insertDisk)
                     
-                    self.d_geomObj[module2SLabel].add_geometryArtist(insertCirc, insertLabel)
+                    self.d_geomObj[module2SLabel].add_geometryArtist(insertDisk, insertLabel)
+                    
+                    insertText = matplotlib.text.Annotation(
+                        text = insertLabel,
+                        xy = (insertPos[0], insertPos[1]-insert_outR),
+                        size = "small",
+                        horizontalalignment = "center",
+                        verticalalignment = "bottom",
+                        zorder = constants.zorder_geometryText,
+                    )
+                    
+                    self.d_geomObj[module2SLabel].add_geometryArtist(insertText, "%s_label" %(insertLabel))
+                    
+                    
+                    self.d_geomObj[module2SLabel].add_insertDisk(
+                        r = insertPos[1],
+                        c = insertPos[0],
+                        radius = insert_outR,
+                        label = insertLabel,
+                    )
+                    
+                    #self.mplcursor.add_highlight(insertDisk)
+                    
+                    #rr_insertDisk, cc_insertDisk = skimage.draw.disk(
+                    #    #center = insertPos[::-1],
+                    #    center = (insertPos[1]-self.imgInfo.l_imgExtent_pixelY[nearestImgIdx][0], insertPos[0]-self.imgInfo.l_imgExtent_pixelX[nearestImgIdx][0]),
+                    #    radius = insert_outR,
+                    #    shape = (self.imgInfo.nRow, self.imgInfo.nCol),
+                    #)
+                    
+                    #rr_insertDisk = rr_insertDisk - self.imgInfo.l_imgExtent_pixelY[nearestImgIdx][0]
+                    #cc_insertDisk = cc_insertDisk - self.imgInfo.l_imgExtent_pixelX[nearestImgIdx][0]
+                    
+                    #for idx in range(0, len(rr_profLine)) :
+                    #    
+                    #    if (rr_profLine[idx] < 0 or rr_profLine[idx] >= self.imgInfo.nRow or cc_profLine[idx] < 0 or cc_profLine[idx] >= self.imgInfo.nCol) :
+                    #        
+                    #        rr_profLine[idx] = 0
+                    #        cc_profLine[idx] = 0
+                    
+                    #print("rr_insertDisk:", rr_insertDisk)
+                    #print("cc_insertDisk:", cc_insertDisk)
+                    
+                    #self.imgInfo.l_inputData[nearestImgIdx][rr_insertDisk, cc_insertDisk] = 0
                 
                 
                 ang = 90 - (180-phi_deg) + 90
@@ -432,16 +517,24 @@ class GeometryInfo :
                     zorder = constants.zorder_geometryText,
                 )
         
+        #axis_imgDee.set_xticks([self.origin_x0], minor = True)
+        #axis_imgDee.set_yticks([self.origin_y0], minor = True)
+        #
+        #axis_imgDee.xaxis.grid(True, which = "minor")
+        #axis_imgDee.yaxis.grid(True, which = "minor")
         
-        axis_imgDee.set_xticks([self.origin_x0], minor = True)
-        axis_imgDee.set_yticks([self.origin_y0], minor = True)
-        
-        axis_imgDee.xaxis.grid(True, which = "minor")
-        axis_imgDee.yaxis.grid(True, which = "minor")
+        axis_imgDee.axhline(y = self.origin_y0, color = "k", linewidth = 0.8, linestyle = "--")
+        axis_imgDee.axvline(x = self.origin_x0, color = "k", linewidth = 0.8, linestyle = "--")
         
         axis_imgDee.autoscale_view()
         
         axis_imgDee.figure.canvas.draw()
+        
+        #self.mplcursor = mplcursors.cursor(l_pickableArtist, hover = mplcursors.HoverMode.Transient)
+        #
+        #self.mplcursor.connect(
+        #    "add", lambda sel: sel.annotation.set_text(sel.artist.get_label())
+        #)
     
     
     def on_pick(self, event) :
@@ -458,13 +551,19 @@ class GeometryInfo :
             self.d_geomObj[label].on_pick(event)
     
     
-    def clear(self) :
+    def clear(self, axis) :
         
         for label in self.d_geomObj :
             
-            self.d_geomObj[label].unplot_profiles(axis = self.axis_profile, draw = False)
+            if (hasattr(self.d_geomObj[label], "unplot_profiles")) :
+                
+                self.d_geomObj[label].unplot_profiles(axis = axis, draw = False)
+            
+            elif (hasattr(self.d_geomObj[label], "unplot_2Sinserts")) :
+                
+                self.d_geomObj[label].unplot_2Sinserts(axis = axis, draw = False)
         
-        self.fig_profile.canvas.draw()
+        axis.figure.canvas.draw()
     
     
     #def on_button_press(self, event) :

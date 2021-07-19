@@ -27,6 +27,7 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolb
 import colors
 import constants
 import BlittedCursor
+import InsertDisk
 import utils
 
 
@@ -37,23 +38,23 @@ class Module2SInfo :
         imgInfo,
         imgIdx,
         label,
-        #axis_profile,
-        #marker_profile,
+        axis_2Sinsert,
+        #marker_2Sinsert,
     ) :
         
         self.imgInfo = imgInfo
         self.imgIdx = imgIdx
         self.label = label
         
-        self.offsetRow = -self.imgInfo.l_imgExtent_pixelY[imgIdx][0],
-        self.offsetCol = -self.imgInfo.l_imgExtent_pixelX[imgIdx][0],
+        self.offsetRow = -self.imgInfo.l_imgExtent_pixelY[imgIdx][0]
+        self.offsetCol = -self.imgInfo.l_imgExtent_pixelX[imgIdx][0]
         
         self.d_geomArtist = {}
-        self.d_profileLine = {}
+        self.d_insertDisk = {}
         
         self.d_drawnArtist = {}
         
-        #self.axis_profile = axis_profile
+        self.axis_2Sinsert = axis_2Sinsert
         #self.marker_profile = marker_profile
         
         self.tkroot_img = None
@@ -100,8 +101,8 @@ class Module2SInfo :
         
         self.imgIdx = imgIdx
         
-        self.offsetRow = -self.imgInfo.l_imgExtent_pixelY[imgIdx][0],
-        self.offsetCol = -self.imgInfo.l_imgExtent_pixelX[imgIdx][0],
+        self.offsetRow = -self.imgInfo.l_imgExtent_pixelY[imgIdx][0]
+        self.offsetCol = -self.imgInfo.l_imgExtent_pixelX[imgIdx][0]
         
         #self.reset()
         
@@ -131,19 +132,21 @@ class Module2SInfo :
         utils.reset_artist(self.d_geomArtist[label])
     
     
-    #def add_profileLine(
-    #    self,
-    #    r1, c1,
-    #    r2, c2,
-    #    label,
-    #) :
-    #    
-    #    self.d_profileLine[label] = ProfileLine.ProfileLine(
-    #        r1, c1,
-    #        r2, c2,
-    #        offsetRow = self.offsetRow,
-    #        offsetCol = self.offsetCol,
-    #    )
+    def add_insertDisk(
+        self,
+        r, c,
+        radius,
+        label,
+    ) :
+        
+        self.d_insertDisk[label] = InsertDisk.InsertDisk(
+            r = r,
+            c = c,
+            radius = radius,
+            shape = (self.imgInfo.nRow, self.imgInfo.nCol),
+            offsetRow = self.offsetRow,
+            offsetCol = self.offsetCol,
+        )
     
     
     def on_fig_close(self, event) :
@@ -175,6 +178,101 @@ class Module2SInfo :
         except :
             
             pass
+    
+    
+    def get_minTemp(self, label) :
+        
+        rr = self.d_insertDisk[label].rr
+        cc = self.d_insertDisk[label].cc
+        
+        if (not len(rr) or not len(cc)) :
+            
+            return None
+        
+        #print(rr, cc)
+        
+        nPix = len(rr)
+        
+        #minTemp = min(self.imgInfo.l_inputData[self.imgIdx][rr, cc])
+        minTemp = self.imgInfo.l_inputData[self.imgIdx][rr, cc].min()
+        
+        return minTemp
+    
+    
+    #def get_minTemp_all(self) :
+    #    
+    #    xx = []
+    #    yy = []
+    #    
+    #    for key in utils.naturalsort(list(self.d_insertDisk.keys())) :
+    #        
+    #        minTemp = self.get_minTemp(label = key)
+    #        
+    #        yy.append(minTemp)
+    #    
+    #    xx = list(range(1, len(yy)+1))
+    #    
+    #    return (xx, yy)
+    
+    
+    def plot_minTemp(self, label, axis, color = "black", update = False) :
+        
+        #print(label, self.get_minTemp(label = label))
+        
+        if (label in self.d_drawnArtist and not update) :
+            
+            return
+        
+        xx = len(axis.get_lines())+1 if (label not in self.d_drawnArtist) else self.d_drawnArtist[label].get_xdata()#[0]
+        yy = self.get_minTemp(label = label)
+        
+        if (update) :
+            
+            self.d_drawnArtist[label].set_xdata(xx)
+            self.d_drawnArtist[label].set_ydata(yy)
+        
+        else :
+            
+            self.d_drawnArtist[label] = axis.plot(xx, yy, color = color, marker = "o", markersize = 5,  linewidth = 0, label = label, picker = True, pickradius = 3)[0]
+            axis.legend()
+        
+        axis.relim()
+        axis.autoscale_view()
+        
+        axis.figure.canvas.draw()
+    
+    
+    def unplot_2Sinsert(self, label, axis) :
+        
+        if (label not in self.d_drawnArtist) :
+            
+            return
+        
+        self.d_drawnArtist[label].remove()
+        del self.d_drawnArtist[label]
+        #self.d_2SinsertArtist[label] = None
+        
+        axis.legend()
+        axis.figure.canvas.draw()
+    
+    
+    def unplot_2Sinserts(self, axis, draw = True) :
+        
+        if (not len (self.d_drawnArtist)) :
+            
+            return
+        
+        for key in self.d_drawnArtist :
+            
+            self.d_drawnArtist[key].remove()
+        
+        self.d_drawnArtist.clear()
+        
+        axis.legend()
+        
+        if (draw) :
+            
+            axis.figure.canvas.draw()
     
     
     def get_title(self) :
@@ -362,7 +460,7 @@ class Module2SInfo :
         return l_usedColor
     
     
-    def on_pick(self, event) :
+    def on_pick(self, event, plot_features = True) :
         
         artist = event.artist
         
@@ -385,15 +483,29 @@ class Module2SInfo :
         #    
         #    return
         
-        if (event_key == "shift" and event_button == matplotlib.backend_bases.MouseButton.LEFT) :
+        if (event_key == "ctrl+shift" and event_button == matplotlib.backend_bases.MouseButton.LEFT) :
             
             self.draw()
+        
+        elif (event_key == "shift" and event_button == matplotlib.backend_bases.MouseButton.LEFT) :
             
-            #color = self.choose_color(l_skipColor = self.get_usedColors(axis = self.axis_profile, l_objectType = "Line2D"))
+            #self.draw()
+            
+            #color = "black"
+            color = self.choose_color(l_skipColor = self.get_usedColors(axis = self.axis_2Sinsert, l_objectType = "Line2D"))
+            
+            self.plot_minTemp(
+                label = artist.get_label(),
+                axis = self.axis_2Sinsert,
+                color = color,
+            )
         
         elif (event_key == "shift" and event_button == matplotlib.backend_bases.MouseButton.RIGHT) :
             
-            return
+            self.unplot_2Sinsert(
+                label = artist.get_label(),
+                axis = self.axis_2Sinsert,
+            )
     
     
     def update_features(
@@ -401,23 +513,23 @@ class Module2SInfo :
         dRow,
         dCol,
     ) :
-        return
-        #for key in self.d_profileLine :
-        #    
-        #    rr, cc = self.d_profileLine[key].setAndGetLine(
-        #        dRow = dRow,
-        #        dCol = dCol,
-        #        offsetRow = self.offsetRow,
-        #        offsetCol = self.offsetCol,
-        #    )
-        #    
-        #    if key in self.d_drawnArtist :
-        #        
-        #        self.plot_profile(
-        #            label = key,
-        #            axis = self.axis_profile,
-        #            update = True,
-        #        )
+        
+        for key in self.d_insertDisk :
+            
+            rr, cc = self.d_insertDisk[key].setAndGetDisk(
+                dRow = dRow,
+                dCol = dCol,
+                offsetRow = self.offsetRow,
+                offsetCol = self.offsetCol,
+            )
+            
+            if key in self.d_drawnArtist :
+                
+                self.plot_minTemp(
+                    label = key,
+                    axis = self.axis_2Sinsert,
+                    update = True,
+                )
     
     
     def update_imgExtent(self, new_extent, dX, dY) :
@@ -450,15 +562,15 @@ class Module2SInfo :
         cenY = 0
         
         # Use the average center position
-        #for key in self.d_profileLine :
-        #    
-        #    prof = self.d_profileLine[key]
-        #    
-        #    cenX += 0.5*(prof.c1 + prof.c2)
-        #    cenY += 0.5*(prof.r1 + prof.r2)
-        #
-        #cenX /= len(self.d_profileLine)
-        #cenY /= len(self.d_profileLine)
+        for key in self.d_insertDisk :
+            
+            disk = self.d_insertDisk[key]
+            
+            cenX += disk.c
+            cenY += disk.r
+        
+        cenX /= len(self.d_insertDisk)
+        cenY /= len(self.d_insertDisk)
         
         dX = self.imgInfo.l_imgCenter_pixelX[self.imgIdx] - cenX
         dY = self.imgInfo.l_imgCenter_pixelY[self.imgIdx] - cenY

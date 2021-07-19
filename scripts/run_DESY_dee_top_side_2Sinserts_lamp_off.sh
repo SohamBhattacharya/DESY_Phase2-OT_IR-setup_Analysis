@@ -4,6 +4,7 @@ python -u python/stitch_images.py \
     --geomFile "data/geometry_carbonFoam.xlsx" \
     --moduleType "2S" \
     --ringOpt "odd" \
+    --side "top" \
     --originX 0 \
     --originY 0 \
     --motorRefX 27732.5 0 \

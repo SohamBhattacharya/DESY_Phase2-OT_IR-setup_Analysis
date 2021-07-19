@@ -46,8 +46,8 @@ class CarbonFoamInfo :
         self.imgIdx = imgIdx
         self.label = label
         
-        self.offsetRow = -self.imgInfo.l_imgExtent_pixelY[imgIdx][0],
-        self.offsetCol = -self.imgInfo.l_imgExtent_pixelX[imgIdx][0],
+        self.offsetRow = -self.imgInfo.l_imgExtent_pixelY[imgIdx][0]
+        self.offsetCol = -self.imgInfo.l_imgExtent_pixelX[imgIdx][0]
         
         self.d_geomArtist = {}
         self.d_profileLine = {}
@@ -114,7 +114,6 @@ class CarbonFoamInfo :
         #    dRow = 0,
         #    dCol = 0,
         #)
-        
     
     
     def resetAllArtists(self) :
@@ -142,6 +141,7 @@ class CarbonFoamInfo :
         self.d_profileLine[label] = ProfileLine.ProfileLine(
             r1, c1,
             r2, c2,
+            shape = (self.imgInfo.nRow, self.imgInfo.nCol),
             offsetRow = self.offsetRow,
             offsetCol = self.offsetCol,
         )
@@ -596,9 +596,13 @@ class CarbonFoamInfo :
         #    
         #    return
         
-        if (event_key == "shift" and event_button == matplotlib.backend_bases.MouseButton.LEFT) :
+        if (event_key == "ctrl+shift" and event_button == matplotlib.backend_bases.MouseButton.LEFT) :
             
             self.draw()
+        
+        if (event_key == "shift" and event_button == matplotlib.backend_bases.MouseButton.LEFT) :
+            
+            #self.draw()
             
             color = self.choose_color(l_skipColor = self.get_usedColors(axis = self.axis_profile, l_objectType = "Line2D"))
             

@@ -24,12 +24,12 @@ import colors
 import constants
 
 
-class ProfileLine :
+class InsertDisk :
     
     def __init__(
         self,
-        r1, c1,
-        r2, c2,
+        r, c,
+        radius,
         shape = None,
         dRow = 0,
         dCol = 0,
@@ -37,11 +37,9 @@ class ProfileLine :
         offsetCol = 0,
     ) :
         
-        self.r1 = r1
-        self.c1 = c1
-        
-        self.r2 = r2
-        self.c2 = c2
+        self.r = r
+        self.c = c
+        self.radius = radius
         
         self.shape = shape
         
@@ -51,14 +49,14 @@ class ProfileLine :
         self.dRow_sum = 0
         self.dCol_sum = 0
         
-        self.rr, self.cc = self.setAndGetLine(
+        self.rr, self.cc = self.setAndGetDisk(
             dRow = dRow,
             dCol = dCol,
         )
     
     
     
-    def setAndGetLine(
+    def setAndGetDisk(
         self,
         dRow = 0,
         dCol = 0,
@@ -72,19 +70,18 @@ class ProfileLine :
         self.dCol_sum += dCol
         
         #print(
-        #    ("r1", self.r1, self.dRow_sum, self.offsetRow),
-        #    ("c1", self.c1, self.dCol_sum, self.offsetCol),
-        #    ("r2", self.r2, self.dRow_sum, self.offsetRow),
-        #    ("c2", self.c2, self.dCol_sum, self.offsetCol),
+        #    (self.r, self.c),
+        #    (self.dRow_sum, self.dCol_sum),
+        #    (self.offsetRow, self.offsetCol),
+        #    (self.r + self.dRow_sum + self.offsetRow, self.c + self.dCol_sum + self.offsetCol),
+        #    self.radius,
+        #    self.shape,
         #)
         
-        self.rr, self.cc = skimage.draw.line(
-            int(numpy.round(self.r1 + self.dRow_sum + self.offsetRow)),
-            int(numpy.round(self.c1 + self.dCol_sum + self.offsetCol)),
-            int(numpy.round(self.r2 + self.dRow_sum + self.offsetRow)),
-            int(numpy.round(self.c2 + self.dCol_sum + self.offsetCol)),
-            
-            #shape = self.shape,
+        self.rr, self.cc = skimage.draw.disk(
+            center = (self.r + self.dRow_sum + self.offsetRow, self.c + self.dCol_sum + self.offsetCol),
+            radius = self.radius,
+            shape = self.shape,
         )
         
         return (self.rr, self.cc)

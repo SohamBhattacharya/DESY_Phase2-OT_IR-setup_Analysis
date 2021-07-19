@@ -93,6 +93,14 @@ def main() :
     )
     
     parser.add_argument(
+        "--side",
+        help = "Side",
+        type = str,
+        required = False,
+        choices = [constants.side_top_str, constants.side_bottom_str],
+    )
+    
+    parser.add_argument(
         "--ringOpt",
         help = "Ring option",
         type = str,

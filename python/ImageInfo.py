@@ -112,8 +112,22 @@ class ImageInfo :
         #self.min_motorX = 10264
         #self.min_motorY = 252768
         
-        self.ref_motorX = args.motorRefX[0] + self.unitConv.motor_stepX_to_mm(args.motorRefX[1], inv = True) + self.unitConv.motor_stepX_to_pix(self.nCol/2, inv = True)
-        self.ref_motorY = args.motorRefY[0] + self.unitConv.motor_stepY_to_mm(args.motorRefY[1], inv = True) + self.unitConv.motor_stepY_to_pix(self.nRow/2, inv = True)
+        if (args.motorRefX is None) :
+            
+            self.ref_motorX = self.min_motorX
+        
+        else :
+            
+            self.ref_motorX = args.motorRefX[0] + self.unitConv.motor_stepX_to_mm(args.motorRefX[1], inv = True) + self.unitConv.motor_stepX_to_pix(self.nCol/2, inv = True)
+            
+        
+        if (args.motorRefY is None) :
+            
+            self.ref_motorY = self.min_motorY
+        
+        else :
+            
+            self.ref_motorY = args.motorRefY[0] + self.unitConv.motor_stepY_to_mm(args.motorRefY[1], inv = True) + self.unitConv.motor_stepY_to_pix(self.nRow/2, inv = True)
         
         
         self.widthX_motor = self.max_motorX - self.min_motorX
@@ -327,7 +341,7 @@ class ImageInfo :
         self.tkroot_stitchedDee.wm_title("Stitched image")
         self.tkroot_stitchedDee.bind_all("<Button-1>", lambda event: event.widget.focus_set())
         
-        self.fig_stitchedDee = matplotlib.figure.Figure(figsize = [10, 8])
+        self.fig_stitchedDee = matplotlib.figure.Figure(figsize = [10, 6])
         self.fig_stitchedDee.canvas = FigureCanvasTkAgg(self.fig_stitchedDee, master = self.tkroot_stitchedDee)
         
         #self.fig_stitchedDee.canvas.mpl_connect("pick_event", self.on_pick)
@@ -363,6 +377,7 @@ class ImageInfo :
                 zorder = constants.zorder_deeImage,
                 picker = True,
                 label = self.l_inputFileName[imgIdx],
+                #animated = False,
             )
             
             if (not imgIdx) :
@@ -509,7 +524,7 @@ class ImageInfo :
         self.fig_allImages.canvas = FigureCanvasTkAgg(self.fig_allImages, master = self.tkroot_allImages)
         self.fig_allImages.canvas.get_tk_widget().pack(side = tkinter.TOP, fill = tkinter.BOTH, expand = True)
         
-        self.fig_allImages.canvas.mpl_connect("pick_event", self.on_pick_image)
+        #self.fig_allImages.canvas.mpl_connect("pick_event", self.on_pick_image)
         
         nPlot = len(self.l_inputData)
         #nPlot_row = 10
