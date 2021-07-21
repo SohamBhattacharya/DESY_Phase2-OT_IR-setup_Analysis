@@ -213,7 +213,7 @@ class GeometryInfo :
             side = self.d_geometry["side"][idx]
             
             
-            if (side == constants.side_bottom_str) :
+            if (self.args.moduleType == constants.module_2S_str and side == constants.side_bottom_str) :
                 
                 phi_deg = 180 - phi_deg
                 phi = numpy.pi - phi
@@ -294,6 +294,8 @@ class GeometryInfo :
             if (self.args.moduleType == constants.module_PS_str) :
                 
                 self.l_cfoamNum[ring-1] += 1
+                
+                color = constants.d_side_color[side]
                 
                 
                 # C-foam label
