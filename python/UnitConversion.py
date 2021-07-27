@@ -4,11 +4,14 @@ class UnitConversion :
     def __init__(
         self,
         args,
+        stepxtomm = None,
+        stepytomm = None,
+        mmtopix = None,
     ) :
         
-        self.stepxtomm = eval(str(args.stepxtomm))
-        self.stepytomm = eval(str(args.stepytomm))
-        self.mmtopix = eval(str(args.mmtopix))
+        self.stepxtomm = eval(str(args.stepxtomm)) if stepxtomm is None else eval(str(stepxtomm))
+        self.stepytomm = eval(str(args.stepytomm)) if stepytomm is None else eval(str(stepytomm))
+        self.mmtopix = eval(str(args.mmtopix)) if mmtopix is None else eval(str(mmtopix))
     
     
     def motor_stepX_to_mm(self, val, inv = False) :

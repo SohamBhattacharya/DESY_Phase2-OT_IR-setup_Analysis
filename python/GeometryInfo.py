@@ -20,6 +20,7 @@ import sys
 import textwrap
 import time
 import tkinter
+import yaml
 
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2Tk
 
@@ -27,6 +28,7 @@ import colors
 import constants
 import BlittedCursor
 import CarbonFoamInfo
+import CoolingCircuit2SInfo
 import Module2SInfo
 import utils
 
@@ -55,6 +57,19 @@ class GeometryInfo :
         setattr(self, self.originVarName_y0, None)
         
         self.loadInfo = loadInfo
+        
+        self.d_coolCirc2S = {}
+        self.d_coolCirc2SInfo = {}
+        
+        if (args.coolCircFiles is not None) :
+            
+            for fName in args.coolCircFiles :
+                
+                with open(fName, "r") as fopen :
+                    
+                    self.d_coolCirc2S.update(yaml.load(fopen.read(), Loader = yaml.FullLoader))
+            
+            #print(self.d_coolCirc2S)
         
         if (self.loadInfo is None) :
             
@@ -91,14 +106,21 @@ class GeometryInfo :
         if (recreate and hasattr(self, "tkroot_profile")) :
             
             self.tkroot_profile.destroy()
+        
+        
+        if (recreate and hasattr(self, "tkroot_2Sinsert")) :
+            
+            self.tkroot_2Sinsert.destroy()
+        
+        if (recreate and hasattr(self, "d_geomObj")) :
             
             for key in self.d_geomObj :
                 
                 self.d_geomObj[key].destroy()
-            
-            gc.collect()
-            
-            self.imgInfo.draw(recreate = True)
+        
+        gc.collect()
+        
+        self.imgInfo.draw(recreate = True)
         
         axis_imgDee = self.imgInfo.axis_stitchedDee
         axis_imgDee.figure.canvas.mpl_connect("pick_event", self.on_pick)
@@ -141,7 +163,7 @@ class GeometryInfo :
         self.l_module2SLabel = []
         
         self.d_geomObj = {}
-        self.imgInfo.set_cfoamInfo(self.d_geomObj)
+        self.imgInfo.set_geomObjInfo(self.d_geomObj)
         
         
         if (self.args.moduleType == constants.module_PS_str) :
@@ -177,7 +199,6 @@ class GeometryInfo :
             
             self.fig_2Sinsert = matplotlib.figure.Figure(figsize = [10, 8])
             self.fig_2Sinsert.canvas = FigureCanvasTkAgg(self.fig_2Sinsert, master = self.tkroot_2Sinsert)
-            #self.fig_2Sinsert = matplotlib.pyplot.figure("Carbon foam profiles", figsize = [10, 8])
             
             self.fig_2Sinsert.canvas.mpl_connect("pick_event", self.on_pick)
             
@@ -196,6 +217,33 @@ class GeometryInfo :
             #self.marker_2Sinsert = BlittedCursor.BlittedCursor_mod1(ax = self.axis_2Sinsert)
             
             #self.mplcursor = mplcursors.Cursor(artists = [], hover = mplcursors.HoverMode.Transient)
+            
+            
+            # Cooling circuit figure
+            self.tkroot_coolCirc = tkinter.Toplevel(class_ = "Cooling circuit: 2S inserts")
+            self.tkroot_coolCirc.wm_title("Cooling circuit: 2S inserts")
+            
+            self.fig_coolCirc = matplotlib.figure.Figure(figsize = [10, 8])
+            self.fig_coolCirc.canvas = FigureCanvasTkAgg(self.fig_coolCirc, master = self.tkroot_coolCirc)
+            
+            self.axis_coolCirc = self.fig_coolCirc.add_subplot(1, 1, 1)
+            
+            self.axis_coolCirc.set_xlabel("Insert")
+            self.axis_coolCirc.set_ylabel("Temperature [°C]")
+            
+            tbar = NavigationToolbar2Tk(self.fig_coolCirc.canvas, self.tkroot_coolCirc)
+            tbar.update()
+            self.fig_coolCirc.canvas.get_tk_widget().pack(side = tkinter.TOP, fill = tkinter.BOTH, expand = 1)
+            
+            
+            for circuitLabel in self.d_coolCirc2S :
+                
+                self.d_coolCirc2SInfo[circuitLabel] = CoolingCircuit2SInfo.CoolingCircuit2SInfo(
+                    label = circuitLabel,
+                    l_insertLabel = self.d_coolCirc2S[circuitLabel],
+                    d_geomObj = self.d_geomObj,
+                    axis = self.axis_coolCirc,
+                )
         
         
         l_pickableArtist = []
@@ -213,7 +261,10 @@ class GeometryInfo :
             side = self.d_geometry["side"][idx]
             
             
-            if (self.args.moduleType == constants.module_2S_str and side == constants.side_bottom_str) :
+            if (
+                (self.args.moduleType == constants.module_2S_str and side == constants.side_bottom_str) or
+                (self.args.moduleType == constants.module_PS_str and self.args.side == constants.side_bottom_str)
+            ) :
                 
                 phi_deg = 180 - phi_deg
                 phi = numpy.pi - phi
@@ -380,16 +431,18 @@ class GeometryInfo :
                 
                 
                 # C-foam text
-                axis_imgDee.text(
-                    0.5*(xInn1+xInn2),
-                    0.5*(yInn1+yInn2),
-                    cfoamLabel,
-                    rotation = 90 - (180-phi_deg),
+                cfoamText = matplotlib.text.Annotation(
+                    text = cfoamLabel,
+                    xy = (0.5*(xInn1+xInn2), 0.5*(yInn1+yInn2)),
+                    rotation = phi_deg - 90,
                     size = "small",
                     horizontalalignment = "center",
                     verticalalignment = "center",
                     zorder = constants.zorder_geometryText,
                 )
+                
+                axis_imgDee.add_artist(cfoamText)
+                self.d_geomObj[cfoamLabel].add_geometryArtist(cfoamText, "%s_label" %(cfoamLabel))
             
             
             elif (self.args.moduleType == constants.module_2S_str) :
@@ -425,6 +478,7 @@ class GeometryInfo :
                     imgIdx = nearestImgIdx,
                     label = module2SLabel,
                     axis_2Sinsert = self.axis_2Sinsert,
+                    d_coolCirc = self.d_coolCirc2SInfo,
                 )
                 
                 
@@ -449,24 +503,41 @@ class GeometryInfo :
                 insertCenter_xx = [xInn2, xInn1, xMid2, xOut2, xOut1]
                 insertCenter_yy = [yInn2, yInn1, yMid2, yOut2, yOut1]
                 
+                # Simply change the order
+                if (side == constants.side_bottom_str) :
+                    
+                    insertCenter_xx = [xInn1, xInn2, xMid2, xOut1, xOut2]
+                    insertCenter_yy = [yInn1, yInn2, yMid2, yOut1, yOut2]
+                
                 
                 for iInsert, insertPos in enumerate(zip(insertCenter_xx, insertCenter_yy)) :
                     
                     insertLabel = "%s_ins%d" %(module2SLabel, iInsert+1)
+                    insertLabel_local = "%d" %(iInsert+1)
                     
                     insertDisk = matplotlib.patches.Circle(insertPos, radius = insert_outR, color = color, fill = False, picker = True, label = insertLabel, zorder = constants.zorder_geometryMesh)
                     axis_imgDee.add_patch(insertDisk)
                     l_pickableArtist.append(insertDisk)
                     
                     self.d_geomObj[module2SLabel].add_geometryArtist(insertDisk, insertLabel)
+                    axis_imgDee.text(
+                        x = insertPos[0],
+                        y = insertPos[1]-insert_outR,
+                        s = insertLabel_local,
+                        size = "small",
+                        horizontalalignment = "center",
+                        verticalalignment = "bottom",
+                        zorder = constants.zorder_geometryText,
+                    )
                     
                     insertText = matplotlib.text.Annotation(
-                        text = insertLabel,
+                        text = insertLabel_local,
                         xy = (insertPos[0], insertPos[1]-insert_outR),
                         size = "small",
                         horizontalalignment = "center",
                         verticalalignment = "bottom",
                         zorder = constants.zorder_geometryText,
+                        #annotation_clip = False,
                     )
                     
                     self.d_geomObj[module2SLabel].add_geometryArtist(insertText, "%s_label" %(insertLabel))
@@ -505,19 +576,24 @@ class GeometryInfo :
                 
                 
                 ang = 90 - (180-phi_deg) + 90
-                
                 ang = (ang-180) if (ang > 90) else ang
                 
-                axis_imgDee.text(
-                    0.5*(xMid1+xMid2),
-                    0.5*(yMid1+yMid2),
-                    module2SLabel,
+                module2SText = matplotlib.text.Annotation(
+                    text = module2SLabel,
+                    xy = (0.5*(xMid1+xMid2), 0.5*(yMid1+yMid2)),
                     rotation = ang,
                     size = "small",
                     horizontalalignment = "center",
                     verticalalignment = "center",
                     zorder = constants.zorder_geometryText,
+                    #annotation_clip = False,
                 )
+                
+                axis_imgDee.add_artist(module2SText)
+                self.d_geomObj[module2SLabel].add_geometryArtist(module2SText, module2SLabel)
+                
+                
+                
         
         #axis_imgDee.set_xticks([self.origin_x0], minor = True)
         #axis_imgDee.set_yticks([self.origin_y0], minor = True)
@@ -537,6 +613,115 @@ class GeometryInfo :
         #self.mplcursor.connect(
         #    "add", lambda sel: sel.annotation.set_text(sel.artist.get_label())
         #)
+        
+        if (self.args.moduleType == constants.module_2S_str) :
+            
+            self.draw_coolingCircuits2S()
+            
+            #for circuitLabel in self.d_coolCirc2S :
+            #    
+            #    self.d_coolCirc2SInfo[circuitLabel].draw()
+        
+        
+        #self.draw_coolingCircuits()
+    
+    
+    def draw_coolingCircuits2S(self) :
+        
+        l_line = []
+        d_insertTempAnnotation = {}
+        
+        for circuitLabel in self.d_coolCirc2S :
+            
+            self.d_coolCirc2SInfo[circuitLabel].draw()
+            
+            l_line.append(self.d_coolCirc2SInfo[circuitLabel].line)
+            
+            d_insertTempAnnotation[circuitLabel] = self.d_coolCirc2SInfo[circuitLabel].l_annotation
+        
+        legend = self.axis_coolCirc.legend()
+        d_legline = {}
+        d_legtext = {}
+        
+        for legtext, legline, origline in zip(legend.texts, legend.get_lines(), l_line):
+            
+            legline.set_picker(True)
+            legline.set_pickradius(3)
+            d_legline[legline] = origline
+            d_legtext[legline] = legtext
+        
+        def on_pick_legend(event) :
+            
+            legline = event.artist
+            
+            if (legline not in d_legline) :
+                
+                return
+            
+            origline = d_legline[legline]
+            visible = not origline.get_visible()
+            origline.set_visible(visible)
+            
+            alpha = 1.0 if visible else 0.3
+            
+            legline.set_alpha(alpha)
+            legline._legmarker.set_alpha(alpha)
+            d_legtext[legline].set_alpha(alpha)
+            
+            # Hide the annotations
+            label = origline.get_label()
+            
+            for text in d_insertTempAnnotation[label] :
+                
+                text.set_visible(False)
+            
+            self.fig_coolCirc.canvas.draw()
+        
+        def on_pick_line(event, pickradius = 5) :
+            
+            pickradius2 = pickradius*pickradius
+            
+            artist = event.artist
+            label = artist.get_label()
+            
+            if (artist not in l_line or not artist.get_visible()) :
+                
+                return
+            
+            mouseevent = event.mouseevent
+            
+            clickX = mouseevent.xdata
+            clickY = mouseevent.ydata
+            clickX, clickY = self.axis_coolCirc.transData.transform_point([clickX, clickY])
+            
+            xdata = artist.get_xdata()
+            ydata = artist.get_ydata()
+            
+            a_dist2 = []
+            
+            for px, py in zip(xdata, ydata) :
+                
+                px, py = self.axis_coolCirc.transData.transform_point([px, py])
+                dist2 = (px - clickX)**2 + (py - clickY)**2
+                a_dist2.append(dist2)
+            
+            idx_minDist = numpy.argmin(a_dist2)
+            minDist2 = a_dist2[idx_minDist]
+            
+            if (minDist2 > pickradius2) :
+                
+                return
+            
+            d_insertTempAnnotation[label][idx_minDist].set_visible(not d_insertTempAnnotation[label][idx_minDist].get_visible())
+            
+            self.fig_coolCirc.canvas.draw()
+        
+        self.fig_coolCirc.canvas.mpl_connect("pick_event", on_pick_legend)
+        self.fig_coolCirc.canvas.mpl_connect("pick_event", on_pick_line)
+        
+        self.axis_coolCirc.autoscale_view()
+        self.fig_coolCirc.tight_layout()
+        self.fig_coolCirc.canvas.draw()
     
     
     def on_pick(self, event) :

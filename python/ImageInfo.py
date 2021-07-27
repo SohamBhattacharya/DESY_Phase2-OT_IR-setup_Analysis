@@ -235,6 +235,18 @@ class ImageInfo :
         
         print("minTemp %f, maxTemp %f" %(self.minTemp, self.maxTemp))
         
+        
+        # CAD image
+        self.arr_cadImg = None
+        
+        if (args.cadImage is not None) :
+            
+            self.arr_cadImg = numpy.array(PIL.Image.open(args.cadImage))
+            self.mmtopixCad = eval(str(args.mmtopixCad))
+            self.origin_x0_cad = eval(str(args.cadImageOrigin[0]))
+            self.origin_y0_cad = eval(str(args.cadImageOrigin[1]))
+        
+        
         self.colormap = matplotlib.cm.get_cmap("nipy_spectral").copy()
         self.colormap.set_under(color = "w")
         
@@ -292,11 +304,11 @@ class ImageInfo :
         
         l_cfoamInfo = []
         
-        for key in self.d_cfoamInfo :
+        for key in self.d_geomObj :
             
-            if (self.l_inputFileName[self.d_cfoamInfo[key].imgIdx] == fName) :
+            if (self.l_inputFileName[self.d_geomObj[key].imgIdx] == fName) :
                 
-                l_cfoamInfo.append(self.d_cfoamInfo[key])
+                l_cfoamInfo.append(self.d_geomObj[key])
                 
         
         return l_cfoamInfo
@@ -313,23 +325,30 @@ class ImageInfo :
         
         if (recreate) :
             
-            try:
-                
-                self.tkroot_stitchedDee.destroy()
-                self.tkroot_allCfoams.destroy()
-                self.tkroot_allImages.destroy()
+            l_destroy = [
+                "self.tkroot_stitchedDee.destroy()",
+                "self.tkroot_allModules.destroy()",
+                "self.tkroot_allImages.destroy()",
+                "self.tkroot_cadImg.destroy()",
+            ]
             
-            except: 
+            for cmd in l_destroy :
                 
-                pass
+                try:
+                    
+                    eval(cmd)
+                
+                except: 
+                    
+                    pass
             
             #if (hasattr(self, "tkroot_stitchedDee")) :
             #    
             #    self.tkroot_stitchedDee.destroy()
             #
-            #if (hasattr(self, "tkroot_allCfoams") and tkinter.Toplevel.winfo_exists(self.tkroot_allCfoams)) :
+            #if (hasattr(self, "tkroot_allModules") and tkinter.Toplevel.winfo_exists(self.tkroot_allModules)) :
             #    
-            #    self.tkroot_allCfoams.destroy()
+            #    self.tkroot_allModules.destroy()
             #
             #if (hasattr(self, "tkroot_allImages") and tkinter.Toplevel.winfo_exists(self.tkroot_allImages)) :
             #    
@@ -375,7 +394,7 @@ class ImageInfo :
                 vmin = self.minTemp,
                 vmax = self.maxTemp,
                 zorder = constants.zorder_deeImage,
-                picker = True,
+                #picker = True,
                 label = self.l_inputFileName[imgIdx],
                 #animated = False,
             )
@@ -412,31 +431,111 @@ class ImageInfo :
         
         
         # Toolbar
-        self.tbar_stitchedDee = NavigationToolbar2Tk(self.fig_stitchedDee.canvas, self.tkroot_stitchedDee)
-        self.tbar_stitchedDee.update()
+        tbar_stitchedDee = NavigationToolbar2Tk(self.fig_stitchedDee.canvas, self.tkroot_stitchedDee)
+        tbar_stitchedDee.update()
         self.fig_stitchedDee.canvas.get_tk_widget().pack(side = tkinter.TOP, fill = tkinter.BOTH, expand = 1)
     
     
-    def show_allCfoams(self) :
+    def show_cadImg(self) :
+        
+        if (self.arr_cadImg is None) :
+            
+            return
+        
+        if (hasattr(self, "tkroot_cadImg") and tkinter.Toplevel.winfo_exists(self.tkroot_cadImg)) :
+            
+            self.tkroot_cadImg.lift()
+            
+            return
         
         gc.collect()
         
-        self.tkroot_allCfoams = tkinter.Toplevel(class_ = "All carbon foams")
-        self.tkroot_allCfoams.wm_title("All carbon foams")
-        self.tkroot_stitchedDee.bind_all("<Button-1>", lambda event: event.widget.focus_set())
+        self.tkroot_cadImg = tkinter.Toplevel(class_ = "CAD geometry image")
+        self.tkroot_cadImg.wm_title("CAD geometry image")
+        self.tkroot_cadImg.bind_all("<Button-1>", lambda event: event.widget.focus_set())
         
-        scrollframe = ScrollableFrame.ScrollableFrame(self.tkroot_allCfoams)
+        
+        self.fig_cadImg = matplotlib.figure.Figure(figsize = [10, 6])
+        self.fig_cadImg.canvas = FigureCanvasTkAgg(self.fig_cadImg, master = self.tkroot_cadImg)
+        
+        self.fig_cadImg.canvas.mpl_connect("pick_event", self.on_pick)
+        
+        self.axis_cadImg = self.fig_cadImg.add_subplot(1, 1, 1)
+        self.axis_cadImg.set_aspect("equal", "box")
+        
+        self.axis_stitchedDee.autoscale(enable = True, tight = True)
+        
+        nRow_cadImg, nCol_cadImg, nLayer_cadImg = self.arr_cadImg.shape
+        
+        width_cadImg  = self.unitConv.mm_to_pix(nCol_cadImg / self.mmtopixCad)
+        height_cadImg = self.unitConv.mm_to_pix(nRow_cadImg / self.mmtopixCad)
+        
+        cenX_cadImg = self.unitConv.mm_to_pix(self.origin_x0_cad / self.mmtopixCad)
+        cenY_cadImg = self.unitConv.mm_to_pix(self.origin_y0_cad / self.mmtopixCad)
+        
+        cadImgExtent_pixelX = [-cenX_cadImg + self.origin_x0, -cenX_cadImg + self.origin_x0 + width_cadImg]
+        cadImgExtent_pixelY = [-cenY_cadImg + self.origin_y0, -cenY_cadImg + self.origin_y0 + height_cadImg]
+        
+        self.axis_cadImg.imshow(
+            self.arr_cadImg,
+            origin = "upper",
+            extent = cadImgExtent_pixelX+cadImgExtent_pixelY[::-1],
+            #cmap = self.colormap,
+            #vmin = self.minTemp,
+            #vmax = self.maxTemp,
+            zorder = constants.zorder_deeImage,
+            #picker = True,
+            #label = self.l_inputFileName[imgIdx],
+            #animated = False,
+            alpha = 0.5,
+        )
+        
+        for key in self.d_geomObj :
+            
+            self.d_geomObj[key].drawGeomArtists(axis = self.axis_cadImg, reset_artists = True)
+        
+        self.axis_cadImg.axhline(y = self.origin_y0, color = "k", linewidth = 0.8, linestyle = "--")
+        self.axis_cadImg.axvline(x = self.origin_x0, color = "k", linewidth = 0.8, linestyle = "--")
+        
+        self.axis_cadImg.autoscale_view()
+        
+        self.fig_cadImg.tight_layout()
+        self.fig_cadImg.canvas.draw()
+        
+        
+        # Toolbar
+        tbar = NavigationToolbar2Tk(self.fig_cadImg.canvas, self.tkroot_cadImg)
+        tbar.update()
+        self.fig_cadImg.canvas.get_tk_widget().pack(side = tkinter.TOP, fill = tkinter.BOTH, expand = 1)
+        
+    
+    
+    def show_allModules(self) :
+        
+        if (hasattr(self, "tkroot_allModules") and tkinter.Toplevel.winfo_exists(self.tkroot_allModules)) :
+            
+            self.tkroot_allModules.lift()
+            
+            return
+        
+        gc.collect()
+        
+        self.tkroot_allModules = tkinter.Toplevel(class_ = "All modules")
+        self.tkroot_allModules.wm_title("All modules")
+        self.tkroot_allModules.bind_all("<Button-1>", lambda event: event.widget.focus_set())
+        
+        scrollframe = ScrollableFrame.ScrollableFrame(self.tkroot_allModules)
         frame = scrollframe.scrollable_frame
         
-        nPlot = len(self.d_cfoamInfo)
+        nPlot = len(self.d_geomObj)
         nPlot_col = 4
         nPlot_row = int(nPlot/nPlot_col) + int(nPlot%nPlot_col > 0)
         
-        l_sortedKey = utils.naturalsort(list(self.d_cfoamInfo.keys()))
+        l_sortedKey = utils.naturalsort(list(self.d_geomObj.keys()))
         
         for count, key in enumerate(l_sortedKey) :
             
-            imgIdx = self.d_cfoamInfo[key].imgIdx
+            imgIdx = self.d_geomObj[key].imgIdx
             
             arr_img = self.l_inputData[imgIdx]
             
@@ -473,9 +572,9 @@ class ImageInfo :
                 label = label,
             )
             
-            self.d_cfoamInfo[key].drawGeomArtists(axis = axis, reset_artists = True)
+            self.d_geomObj[key].drawGeomArtists(axis = axis, reset_artists = True)
             
-            axis.set_title(self.d_cfoamInfo[key].label, fontsize = 9, pad = 0.05)
+            axis.set_title(self.d_geomObj[key].label, fontsize = 9, pad = 0.05)
             
             axis.tick_params(axis = "both", which = "major", labelsize = 7)
             
@@ -498,33 +597,39 @@ class ImageInfo :
         ##for child in frame.winfo_children():
         ##    child.destroy()
         #
-        #self.tkroot_allCfoams.destroy()
+        #self.tkroot_allModules.destroy()
         #
         #gc.collect()
         
         ## Toolbar
-        #self.tbar_allCfoams = NavigationToolbar2Tk(self.fig_allCfoams.canvas, self.tkroot_allCfoams)
-        #self.tbar_allCfoams.update()
-        #self.fig_allCfoams.canvas.get_tk_widget().pack(side = tkinter.TOP, fill = tkinter.BOTH, expand = 1)
+        #self.tbar_allModules = NavigationToolbar2Tk(self.fig_allModules.canvas, self.tkroot_allModules)
+        #self.tbar_allModules.update()
+        #self.fig_allModules.canvas.get_tk_widget().pack(side = tkinter.TOP, fill = tkinter.BOTH, expand = 1)
         #
-        #self.label_allCfoams = tkinter.Entry(master = self.tkroot_allCfoams, state = "readonly")
-        #self.label_allCfoams.pack(side = tkinter.LEFT, fill = tkinter.X, expand = True)
-        ##ttk.Separator(self.tkroot_allCfoams, orient = tkinter.VERTICAL).pack(side = tkinter.LEFT, fill = tkinter.Y, padx = 5, pady = 5)
+        #self.label_allModules = tkinter.Entry(master = self.tkroot_allModules, state = "readonly")
+        #self.label_allModules.pack(side = tkinter.LEFT, fill = tkinter.X, expand = True)
+        ##ttk.Separator(self.tkroot_allModules, orient = tkinter.VERTICAL).pack(side = tkinter.LEFT, fill = tkinter.Y, padx = 5, pady = 5)
     
     
     def show_allImages(self) :
+        
+        if (hasattr(self, "tkroot_allImages") and tkinter.Toplevel.winfo_exists(self.tkroot_allImages)) :
+            
+            self.tkroot_allImages.lift()
+            
+            return
         
         gc.collect()
         
         self.tkroot_allImages = tkinter.Toplevel(class_ = "All images")
         self.tkroot_allImages.wm_title("All images")
-        self.tkroot_stitchedDee.bind_all("<Button-1>", lambda event: event.widget.focus_set())
+        self.tkroot_allImages.bind_all("<Button-1>", lambda event: event.widget.focus_set())
         
         self.fig_allImages = matplotlib.figure.Figure(figsize = [12, 9])
         self.fig_allImages.canvas = FigureCanvasTkAgg(self.fig_allImages, master = self.tkroot_allImages)
         self.fig_allImages.canvas.get_tk_widget().pack(side = tkinter.TOP, fill = tkinter.BOTH, expand = True)
         
-        #self.fig_allImages.canvas.mpl_connect("pick_event", self.on_pick_image)
+        self.fig_allImages.canvas.mpl_connect("pick_event", self.on_pick_image)
         
         nPlot = len(self.l_inputData)
         #nPlot_row = 10
@@ -600,8 +705,8 @@ class ImageInfo :
         self.label_imgName = tkinter.Entry(master = self.tkroot_allImages, state = "readonly")
         self.label_imgName.pack(side = tkinter.TOP, fill = tkinter.X, expand = True)
         
-        self.label_assocCfoam = tkinter.Entry(master = self.tkroot_allImages, state = "readonly")
-        self.label_assocCfoam.pack(side = tkinter.TOP, fill = tkinter.X, expand = True)
+        self.label_assocModule = tkinter.Entry(master = self.tkroot_allImages, state = "readonly")
+        self.label_assocModule.pack(side = tkinter.TOP, fill = tkinter.X, expand = True)
         
         self.tbar_allImages = NavigationToolbar2Tk(self.fig_allImages.canvas, self.tkroot_allImages)
         self.tbar_allImages.update()
@@ -639,9 +744,23 @@ class ImageInfo :
         self.origin_y0 = y0
     
     
-    def set_cfoamInfo(self, d_cfoamInfo) :
+    def set_geomObjInfo(self, d_geomObj) :
         
-        self.d_cfoamInfo = d_cfoamInfo
+        self.d_geomObj = d_geomObj
+    
+    
+    def on_pick(self, event) :
+        
+        artist = event.artist
+        
+        label = artist.get_label()
+        print("Picked:", artist, label)
+        
+        label = label.split("_")[0]
+        
+        if (label in self.d_geomObj) :
+            
+            self.d_geomObj[label].on_pick(event)
     
     
     def on_pick_image(self, event) :
@@ -684,15 +803,15 @@ class ImageInfo :
         
         l_cfoamInfo = self.get_cfoamInfo(label)
         
-        text = "Associated c-foams: %s" %(", ".join(cf.label for cf in l_cfoamInfo))
+        text = "Associated module(s): %s" %(", ".join(cf.label for cf in l_cfoamInfo))
         
         
         
-        self.label_assocCfoam.config(state = "normal")
-        #self.label_assocCfoam.config(width = len(text))
-        self.label_assocCfoam.delete(0, tkinter.END)
-        self.label_assocCfoam.insert(0, text)
-        self.label_assocCfoam.config(state = "readonly")
+        self.label_assocModule.config(state = "normal")
+        #self.label_assocModule.config(width = len(text))
+        self.label_assocModule.delete(0, tkinter.END)
+        self.label_assocModule.insert(0, text)
+        self.label_assocModule.config(state = "readonly")
         
         
         

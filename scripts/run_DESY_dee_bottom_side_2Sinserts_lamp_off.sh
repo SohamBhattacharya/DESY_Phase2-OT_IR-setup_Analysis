@@ -12,3 +12,7 @@ python -u python/stitch_images.py \
     --stepxtomm 1920/34961 \
     --stepytomm 895/711538 \
     --mmtopix 364/93 \
+    --cadImage "data/dee_cad_bottom_side.png" \
+    --cadImageOrigin 1513 105 \
+    --mmtopixCad 2492/1920 \
+    --coolCircFiles "data/coolingCircuit_bottom_side_2Sinserts.yml" \

@@ -578,7 +578,7 @@ class CarbonFoamInfo :
         artist = event.artist
         
         label = artist.get_label()
-        print("Picked:", artist, label)
+        #print("Picked:", artist, label)
         
         label = label.split("_")[0]
         
@@ -590,7 +590,7 @@ class CarbonFoamInfo :
         clickX = event.mouseevent.xdata
         clickY = event.mouseevent.ydata
         
-        print(event_key, event_button, clickX, clickY)
+        #print(event_key, event_button, clickX, clickY)
         
         #if (clickX is None or clickY is None) :
         #    

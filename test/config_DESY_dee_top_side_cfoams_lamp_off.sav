@@ -568,6 +568,6 @@ args:
   originX: 3640.0
   originY: 227.0
   ringOpt: odd
-  side: null
+  side: top
   stepxtomm: 1920/34952
   stepytomm: 895/716059

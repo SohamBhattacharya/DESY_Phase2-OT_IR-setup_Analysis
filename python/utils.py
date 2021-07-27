@@ -1,3 +1,4 @@
+import copy
 import re
 
 
@@ -17,6 +18,13 @@ def reset_artist(artist) :
     
     artist.axes = None
     artist.figure = None
+
+
+def copy_and_reset_artist(artist) :
+    
+    artist_copy = reset_artist(copy.copy(artist))
+    
+    return artist_copy
 
 
 def naturalsort(l) :

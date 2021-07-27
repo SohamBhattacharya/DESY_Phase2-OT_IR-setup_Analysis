@@ -143,22 +143,52 @@ def main() :
     
     parser.add_argument(
         "--stepxtomm",
-        help = "Conversion factor (can be valid math operations): mm/(motor step x)",
+        help = "Conversion factor (can be valid math operations): <mm>/<motor step x>",
         type = str,
         required = False,
     )
     
     parser.add_argument(
         "--stepytomm",
-        help = "Conversion factor (can be valid math operations): mm/(motor step y)",
+        help = "Conversion factor (can be valid math operations): <mm>/<motor step y>",
         type = str,
         required = False,
     )
     
     parser.add_argument(
         "--mmtopix",
-        help = "Conversion factor (can be valid math operations): pixel/mm",
+        help = "Conversion factor (can be valid math operations): <pixel>/<mm>",
         type = str,
+        required = False,
+    )
+    
+    parser.add_argument(
+        "--cadImage",
+        help = "CAD image",
+        type = str,
+        required = False,
+    )
+    
+    parser.add_argument(
+        "--cadImageOrigin",
+        help = "CAD image origin: <x> <y>",
+        type = float,
+        nargs = 2,
+        required = False,
+    )
+    
+    parser.add_argument(
+        "--mmtopixCad",
+        help = "Conversion factor for CAD image (can be valid math operations): <pixel>/<mm>",
+        type = str,
+        required = False,
+    )
+    
+    parser.add_argument(
+        "--coolCircFiles",
+        help = "List of yaml files containing the cooling circuit info",
+        type = str,
+        nargs = "*",
         required = False,
     )
     
@@ -277,10 +307,15 @@ def main() :
     row = 0
     
     
+    button = tkinter.Button(master = tkroot, text = "CAD image", takefocus = 0, command = imgInfo.show_cadImg)
+    button.grid(row = row, column = 1, sticky = "ew")
+    row += 1
+    
+    
     button = tkinter.Button(master = tkroot, text = "All images", takefocus = 0, command = imgInfo.show_allImages)
     button.grid(row = row, column = 0, sticky = "ew")
     
-    button = tkinter.Button(master = tkroot, text = "All C-foams", takefocus = 0, command = imgInfo.show_allCfoams)
+    button = tkinter.Button(master = tkroot, text = "All modules", takefocus = 0, command = imgInfo.show_allModules)
     button.grid(row = row, column = 1, sticky = "ew")
     row += 1
     

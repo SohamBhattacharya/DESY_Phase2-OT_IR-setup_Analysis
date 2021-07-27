@@ -39,7 +39,7 @@ class Module2SInfo :
         imgIdx,
         label,
         axis_2Sinsert,
-        #marker_2Sinsert,
+        d_coolCirc,
     ) :
         
         self.imgInfo = imgInfo
@@ -55,7 +55,7 @@ class Module2SInfo :
         self.d_drawnArtist = {}
         
         self.axis_2Sinsert = axis_2Sinsert
-        #self.marker_profile = marker_profile
+        self.d_coolCirc = d_coolCirc
         
         self.tkroot_img = None
         self.fig_img = None
@@ -193,8 +193,13 @@ class Module2SInfo :
         
         nPix = len(rr)
         
-        #minTemp = min(self.imgInfo.l_inputData[self.imgIdx][rr, cc])
+        ##minTemp = min(self.imgInfo.l_inputData[self.imgIdx][rr, cc])
         minTemp = self.imgInfo.l_inputData[self.imgIdx][rr, cc].min()
+        
+        #arr = self.imgInfo.l_inputData[self.imgIdx][rr, cc]
+        ##print(arr.shape)
+        #sorted_idx = list(zip(*numpy.unravel_index(numpy.argsort(arr, axis = None), arr.shape)))
+        #minTemp = (arr[sorted_idx[0]] + arr[sorted_idx[1]] + arr[sorted_idx[2]] + arr[sorted_idx[3]] + arr[sorted_idx[4]]) / 5
         
         return minTemp
     
@@ -465,7 +470,7 @@ class Module2SInfo :
         artist = event.artist
         
         label = artist.get_label()
-        print("Picked:", artist, label)
+        #print("Picked:", artist, label)
         
         label = label.split("_")[0]
         
@@ -477,7 +482,7 @@ class Module2SInfo :
         clickX = event.mouseevent.xdata
         clickY = event.mouseevent.ydata
         
-        print(event_key, event_button, clickX, clickY)
+        #print(event_key, event_button, clickX, clickY)
         
         #if (clickX is None or clickY is None) :
         #    
@@ -530,6 +535,10 @@ class Module2SInfo :
                     axis = self.axis_2Sinsert,
                     update = True,
                 )
+        
+        for coolCircLabel in self.d_coolCirc :
+            
+            self.d_coolCirc[coolCircLabel].update(l_insertLabel = list(self.d_insertDisk.keys()))
     
     
     def update_imgExtent(self, new_extent, dX, dY) :

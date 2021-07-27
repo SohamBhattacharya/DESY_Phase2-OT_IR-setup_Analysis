@@ -4,8 +4,12 @@ python -u python/stitch_images.py \
     --geomFile "data/geometry_carbonFoam.xlsx" \
     --moduleType "PS" \
     --ringOpt "odd" \
+    --side "bottom" \
     --originX 3390 \
     --originY 320 \
     --stepxtomm 1920/34952 \
     --stepytomm 895/716059 \
     --mmtopix 319/55.26 \
+    --cadImage "data/dee_cad_bottom_side.png" \
+    --cadImageOrigin 1513 105 \
+    --mmtopixCad 2492/1920 \
