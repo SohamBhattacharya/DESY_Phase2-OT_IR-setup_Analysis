@@ -1,0 +1,18 @@
+python -u python/stitch_images.py \
+    --inputDir "/media/soham/D/Programs/DESY/IR-setup/Data/2021-07-30/DESY_dee/bottom_side/lamp_off" \
+    --inputPattern "2Sinserts_m15deg_lampoff_XXX_YYY.asc" \
+    --geomFile "data/geometry_carbonFoam.xlsx" \
+    --moduleType "2S" \
+    --ringOpt "odd" \
+    --side "bottom" \
+    --originX 0 \
+    --originY 0 \
+    --motorRefX 26775 0 \
+    --motorRefY -112523.5 -80 \
+    --stepxtomm 1920/34961 \
+    --stepytomm 895/711538 \
+    --mmtopix 364/93 \
+    --cadImage "data/dee_cad_bottom_side.png" \
+    --cadImageOrigin 1513 105 \
+    --mmtopixCad 2492/1920 \
+    --coolCircFiles "data/coolingCircuit_bottom_side_2Sinserts.yml" \

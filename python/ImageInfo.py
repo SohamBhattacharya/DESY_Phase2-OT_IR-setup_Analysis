@@ -81,6 +81,10 @@ class ImageInfo :
                 
                 motorX -= 2**32
             
+            if (abs(motorY-2**32) < motorY) :
+                
+                motorY -= 2**32
+            
             print(motorX, motorY)
             
             self.l_motorX.append(motorX)
@@ -397,6 +401,7 @@ class ImageInfo :
                 #picker = True,
                 label = self.l_inputFileName[imgIdx],
                 #animated = False,
+                alpha = 0.75,
             )
             
             if (not imgIdx) :
