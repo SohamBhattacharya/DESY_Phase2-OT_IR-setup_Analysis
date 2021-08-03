@@ -107,10 +107,13 @@ class GeometryInfo :
             
             self.tkroot_profile.destroy()
         
-        
         if (recreate and hasattr(self, "tkroot_2Sinsert")) :
             
             self.tkroot_2Sinsert.destroy()
+        
+        if (recreate and hasattr(self, "tkroot_coolCirc")) :
+            
+            self.tkroot_coolCirc.destroy()
         
         if (recreate and hasattr(self, "d_geomObj")) :
             
@@ -642,13 +645,19 @@ class GeometryInfo :
         legend = self.axis_coolCirc.legend()
         d_legline = {}
         d_legtext = {}
+        d_legCoolCirc = {}
         
-        for legtext, legline, origline in zip(legend.texts, legend.get_lines(), l_line):
+        for legtext, legline, origline in zip(legend.texts, legend.get_lines(), l_line) :
             
             legline.set_picker(True)
             legline.set_pickradius(3)
             d_legline[legline] = origline
             d_legtext[legline] = legtext
+        
+        for legline, coolCirc2SInfo in zip(legend.get_lines(), list(self.d_coolCirc2SInfo.values())) :
+            
+            d_legCoolCirc[legline] = coolCirc2SInfo
+        
         
         def on_pick_legend(event) :
             
@@ -657,10 +666,8 @@ class GeometryInfo :
             if (legline not in d_legline) :
                 
                 return
-            
-            origline = d_legline[legline]
-            visible = not origline.get_visible()
-            origline.set_visible(visible)
+                
+            visible = not d_legCoolCirc[legline].line.get_visible()
             
             alpha = 1.0 if visible else 0.3
             
@@ -668,14 +675,10 @@ class GeometryInfo :
             legline._legmarker.set_alpha(alpha)
             d_legtext[legline].set_alpha(alpha)
             
-            # Hide the annotations
-            label = origline.get_label()
-            
-            for text in d_insertTempAnnotation[label] :
-                
-                text.set_visible(False)
+            d_legCoolCirc[legline].set_visible(visible = visible)
             
             self.fig_coolCirc.canvas.draw()
+        
         
         def on_pick_line(event, pickradius = 5) :
             
