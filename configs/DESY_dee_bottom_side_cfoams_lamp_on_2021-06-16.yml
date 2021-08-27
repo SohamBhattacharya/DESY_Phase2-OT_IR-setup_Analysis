@@ -1,0 +1,565 @@
+GeometryInfo:
+  R1/CF1: cfoam_m15deg_lampon_4294964878_287200.asc
+  R1/CF10: cfoam_m15deg_lampon_6247_224680.asc
+  R1/CF2: cfoam_m15deg_lampon_4294964878_287200.asc
+  R1/CF3: cfoam_m15deg_lampon_4294965683_336533.asc
+  R1/CF4: cfoam_m15deg_lampon_4294966803_371849.asc
+  R1/CF5: cfoam_m15deg_lampon_797_390283.asc
+  R1/CF6: cfoam_m15deg_lampon_2360_393008.asc
+  R1/CF7: cfoam_m15deg_lampon_3712_374705.asc
+  R1/CF8: cfoam_m15deg_lampon_4889_335055.asc
+  R1/CF9: cfoam_m15deg_lampon_5739_284139.asc
+  R3/CF1: cfoam_m15deg_lampon_4294964878_287200.asc
+  R3/CF10: cfoam_m15deg_lampon_6608_358373.asc
+  R3/CF11: cfoam_m15deg_lampon_7353_296959.asc
+  R3/CF12: cfoam_m15deg_lampon_7753_223222.asc
+  R3/CF2: cfoam_m15deg_lampon_4294964878_287200.asc
+  R3/CF3: cfoam_m15deg_lampon_4294964181_361709.asc
+  R3/CF4: cfoam_m15deg_lampon_4294965304_405241.asc
+  R3/CF5: cfoam_m15deg_lampon_4294966651_442806.asc
+  R3/CF6: cfoam_m15deg_lampon_913_462889.asc
+  R3/CF7: cfoam_m15deg_lampon_2527_463292.asc
+  R3/CF8: cfoam_m15deg_lampon_4125_442066.asc
+  R3/CF9: cfoam_m15deg_lampon_5472_406910.asc
+  R5/CF1: cfoam_m15deg_lampon_4294964878_287200.asc
+  R5/CF10: cfoam_m15deg_lampon_3883_516424.asc
+  R5/CF11: cfoam_m15deg_lampon_5277_490921.asc
+  R5/CF12: cfoam_m15deg_lampon_6494_455644.asc
+  R5/CF13: cfoam_m15deg_lampon_7547_409539.asc
+  R5/CF14: cfoam_m15deg_lampon_8419_355769.asc
+  R5/CF15: cfoam_m15deg_lampon_8987_291217.asc
+  R5/CF16: cfoam_m15deg_lampon_9363_216773.asc
+  R5/CF2: cfoam_m15deg_lampon_4294961473_421675.asc
+  R5/CF3: cfoam_m15deg_lampon_4294963037_407949.asc
+  R5/CF4: cfoam_m15deg_lampon_4294963037_407949.asc
+  R5/CF5: cfoam_m15deg_lampon_4294964039_451559.asc
+  R5/CF6: cfoam_m15deg_lampon_4294965318_491632.asc
+  R5/CF7: cfoam_m15deg_lampon_4294966679_513455.asc
+  R5/CF8: cfoam_m15deg_lampon_904_529109.asc
+  R5/CF9: cfoam_m15deg_lampon_2338_529109.asc
+  R7/CF1: cfoam_m15deg_lampon_4294961473_421675.asc
+  R7/CF10: cfoam_m15deg_lampon_2532_594858.asc
+  R7/CF11: cfoam_m15deg_lampon_4058_581416.asc
+  R7/CF12: cfoam_m15deg_lampon_5501_557700.asc
+  R7/CF13: cfoam_m15deg_lampon_6909_518555.asc
+  R7/CF14: cfoam_m15deg_lampon_8147_478713.asc
+  R7/CF15: cfoam_m15deg_lampon_9167_424035.asc
+  R7/CF16: cfoam_m15deg_lampon_9979_365989.asc
+  R7/CF17: cfoam_m15deg_lampon_10518_296691.asc
+  R7/CF18: cfoam_m15deg_lampon_10694_225341.asc
+  R7/CF2: cfoam_m15deg_lampon_4294961473_421675.asc
+  R7/CF3: cfoam_m15deg_lampon_4294961473_421675.asc
+  R7/CF4: cfoam_m15deg_lampon_4294961473_421675.asc
+  R7/CF5: cfoam_m15deg_lampon_4294962453_477633.asc
+  R7/CF6: cfoam_m15deg_lampon_4294963746_521197.asc
+  R7/CF7: cfoam_m15deg_lampon_4294965110_555892.asc
+  R7/CF8: cfoam_m15deg_lampon_4294966625_580165.asc
+  R7/CF9: cfoam_m15deg_lampon_897_594858.asc
+  R9/CF1: cfoam_m15deg_lampon_4294958521_434992.asc
+  R9/CF10: cfoam_m15deg_lampon_4294966671_659666.asc
+  R9/CF11: cfoam_m15deg_lampon_2425_660043.asc
+  R9/CF12: cfoam_m15deg_lampon_4116_646034.asc
+  R9/CF13: cfoam_m15deg_lampon_5713_623889.asc
+  R9/CF14: cfoam_m15deg_lampon_7148_594506.asc
+  R9/CF15: cfoam_m15deg_lampon_8515_547718.asc
+  R9/CF16: cfoam_m15deg_lampon_9693_501072.asc
+  R9/CF17: cfoam_m15deg_lampon_10720_439009.asc
+  R9/CF18: cfoam_m15deg_lampon_11480_374880.asc
+  R9/CF19: cfoam_m15deg_lampon_11936_307318.asc
+  R9/CF2: cfoam_m15deg_lampon_4294958521_434992.asc
+  R9/CF20: cfoam_m15deg_lampon_12066_237709.asc
+  R9/CF3: cfoam_m15deg_lampon_4294958521_434992.asc
+  R9/CF4: cfoam_m15deg_lampon_4294958521_434992.asc
+  R9/CF5: cfoam_m15deg_lampon_4294959471_493673.asc
+  R9/CF6: cfoam_m15deg_lampon_4294960633_545153.asc
+  R9/CF7: cfoam_m15deg_lampon_4294961949_589083.asc
+  R9/CF8: cfoam_m15deg_lampon_4294963435_621899.asc
+  R9/CF9: cfoam_m15deg_lampon_4294965057_643969.asc
+  origin_x0: 3824.0
+  origin_y0: 335.0
+ImageInfo:
+  cfoam_m15deg_lampon_10518_296691.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 6097
+    - 7121
+    imgExtent_pixelY: !!python/tuple
+    - 665
+    - 1433
+  cfoam_m15deg_lampon_10694_225341.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 6155
+    - 7179
+    imgExtent_pixelY: !!python/tuple
+    - 175
+    - 943
+  cfoam_m15deg_lampon_10720_439009.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 6175
+    - 7199
+    imgExtent_pixelY: !!python/tuple
+    - 1696
+    - 2464
+  cfoam_m15deg_lampon_10843_206584.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 6221
+    - 7245
+    imgExtent_pixelY: !!python/tuple
+    - 15
+    - 783
+  cfoam_m15deg_lampon_11480_374880.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 6412
+    - 7436
+    imgExtent_pixelY: !!python/tuple
+    - 1231
+    - 1999
+  cfoam_m15deg_lampon_11936_307318.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 6551
+    - 7575
+    imgExtent_pixelY: !!python/tuple
+    - 747
+    - 1515
+  cfoam_m15deg_lampon_11965_204502.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 6576
+    - 7600
+    imgExtent_pixelY: !!python/tuple
+    - 0
+    - 768
+  cfoam_m15deg_lampon_12066_237709.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 6586
+    - 7610
+    imgExtent_pixelY: !!python/tuple
+    - 260
+    - 1028
+  cfoam_m15deg_lampon_2338_529109.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 3528
+    - 4552
+    imgExtent_pixelY: !!python/tuple
+    - 2348
+    - 3116
+  cfoam_m15deg_lampon_2360_393008.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 3524
+    - 4548
+    imgExtent_pixelY: !!python/tuple
+    - 1353
+    - 2121
+  cfoam_m15deg_lampon_2425_660043.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 3572
+    - 4596
+    imgExtent_pixelY: !!python/tuple
+    - 3309
+    - 4077
+  cfoam_m15deg_lampon_2527_463292.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 3583
+    - 4607
+    imgExtent_pixelY: !!python/tuple
+    - 1867
+    - 2635
+  cfoam_m15deg_lampon_2532_594858.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 3576
+    - 4600
+    imgExtent_pixelY: !!python/tuple
+    - 2831
+    - 3599
+  cfoam_m15deg_lampon_3712_374705.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 3959
+    - 4983
+    imgExtent_pixelY: !!python/tuple
+    - 1228
+    - 1996
+  cfoam_m15deg_lampon_3883_516424.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 4013
+    - 5037
+    imgExtent_pixelY: !!python/tuple
+    - 2260
+    - 3028
+  cfoam_m15deg_lampon_4058_581416.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 4069
+    - 5093
+    imgExtent_pixelY: !!python/tuple
+    - 2719
+    - 3487
+  cfoam_m15deg_lampon_4116_646034.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 4097
+    - 5121
+    imgExtent_pixelY: !!python/tuple
+    - 3197
+    - 3965
+  cfoam_m15deg_lampon_4125_442066.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 4090
+    - 5114
+    imgExtent_pixelY: !!python/tuple
+    - 1714
+    - 2482
+  cfoam_m15deg_lampon_4294958521_434992.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 474
+    - 1498
+    imgExtent_pixelY: !!python/tuple
+    - 1691
+    - 2459
+  cfoam_m15deg_lampon_4294959471_493673.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 780
+    - 1804
+    imgExtent_pixelY: !!python/tuple
+    - 2107
+    - 2875
+  cfoam_m15deg_lampon_4294960633_545153.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 1142
+    - 2166
+    imgExtent_pixelY: !!python/tuple
+    - 2484
+    - 3252
+  cfoam_m15deg_lampon_4294961473_421675.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 951
+    - 1975
+    imgExtent_pixelY: !!python/tuple
+    - 1585
+    - 2353
+  cfoam_m15deg_lampon_4294961949_589083.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 1567
+    - 2591
+    imgExtent_pixelY: !!python/tuple
+    - 2790
+    - 3558
+  cfoam_m15deg_lampon_4294962453_477633.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 1252
+    - 2276
+    imgExtent_pixelY: !!python/tuple
+    - 1985
+    - 2753
+  cfoam_m15deg_lampon_4294963037_407949.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 1432
+    - 2456
+    imgExtent_pixelY: !!python/tuple
+    - 1467
+    - 2235
+  cfoam_m15deg_lampon_4294963435_621899.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 2037
+    - 3061
+    imgExtent_pixelY: !!python/tuple
+    - 3033
+    - 3801
+  cfoam_m15deg_lampon_4294963746_521197.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 1651
+    - 2675
+    imgExtent_pixelY: !!python/tuple
+    - 2293
+    - 3061
+  cfoam_m15deg_lampon_4294964039_451559.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 1749
+    - 2773
+    imgExtent_pixelY: !!python/tuple
+    - 1782
+    - 2550
+  cfoam_m15deg_lampon_4294964181_361709.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 1794
+    - 2818
+    imgExtent_pixelY: !!python/tuple
+    - 1134
+    - 1902
+  cfoam_m15deg_lampon_4294964878_287200.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 2028
+    - 3052
+    imgExtent_pixelY: !!python/tuple
+    - 596
+    - 1364
+  cfoam_m15deg_lampon_4294965057_643969.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 2542
+    - 3566
+    imgExtent_pixelY: !!python/tuple
+    - 3182
+    - 3950
+  cfoam_m15deg_lampon_4294965110_555892.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 2097
+    - 3121
+    imgExtent_pixelY: !!python/tuple
+    - 2550
+    - 3318
+  cfoam_m15deg_lampon_4294965304_405241.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 2150
+    - 3174
+    imgExtent_pixelY: !!python/tuple
+    - 1448
+    - 2216
+  cfoam_m15deg_lampon_4294965318_491632.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 2155
+    - 3179
+    imgExtent_pixelY: !!python/tuple
+    - 2071
+    - 2839
+  cfoam_m15deg_lampon_4294965683_336533.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 2271
+    - 3295
+    imgExtent_pixelY: !!python/tuple
+    - 952
+    - 1720
+  cfoam_m15deg_lampon_4294966625_580165.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 2579
+    - 3603
+    imgExtent_pixelY: !!python/tuple
+    - 2722
+    - 3490
+  cfoam_m15deg_lampon_4294966651_442806.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 2578
+    - 3602
+    imgExtent_pixelY: !!python/tuple
+    - 1719
+    - 2487
+  cfoam_m15deg_lampon_4294966671_659666.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 3053
+    - 4077
+    imgExtent_pixelY: !!python/tuple
+    - 3299
+    - 4067
+  cfoam_m15deg_lampon_4294966679_513455.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 2611
+    - 3635
+    imgExtent_pixelY: !!python/tuple
+    - 2241
+    - 3009
+  cfoam_m15deg_lampon_4294966803_371849.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 2628
+    - 3652
+    imgExtent_pixelY: !!python/tuple
+    - 1207
+    - 1975
+  cfoam_m15deg_lampon_4889_335055.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 4308
+    - 5332
+    imgExtent_pixelY: !!python/tuple
+    - 941
+    - 1709
+  cfoam_m15deg_lampon_5277_490921.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 4456
+    - 5480
+    imgExtent_pixelY: !!python/tuple
+    - 2066
+    - 2834
+  cfoam_m15deg_lampon_5472_406910.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 4517
+    - 5541
+    imgExtent_pixelY: !!python/tuple
+    - 1460
+    - 2228
+  cfoam_m15deg_lampon_5501_557700.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 4533
+    - 5557
+    imgExtent_pixelY: !!python/tuple
+    - 2556
+    - 3324
+  cfoam_m15deg_lampon_5713_623889.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 4585
+    - 5609
+    imgExtent_pixelY: !!python/tuple
+    - 3043
+    - 3811
+  cfoam_m15deg_lampon_5739_284139.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 4580
+    - 5604
+    imgExtent_pixelY: !!python/tuple
+    - 578
+    - 1346
+  cfoam_m15deg_lampon_6247_224680.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 4737
+    - 5761
+    imgExtent_pixelY: !!python/tuple
+    - 157
+    - 925
+  cfoam_m15deg_lampon_6494_455644.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 4841
+    - 5865
+    imgExtent_pixelY: !!python/tuple
+    - 1812
+    - 2580
+  cfoam_m15deg_lampon_6608_358373.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 4862
+    - 5886
+    imgExtent_pixelY: !!python/tuple
+    - 1110
+    - 1878
+  cfoam_m15deg_lampon_6909_518555.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 4973
+    - 5997
+    imgExtent_pixelY: !!python/tuple
+    - 2265
+    - 3033
+  cfoam_m15deg_lampon_7148_594506.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 5053
+    - 6077
+    imgExtent_pixelY: !!python/tuple
+    - 2821
+    - 3589
+  cfoam_m15deg_lampon_7353_296959.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 5105
+    - 6129
+    imgExtent_pixelY: !!python/tuple
+    - 667
+    - 1435
+  cfoam_m15deg_lampon_7547_409539.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 5155
+    - 6179
+    imgExtent_pixelY: !!python/tuple
+    - 1485
+    - 2253
+  cfoam_m15deg_lampon_7753_223222.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 5212
+    - 6236
+    imgExtent_pixelY: !!python/tuple
+    - 145
+    - 913
+  cfoam_m15deg_lampon_797_390283.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 3035
+    - 4059
+    imgExtent_pixelY: !!python/tuple
+    - 1340
+    - 2108
+  cfoam_m15deg_lampon_8147_478713.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 5366
+    - 6390
+    imgExtent_pixelY: !!python/tuple
+    - 1978
+    - 2746
+  cfoam_m15deg_lampon_8419_355769.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 5439
+    - 6463
+    imgExtent_pixelY: !!python/tuple
+    - 1093
+    - 1861
+  cfoam_m15deg_lampon_8515_547718.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 5482
+    - 6506
+    imgExtent_pixelY: !!python/tuple
+    - 2476
+    - 3244
+  cfoam_m15deg_lampon_897_594858.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 3067
+    - 4091
+    imgExtent_pixelY: !!python/tuple
+    - 2822
+    - 3590
+  cfoam_m15deg_lampon_8987_291217.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 5612
+    - 6636
+    imgExtent_pixelY: !!python/tuple
+    - 633
+    - 1401
+  cfoam_m15deg_lampon_904_529109.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 3071
+    - 4095
+    imgExtent_pixelY: !!python/tuple
+    - 2352
+    - 3120
+  cfoam_m15deg_lampon_913_462889.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 3072
+    - 4096
+    imgExtent_pixelY: !!python/tuple
+    - 1864
+    - 2632
+  cfoam_m15deg_lampon_9167_424035.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 5689
+    - 6713
+    imgExtent_pixelY: !!python/tuple
+    - 1583
+    - 2351
+  cfoam_m15deg_lampon_9363_216773.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 5733
+    - 6757
+    imgExtent_pixelY: !!python/tuple
+    - 122
+    - 890
+  cfoam_m15deg_lampon_9693_501072.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 5856
+    - 6880
+    imgExtent_pixelY: !!python/tuple
+    - 2139
+    - 2907
+  cfoam_m15deg_lampon_9979_365989.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 5931
+    - 6955
+    imgExtent_pixelY: !!python/tuple
+    - 1165
+    - 1933
+args:
+  cadImage: data/dee_cad_bottom_side.png
+  cadImageOrigin:
+  - 1513.0
+  - 105.0
+  coolCircFiles: null
+  geomFile: data/geometry_carbonFoam.xlsx
+  inputDir: /media/soham/D/Programs/DESY/IR-setup/Data/2021-06-16/DESY_dee_bottom_side/lamp_on
+  inputEncoding: ISO-8859-1
+  inputPattern: cfoam_m15deg_lampon_XXX_YYY.asc
+  loadSave: null
+  mmtopix: 319/55.26
+  mmtopixCad: 2492/1920
+  moduleType: PS
+  motorRefX: null
+  motorRefY: null
+  nCol: 1024
+  originX: 3824.0
+  originY: 335.0
+  ringOpt: odd
+  side: null
+  stepxtomm: 1920/34952
+  stepytomm: 895/716059
