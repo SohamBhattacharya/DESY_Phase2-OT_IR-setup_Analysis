@@ -9,3 +9,6 @@ python -u python/stitch_images.py \
     --stepxtomm 1920/34952 \
     --stepytomm 895/716059 \
     --mmtopix 319/55.26 \
+    --cadImage "data/dee_cad_top_side.png" \
+    --cadImageOrigin 1487 105 \
+    --mmtopixCad 2492/1920 \

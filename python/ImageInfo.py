@@ -183,7 +183,9 @@ class ImageInfo :
             motorX = self.l_motorX[iImg] - self.ref_motorX
             motorY = self.l_motorY[iImg] - self.ref_motorY
             
-            if (self.loadInfo is None) :
+            if (
+                self.loadInfo is None or
+                fName not in self.loadInfo) :
                 
                 pixelX_lwr = int(self.unitConv.motor_stepX_to_pix(motorX))# - self.nCol/2)
                 pixelY_lwr = int(self.unitConv.motor_stepY_to_pix(motorY))

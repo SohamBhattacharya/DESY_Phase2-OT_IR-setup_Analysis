@@ -16,7 +16,7 @@ module_PS_str = "PS"
 module_2S_str = "2S"
 
 
-save_extension = ".sav"
+save_extension = ".yml"
 
 
 d_moduleDetails = {
