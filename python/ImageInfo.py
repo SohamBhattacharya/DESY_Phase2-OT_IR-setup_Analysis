@@ -494,7 +494,7 @@ class ImageInfo :
             #picker = True,
             #label = self.l_inputFileName[imgIdx],
             #animated = False,
-            alpha = 0.5,
+            alpha = 0.65,
         )
         
         for key in self.d_geomObj :
@@ -855,6 +855,27 @@ class ImageInfo :
             d_saveInfo[fName]["imgExtent_pixelY"] = tuple(int(ele) for ele in self.l_imgExtent_pixelY[iFile])
         
         return d_saveInfo
+    
+    
+    def save_figures(self, outdir) :
+        
+        outname = "stitched_dee"
+        outpath = "%s/%s" %(outdir, outname)
+        self.axis_stitchedDee.figure.savefig("%s.pdf" %(outpath))
+        self.axis_stitchedDee.figure.savefig("%s.png" %(outpath))
+        
+        
+        self.show_cadImg()
+        outname = "cad"
+        outpath = "%s/%s" %(outdir, outname)
+        self.axis_cadImg.figure.savefig("%s.pdf" %(outpath))
+        self.axis_cadImg.figure.savefig("%s.png" %(outpath))
+        self.axis_cadImg.figure.clf()
+        matplotlib.pyplot.close(self.axis_cadImg.figure)
+        
+        self.tkroot_cadImg.destroy()
+        
+        
     
     
     #def __del__(self) :

@@ -10,6 +10,7 @@ import matplotlib.pyplot
 import matplotlib.ticker
 import mplcursors
 import numpy
+import os
 import pandas
 import PIL
 import re
@@ -402,6 +403,26 @@ def main() :
     
     
     button = tkinter.Button(master = tkroot, text = "Save configuration", takefocus = 0, command = lambda: save_config())
+    button.grid(row = row, column = 0, sticky = "ew")
+    row += 1
+    
+    
+    def save_figures() :
+        
+        savedir = tkinter.filedialog.askdirectory(
+            parent = tkroot,
+            mustexist = False,
+        )
+        
+        os.system("mkdir -p %s" %(savedir))
+        
+        geomInfo.save_figures(savedir = savedir)
+    
+    
+    tkroot.grid_rowconfigure(index = row, minsize = 30)
+    row += 1
+    
+    button = tkinter.Button(master = tkroot, text = "Save figures", takefocus = 0, command = lambda: save_figures())
     button.grid(row = row, column = 0, sticky = "ew")
     row += 1
     

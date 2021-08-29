@@ -114,6 +114,11 @@ class BlittedCursor_mod1:
         if self._creating_background:
             # discard calls triggered from within this function
             return
+        
+        if (not hasattr(self.ax.figure.canvas, "copy_from_bbox")) :
+            
+            return
+        
         self._creating_background = True
         self.set_cross_hair_visible(False)
         self.ax.figure.canvas.draw()

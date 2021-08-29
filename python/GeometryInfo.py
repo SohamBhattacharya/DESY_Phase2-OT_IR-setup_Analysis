@@ -9,6 +9,7 @@ import matplotlib.pyplot
 import matplotlib.ticker
 import mplcursors
 import numpy
+import os
 import pandas
 import PIL
 import re
@@ -801,6 +802,63 @@ class GeometryInfo :
             d_saveInfo[key] = self.d_geomObj[key].get_imgName()
         
         return d_saveInfo
+    
+    
+    def save_figures(self, savedir) :
+        
+        self.imgInfo.save_figures(outdir = savedir)
+        
+        for label in self.d_geomObj :
+            
+            #if (hasattr(self.d_geomObj[label], "plot_profiles")) :
+            if (isinstance(self.d_geomObj[label], CarbonFoamInfo.CarbonFoamInfo)) :
+                
+                outlabel = label.replace("/", "_")
+                outdir = "%s/%s" %(savedir, outlabel)
+                os.system("mkdir -p %s" %(outdir))
+                
+                self.clear(axis = self.axis_profile)
+                self.d_geomObj[label].plot_profiles(axis = self.axis_profile)
+                
+                outname = "%s_profiles" %(outlabel)
+                
+                outpath = "%s/%s" %(outdir, outname)
+                
+                self.axis_profile.figure.savefig("%s.pdf" %(outpath))
+                self.axis_profile.figure.savefig("%s.png" %(outpath))
+                
+                
+                self.d_geomObj[label].save_figures(outdir = outdir)
+                
+                self.clear(axis = self.axis_profile)
+            
+            
+            #elif (hasattr(self.d_geomObj[label], "plot_2Sinserts")) :
+            if (isinstance(self.d_geomObj[label], Module2SInfo.Module2SInfo)) :
+                
+                outlabel = label.replace("/", "_")
+                outdir = "%s/%s" %(savedir, outlabel)
+                os.system("mkdir -p %s" %(outdir))
+                
+                self.d_geomObj[label].save_figures(outdir = outdir)
+        
+        
+        if (self.args.moduleType == constants.module_2S_str) :
+            
+            for circuitLabel in self.d_coolCirc2S :
+                
+                self.d_coolCirc2SInfo[circuitLabel].unplot_circuits()
+                self.d_coolCirc2SInfo[circuitLabel].draw(annotate = True)
+                
+                outname = "%s" %(circuitLabel)
+                
+                outpath = "%s/%s" %(savedir, outname)
+                
+                self.axis_coolCirc.figure.savefig("%s.pdf" %(outpath))
+                self.axis_coolCirc.figure.savefig("%s.png" %(outpath))
+                
+                self.d_coolCirc2SInfo[circuitLabel].unplot_circuits()
+        
     
     
     #def __del__(self) :

@@ -80,7 +80,11 @@ class CoolingCircuit2SInfo :
         return minTemp
     
     
-    def draw(self) :
+    def draw(self, axis = None, annotate = False) :
+        
+        if (axis is None) :
+            
+            axis = self.axis
         
         xx = []
         yy = []
@@ -93,11 +97,11 @@ class CoolingCircuit2SInfo :
         
         xx = list(range(1, len(yy)+1))
         
-        self.line, = self.axis.plot(xx, yy, "o--", label = self.label, picker = True, pickradius = 3)
+        self.line, = axis.plot(xx, yy, "o--", label = self.label, picker = True, pickradius = 3)
         
         for x, y, label in zip(xx, yy, self.l_insertLabel) :
             
-            self.l_annotation.append(self.axis.annotate(
+            self.l_annotation.append(axis.annotate(
                 text = label,
                 xy = (x, y),
                 #rotation = 45,
@@ -108,17 +112,23 @@ class CoolingCircuit2SInfo :
                 #annotation_clip = False,
             ))
             
-            self.l_annotation[-1].set_visible(False)
+            self.l_annotation[-1].set_visible(annotate)
         
-        self.fit()
+        self.fit(axis = axis)
         
-        self.axis.relim()
-        self.axis.autoscale_view()
+        axis.legend(loc = "upper left")
         
-        self.axis.figure.canvas.draw()
+        axis.relim()
+        axis.autoscale_view()
+        
+        axis.figure.canvas.draw()
     
     
-    def update(self, l_insertLabel) :
+    def update(self, l_insertLabel, axis = None) :
+        
+        if (axis is None) :
+            
+            axis = self.axis
         
         # Get the list of inserts to be updated
         l_insertLabel = list(set(l_insertLabel).intersection(self.l_insertLabel))
@@ -142,15 +152,19 @@ class CoolingCircuit2SInfo :
         
         self.line.set_ydata(ydata)
         
-        self.fit()
+        self.fit(axis = axis)
         
-        self.axis.relim()
-        self.axis.autoscale_view()
+        axis.relim()
+        axis.autoscale_view()
         
-        self.axis.figure.canvas.draw()
+        axis.figure.canvas.draw()
     
     
-    def fit(self) :
+    def fit(self, axis = None) :
+        
+        if (axis is None) :
+            
+            axis = self.axis
         
         xdata = self.line.get_xdata()
         ydata = self.line.get_ydata()
@@ -158,12 +172,18 @@ class CoolingCircuit2SInfo :
         self.fitParVals, self.fitParCovs = scipy.optimize.curve_fit(f = self.fitFunc, xdata = xdata, ydata = ydata)
         self.fitParErrs = numpy.sqrt(numpy.diag(self.fitParCovs))
         
+        self.fitLabel = "y = (%0.2f±%0.2f) + (%0.2f±%0.2f)x" %(self.fitParVals[0], self.fitParErrs[0], self.fitParVals[1], self.fitParErrs[1])
+        
         print("%s:\t\t p0 = %+0.4f±%0.4f, p1 = %+0.4f±%0.4f" %(self.label, self.fitParVals[0], self.fitParErrs[0], self.fitParVals[1], self.fitParErrs[1]))
         
-        self.draw_fitLine()
+        self.draw_fitLine(axis = axis)
     
     
-    def draw_fitLine(self) :
+    def draw_fitLine(self, axis = None) :
+        
+        if (axis is None) :
+            
+            axis = self.axis
         
         if (self.fitParVals is None) :
             
@@ -174,17 +194,30 @@ class CoolingCircuit2SInfo :
         
         if (self.fitLine is None) :
             
-            self.fitLine, = self.axis.plot(
+            self.fitLine, = axis.plot(
                 xdata,
                 ydata,
                 "-",
                 markersize = 0,
                 color = self.line.get_color(),
+                label = self.fitLabel,
             )
         
         else :
             
             self.fitLine.set_ydata(ydata)
+        
+        #self.line.set_label("%s [%s]" %(self.line.get_label(), self.fitLabel))
+    
+    
+    def unplot_circuits(self, axis = None) :
+        
+        if (axis is None) :
+            
+            axis = self.axis
+        
+        axis.clear()
+        self.fitLine = None
     
     
     #def get_fitStr(self) :

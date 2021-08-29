@@ -36,15 +36,15 @@ top_top_circuit1:
     - R11/2S3_ins1
     - R11/2S3_ins2
     - R11/2S5_ins1
-    - R11/2S1_ins1
-    - R11/2S1_ins3
-    - R11/2S1_ins4
-    - R13/2S1_ins1
-    - R13/2S1_ins3
-    - R13/2S1_ins4
-    - R15/2S1_ins1
-    - R15/2S1_ins3
-    - R15/2S1_ins4
+#    - R11/2S1_ins1
+#    - R11/2S1_ins3
+#    - R11/2S1_ins4
+#    - R13/2S1_ins1
+#    - R13/2S1_ins3
+#    - R13/2S1_ins4
+#    - R15/2S1_ins1
+#    - R15/2S1_ins3
+#    - R15/2S1_ins4
 top_bottom_circuit2:
     - R15/2S7_ins5
     - R15/2S9_ins4

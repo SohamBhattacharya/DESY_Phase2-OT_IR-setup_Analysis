@@ -680,3 +680,17 @@ class Module2SInfo :
             self.l_cid_dragImg.append(self.fig_img.canvas.mpl_connect("button_release_event", self.stop_drag))
             self.l_cid_dragImg.append(self.fig_img.canvas.mpl_connect("key_release_event", self.stop_drag))
             self.l_cid_dragImg.append(self.fig_img.canvas.mpl_connect("figure_leave_event", self.stop_drag))
+    
+    
+    def save_figures(self, outdir) :
+        
+        outname = "%s" %(self.label.replace("/", "_"))
+        
+        outpath = "%s/%s" %(outdir, outname)
+        
+        self.draw()
+        
+        self.fig_img.savefig("%s.pdf" %(outpath))
+        self.fig_img.savefig("%s.png" %(outpath))
+        
+        self.on_fig_close(event = None)

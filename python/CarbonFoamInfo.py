@@ -246,7 +246,23 @@ class CarbonFoamInfo :
         axis.relim()
         axis.autoscale_view()
         
+        axis.set_ylim((self.imgInfo.minTemp, self.imgInfo.maxTemp))
+        
         axis.figure.canvas.draw()
+    
+    
+    def plot_profiles(self, axis, update = False) :
+        
+        for label in self.d_profileLine :
+            
+            color = self.choose_color(l_skipColor = self.get_usedColors(axis = axis, l_objectType = "Line2D"))
+            
+            self.plot_profile(
+                label = label,
+                axis = axis,
+                color = color,
+                update = update,
+            )
     
     
     def unplot_profile(self, label, axis) :
@@ -793,3 +809,17 @@ class CarbonFoamInfo :
             self.l_cid_dragImg.append(self.fig_img.canvas.mpl_connect("button_release_event", self.stop_drag))
             self.l_cid_dragImg.append(self.fig_img.canvas.mpl_connect("key_release_event", self.stop_drag))
             self.l_cid_dragImg.append(self.fig_img.canvas.mpl_connect("figure_leave_event", self.stop_drag))
+    
+    
+    def save_figures(self, outdir) :
+        
+        outname = "%s" %(self.label.replace("/", "_"))
+        
+        outpath = "%s/%s" %(outdir, outname)
+        
+        self.draw()
+        
+        self.fig_img.savefig("%s.pdf" %(outpath))
+        self.fig_img.savefig("%s.png" %(outpath))
+        
+        self.on_fig_close(event = None)
