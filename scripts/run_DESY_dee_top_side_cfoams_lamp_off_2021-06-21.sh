@@ -3,6 +3,7 @@ python -u python/stitch_images.py \
     --inputPattern "cfoam_m15deg_lampoff_XXX_YYY.asc" \
     --geomFile "data/geometry_carbonFoam.xlsx" \
     --moduleType "PS" \
+    --side "top" \
     --ringOpt "odd" \
     --originX 3640 \
     --originY 227 \

@@ -4,6 +4,7 @@ python -u python/stitch_images.py \
     --geomFile "data/geometry_carbonFoam.xlsx" \
     --moduleType "PS" \
     --ringOpt "odd" \
+    --side "bottom" \
     --originX 3824 \
     --originY 335 \
     --stepxtomm 1920/34952 \
