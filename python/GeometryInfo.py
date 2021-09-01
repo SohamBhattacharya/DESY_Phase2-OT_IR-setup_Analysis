@@ -300,6 +300,12 @@ class GeometryInfo :
             rInn = r - radL/2.0
             rOut = r + radL/2.0
             
+            l_rad_prof = [
+                r - 0.15*radL/2.0,
+                r,
+                r + 0.15*radL/2.0,
+            ]
+            
             #print(rInn, rOut)
             
             #rInn = r
@@ -312,6 +318,9 @@ class GeometryInfo :
             dphiOut = 2 * numpy.arcsin(arcL / (2.0*rOut))
             dphiMid = 2 * numpy.arcsin(arcL / (2.0*r))
             
+            l_dPhi_prof = [2 * numpy.arcsin(arcL / (2.0*ele)) for ele in l_rad_prof]
+            
+            
             phiInn1 = phi - dphiInn/2.0
             phiInn2 = phi + dphiInn/2.0
             
@@ -321,7 +330,11 @@ class GeometryInfo :
             phiMid1 = phi - dphiMid/2.0
             phiMid2 = phi + dphiMid/2.0
             
+            l_phi1_prof = [phi - ele/2.0 for ele in l_dPhi_prof]
+            l_phi2_prof = [phi + ele/2.0 for ele in l_dPhi_prof]
+            
             #print(ring, numpy.degrees(phi1), numpy.degrees(phi), numpy.degrees(phi2), numpy.degrees(dphi))
+            
             
             color = (not color[0], 0, not color[2], 1)
             
@@ -331,17 +344,26 @@ class GeometryInfo :
             xInn2 = self.origin_x0+rInn*numpy.cos(phiInn2)
             yInn2 = self.origin_y0+rInn*numpy.sin(phiInn2)
             
+            
             xOut1 = self.origin_x0+rOut*numpy.cos(phiOut1)
             yOut1 = self.origin_y0+rOut*numpy.sin(phiOut1)
             
             xOut2 = self.origin_x0+rOut*numpy.cos(phiOut2)
             yOut2 = self.origin_y0+rOut*numpy.sin(phiOut2)
             
+            
             xMid1 = self.origin_x0+r*numpy.cos(phiMid1)
             yMid1 = self.origin_y0+r*numpy.sin(phiMid1)
             
             xMid2 = self.origin_x0+r*numpy.cos(phiMid2)
             yMid2 = self.origin_y0+r*numpy.sin(phiMid2)
+            
+            
+            l_x1_prof = [self.origin_x0+ir*numpy.cos(iph) for ir, iph in zip(l_rad_prof, l_phi1_prof)]
+            l_y1_prof = [self.origin_y0+ir*numpy.sin(iph) for ir, iph in zip(l_rad_prof, l_phi1_prof)]
+            
+            l_x2_prof = [self.origin_x0+ir*numpy.cos(iph) for ir, iph in zip(l_rad_prof, l_phi2_prof)]
+            l_y2_prof = [self.origin_y0+ir*numpy.sin(iph) for ir, iph in zip(l_rad_prof, l_phi2_prof)]
             
             #print([xInn1, xInn2, xOut2, xOut1], [yInn1, yInn2, yOut2, yOut1])
             
@@ -393,45 +415,61 @@ class GeometryInfo :
                 
                 
                 # Longitudinal central profile
-                profLabel = "%s_prof" %(cfoamLabel)
+                #profLabel = "%s_prof" %(cfoamLabel)
+                #
+                #profLine = axis_imgDee.plot(
+                #    [xMid1, xMid2],
+                #    [yMid1, yMid2],
+                #    color = color,
+                #    linewidth = 1,
+                #    picker = True,
+                #    pickradius = 3,
+                #    label = profLabel,
+                #    zorder = constants.zorder_geometryMesh,
+                #)[0]
+                #
+                #l_pickableArtist.append(profLine)
+                #
+                #self.d_geomObj[cfoamLabel].add_geometryArtist(profLine, profLabel)
+                #
+                #self.d_geomObj[cfoamLabel].add_profileLine(
+                #    r1 = numpy.round(yMid2),
+                #    c1 = numpy.round(xMid2),
+                #    r2 = numpy.round(yMid1),
+                #    c2 = numpy.round(xMid1),
+                #    label = profLabel,
+                #)
                 
-                profLine = axis_imgDee.plot(
-                    [xMid1, xMid2],
-                    [yMid1, yMid2],
-                    color = color,
-                    linewidth = 1,
-                    picker = True,
-                    pickradius = 3,
-                    label = profLabel,
-                    zorder = constants.zorder_geometryMesh,
-                )[0]
-                
-                l_pickableArtist.append(profLine)
-                
-                rr_profLine, cc_profLine = skimage.draw.line(int(numpy.round(yMid2)), int(numpy.round(xMid2)), int(numpy.round(yMid1)), int(numpy.round(xMid1)))
-                
-                rr_profLine = rr_profLine - self.imgInfo.l_imgExtent_pixelY[nearestImgIdx][0]
-                cc_profLine = cc_profLine - self.imgInfo.l_imgExtent_pixelX[nearestImgIdx][0]
-                
-                #for idx in range(0, len(rr_profLine)) :
-                #    
-                #    if (rr_profLine[idx] < 0 or rr_profLine[idx] >= self.imgInfo.nRow or cc_profLine[idx] < 0 or cc_profLine[idx] >= self.imgInfo.nCol) :
-                #        
-                #        rr_profLine[idx] = 0
-                #        cc_profLine[idx] = 0
-                
-                self.d_geomObj[cfoamLabel].add_geometryArtist(profLine, profLabel)
-                
-                #self.d_geomObj[cfoamLabel].add_profileLine(rr_profLine, cc_profLine, profLabel)
-                self.d_geomObj[cfoamLabel].add_profileLine(
-                    r1 = numpy.round(yMid2),
-                    c1 = numpy.round(xMid2),
-                    r2 = numpy.round(yMid1),
-                    c2 = numpy.round(xMid1),
-                    #offsetRow = -self.imgInfo.l_imgExtent_pixelY[nearestImgIdx][0],
-                    #offsetCol = -self.imgInfo.l_imgExtent_pixelX[nearestImgIdx][0],
-                    label = profLabel,
-                )
+                for iProf, (x1, y1, x2, y2) in enumerate(zip(l_x1_prof, l_y1_prof, l_x2_prof, l_y2_prof)) :
+                    
+                    profLabel = "%s_prof%d" %(cfoamLabel, iProf+1)
+                    
+                    profColor = colors.highContrastColors_2[iProf]
+                    
+                    profLine = axis_imgDee.plot(
+                        [x1, x2],
+                        [y1, y2],
+                        #color = color,
+                        color = profColor,
+                        linewidth = 1,
+                        picker = True,
+                        pickradius = 3,
+                        label = profLabel,
+                        zorder = constants.zorder_geometryMesh,
+                    )[0]
+                    
+                    l_pickableArtist.append(profLine)
+                    
+                    self.d_geomObj[cfoamLabel].add_geometryArtist(profLine, profLabel)
+                    
+                    self.d_geomObj[cfoamLabel].add_profileLine(
+                        r1 = numpy.round(y2),
+                        c1 = numpy.round(x2),
+                        r2 = numpy.round(y1),
+                        c2 = numpy.round(x1),
+                        label = profLabel,
+                        color = profColor,
+                    )
                 
                 
                 # C-foam text
@@ -553,30 +591,6 @@ class GeometryInfo :
                         radius = insert_outR,
                         label = insertLabel,
                     )
-                    
-                    #self.mplcursor.add_highlight(insertDisk)
-                    
-                    #rr_insertDisk, cc_insertDisk = skimage.draw.disk(
-                    #    #center = insertPos[::-1],
-                    #    center = (insertPos[1]-self.imgInfo.l_imgExtent_pixelY[nearestImgIdx][0], insertPos[0]-self.imgInfo.l_imgExtent_pixelX[nearestImgIdx][0]),
-                    #    radius = insert_outR,
-                    #    shape = (self.imgInfo.nRow, self.imgInfo.nCol),
-                    #)
-                    
-                    #rr_insertDisk = rr_insertDisk - self.imgInfo.l_imgExtent_pixelY[nearestImgIdx][0]
-                    #cc_insertDisk = cc_insertDisk - self.imgInfo.l_imgExtent_pixelX[nearestImgIdx][0]
-                    
-                    #for idx in range(0, len(rr_profLine)) :
-                    #    
-                    #    if (rr_profLine[idx] < 0 or rr_profLine[idx] >= self.imgInfo.nRow or cc_profLine[idx] < 0 or cc_profLine[idx] >= self.imgInfo.nCol) :
-                    #        
-                    #        rr_profLine[idx] = 0
-                    #        cc_profLine[idx] = 0
-                    
-                    #print("rr_insertDisk:", rr_insertDisk)
-                    #print("cc_insertDisk:", cc_insertDisk)
-                    
-                    #self.imgInfo.l_inputData[nearestImgIdx][rr_insertDisk, cc_insertDisk] = 0
                 
                 
                 ang = 90 - (180-phi_deg) + 90
@@ -724,7 +738,7 @@ class GeometryInfo :
         self.fig_coolCirc.canvas.mpl_connect("pick_event", on_pick_line)
         
         self.axis_coolCirc.autoscale_view()
-        self.fig_coolCirc.tight_layout()
+        #self.fig_coolCirc.tight_layout()
         self.fig_coolCirc.canvas.draw()
     
     
@@ -818,7 +832,7 @@ class GeometryInfo :
                 os.system("mkdir -p %s" %(outdir))
                 
                 self.clear(axis = self.axis_profile)
-                self.d_geomObj[label].plot_profiles(axis = self.axis_profile)
+                self.d_geomObj[label].plot_profiles(axis = self.axis_profile, use_prof_color = True)
                 
                 outname = "%s_profiles" %(outlabel)
                 

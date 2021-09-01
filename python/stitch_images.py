@@ -201,6 +201,14 @@ def main() :
         default = None,
     )
     
+    parser.add_argument(
+        "--saveFigsTo",
+        help = "Save figures to this directory",
+        type = str,
+        required = False,
+        default = None,
+    )
+    
     
     args = parser.parse_args()
     d_args = vars(args)
@@ -244,9 +252,14 @@ def main() :
         #    "mmtopix",
         #]
         
+        l_skip_key = [
+            "loadSave",
+            "saveFigsTo",
+        ]
+        
         l_save_argsInfo = list(d_args.keys())
         
-        d_save_argsInfo = {key: d_args[key] for key in l_save_argsInfo}
+        d_save_argsInfo = {key: d_args[key] for key in l_save_argsInfo if key not in l_skip_key}
         
         return d_save_argsInfo
     
@@ -407,12 +420,14 @@ def main() :
     row += 1
     
     
-    def save_figures() :
+    def save_figures(savedir = None) :
         
-        savedir = tkinter.filedialog.askdirectory(
-            parent = tkroot,
-            mustexist = False,
-        )
+        if (savedir is None) :
+            
+            savedir = tkinter.filedialog.askdirectory(
+                parent = tkroot,
+                mustexist = False,
+            )
         
         os.system("mkdir -p %s" %(savedir))
         
@@ -426,6 +441,12 @@ def main() :
     button.grid(row = row, column = 0, sticky = "ew")
     row += 1
     
+    
+    
+    if (args.saveFigsTo is not None) :
+        
+        save_figures(savedir = args.saveFigsTo)
+        return 0
     
     #matplotlib.pyplot.show()
     tkroot.mainloop()

@@ -35,6 +35,7 @@ class ProfileLine :
         dCol = 0,
         offsetRow = 0,
         offsetCol = 0,
+        color = "black",
     ) :
         
         self.r1 = r1
@@ -47,6 +48,8 @@ class ProfileLine :
         
         self.offsetRow = offsetRow
         self.offsetCol = offsetCol
+        
+        self.color = color
         
         self.dRow_sum = 0
         self.dCol_sum = 0

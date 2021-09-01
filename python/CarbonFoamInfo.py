@@ -136,6 +136,7 @@ class CarbonFoamInfo :
         r1, c1,
         r2, c2,
         label,
+        color = "black",
     ) :
         
         self.d_profileLine[label] = ProfileLine.ProfileLine(
@@ -144,6 +145,7 @@ class CarbonFoamInfo :
             shape = (self.imgInfo.nRow, self.imgInfo.nCol),
             offsetRow = self.offsetRow,
             offsetCol = self.offsetCol,
+            color = color,
         )
     
     
@@ -251,16 +253,17 @@ class CarbonFoamInfo :
         axis.figure.canvas.draw()
     
     
-    def plot_profiles(self, axis, update = False) :
+    def plot_profiles(self, axis, use_prof_color = False, update = False) :
         
         for label in self.d_profileLine :
             
-            color = self.choose_color(l_skipColor = self.get_usedColors(axis = axis, l_objectType = "Line2D"))
+            #color = self.choose_color(l_skipColor = self.get_usedColors(axis = axis, l_objectType = "Line2D"))
             
             self.plot_profile(
                 label = label,
                 axis = axis,
-                color = color,
+                #color = color,
+                color = self.d_profileLine[label].color,
                 update = update,
             )
     
