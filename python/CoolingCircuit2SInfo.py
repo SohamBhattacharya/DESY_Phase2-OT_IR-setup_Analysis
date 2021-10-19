@@ -80,7 +80,7 @@ class CoolingCircuit2SInfo :
         return minTemp
     
     
-    def draw(self, axis = None, annotate = False) :
+    def draw(self, axis = None, annotate = False, color = None) :
         
         if (axis is None) :
             
@@ -97,7 +97,7 @@ class CoolingCircuit2SInfo :
         
         xx = list(range(1, len(yy)+1))
         
-        self.line, = axis.plot(xx, yy, "o--", label = self.label, picker = True, pickradius = 3)
+        self.line, = axis.plot(xx, yy, "o--", color = color, label = self.label, picker = True, pickradius = 3)
         
         for x, y, label in zip(xx, yy, self.l_insertLabel) :
             
@@ -169,7 +169,7 @@ class CoolingCircuit2SInfo :
         xdata = self.line.get_xdata()
         ydata = self.line.get_ydata()
         
-        self.fitParVals, self.fitParCovs = scipy.optimize.curve_fit(f = self.fitFunc, xdata = xdata, ydata = ydata)
+        self.fitParVals, self.fitParCovs = scipy.optimize.curve_fit(f = self.fitFunc, xdata = xdata, ydata = ydata, check_finite = False)
         self.fitParErrs = numpy.sqrt(numpy.diag(self.fitParCovs))
         
         self.fitLabel = "y = (%0.2f±%0.2f) + (%0.2f±%0.2f)x" %(self.fitParVals[0], self.fitParErrs[0], self.fitParVals[1], self.fitParErrs[1])
@@ -216,7 +216,16 @@ class CoolingCircuit2SInfo :
             
             axis = self.axis
         
-        axis.clear()
+        
+        # option 2, remove all lines and collections
+        for artist in axis.figure.gca().lines + axis.figure.gca().collections :
+            artist.remove()
+        
+        for ann in self.l_annotation :
+            
+            ann.remove()
+        
+        #axis.clear()
         self.fitLine = None
     
     

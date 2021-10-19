@@ -374,6 +374,10 @@ class ImageInfo :
         self.axis_stitchedDee = self.fig_stitchedDee.add_subplot(1, 1, 1)
         self.axis_stitchedDee.set_aspect("equal", "box")
         
+        self.axis_stitchedDee.set_xlabel("Pixel x", fontsize = "x-large", fontweight = "bold")
+        self.axis_stitchedDee.set_ylabel("Pixel y", fontsize = "x-large", fontweight = "bold")
+        self.axis_stitchedDee.tick_params(axis = "both", labelsize = "x-large")
+        
         #self.axis_stitchedDee.set_autoscale_on(True)
         
         #img = self.axis_stitchedDee.imshow(
@@ -411,13 +415,17 @@ class ImageInfo :
                 divider = mpl_toolkits.axes_grid1.make_axes_locatable(self.axis_stitchedDee)
                 cax = divider.append_axes("right", size = "3%", pad = 0.1)
                 
-                self.fig_stitchedDee.colorbar(
+                cax.tick_params(axis = "both", labelsize = "x-large")
+                
+                cbar = self.fig_stitchedDee.colorbar(
                     axis,
                     cax = cax,
                     #ax = self.axis_stitchedDee,
                     #fraction = 0.046*(self.arr_stitchedDeeImg.shape[0]/self.arr_stitchedDeeImg.shape[1]),
-                    label = "Temperature [°C]",
+                    #label = "Temperature [°C]",
                 )
+                
+                cbar.set_label("Temperature [°C]", size = "x-large", weight = "bold")
         
         
         #self.axis_stitchedDee.set_xlim((

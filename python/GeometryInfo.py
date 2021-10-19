@@ -183,8 +183,12 @@ class GeometryInfo :
             
             self.axis_profile = self.fig_profile.add_subplot(1, 1, 1)
             
-            self.axis_profile.set_xlabel("Pixel")
-            self.axis_profile.set_ylabel("Temperature [°C]")
+            self.axis_profile.set_xlabel("Pixel", fontsize = "x-large", fontweight = "bold")
+            self.axis_profile.set_ylabel("Temperature [°C]", fontsize = "x-large", fontweight = "bold")
+            self.axis_profile.tick_params(axis = "both", labelsize = "x-large")
+            
+            self.axis_profile.autoscale(enable = True, tight = True)
+            self.fig_profile.tight_layout()
             
             tbar = NavigationToolbar2Tk(self.fig_profile.canvas, self.tkroot_profile)
             tbar.update()
@@ -208,8 +212,9 @@ class GeometryInfo :
             
             self.axis_2Sinsert = self.fig_2Sinsert.add_subplot(1, 1, 1)
             
-            self.axis_2Sinsert.set_xlabel("Insert")
-            self.axis_2Sinsert.set_ylabel("Temperature [°C]")
+            self.axis_2Sinsert.set_xlabel("Insert number", fontsize = "x-large", fontweight = "bold")
+            self.axis_2Sinsert.set_ylabel("Temperature [°C]", fontsize = "x-large", fontweight = "bold")
+            self.axis_2Sinsert.tick_params(axis = "both", labelsize = "x-large")
             
             tbar = NavigationToolbar2Tk(self.fig_2Sinsert.canvas, self.tkroot_2Sinsert)
             tbar.update()
@@ -232,8 +237,12 @@ class GeometryInfo :
             
             self.axis_coolCirc = self.fig_coolCirc.add_subplot(1, 1, 1)
             
-            self.axis_coolCirc.set_xlabel("Insert")
-            self.axis_coolCirc.set_ylabel("Temperature [°C]")
+            self.axis_coolCirc.set_xlabel("Insert number", fontsize = "xx-large", fontweight = "bold")
+            self.axis_coolCirc.set_ylabel("Temperature [°C]", fontsize = "xx-large", fontweight = "bold")
+            self.axis_coolCirc.tick_params(axis = "both", labelsize = "xx-large")
+            
+            self.axis_coolCirc.autoscale(enable = True, tight = True)
+            self.fig_coolCirc.tight_layout()
             
             tbar = NavigationToolbar2Tk(self.fig_coolCirc.canvas, self.tkroot_coolCirc)
             tbar.update()
@@ -862,7 +871,7 @@ class GeometryInfo :
             for circuitLabel in self.d_coolCirc2S :
                 
                 self.d_coolCirc2SInfo[circuitLabel].unplot_circuits()
-                self.d_coolCirc2SInfo[circuitLabel].draw(annotate = True)
+                self.d_coolCirc2SInfo[circuitLabel].draw(annotate = True, color = "black")
                 
                 outname = "%s" %(circuitLabel)
                 

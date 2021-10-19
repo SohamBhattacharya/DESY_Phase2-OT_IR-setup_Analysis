@@ -386,6 +386,10 @@ class CarbonFoamInfo :
             self.axis_img.set_xlim(self.imgInfo.l_imgExtent_pixelX[self.imgIdx])
             self.axis_img.set_ylim(self.imgInfo.l_imgExtent_pixelY[self.imgIdx][::-1])
             
+            self.axis_img.set_xlabel("Pixel x", fontsize = "x-large", fontweight = "bold")
+            self.axis_img.set_ylabel("Pixel y", fontsize = "x-large", fontweight = "bold")
+            self.axis_img.tick_params(axis = "both", labelsize = "x-large")
+            
             #self.axis_img.autoscale(enable = True)
             
             #self.axis_img.set_title(title, loc = "left", fontsize = 7, wrap = True)
@@ -405,13 +409,17 @@ class CarbonFoamInfo :
             divider = mpl_toolkits.axes_grid1.make_axes_locatable(self.axis_img)
             cax = divider.append_axes("right", size = "3%", pad = 0.1)
             
-            self.fig_img.colorbar(
+            cax.tick_params(axis = "both", labelsize = "x-large")
+            
+            cbar = self.fig_img.colorbar(
                 self.img,
                 cax = cax,
                 #ax = self.axis_img,
                 #fraction = 0.046*(arr_inputImg.shape[0]/arr_inputImg.shape[1]),
                 label = "Temperature [°C]",
             )
+            
+            cbar.set_label("Temperature [°C]", size = "x-large", weight = "bold")
             
             self.background = self.fig_img.canvas.copy_from_bbox(self.axis_img.get_figure().bbox)
             

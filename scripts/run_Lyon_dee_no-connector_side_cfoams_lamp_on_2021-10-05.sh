@@ -1,0 +1,16 @@
+python -u python/stitch_images.py \
+    --inputDir "/media/soham/D/Programs/DESY/IR-setup/Data/2021-10-05/Lyon_dee/no-disk2disk-connector_side/lamp_on" \
+    --inputPattern "cfoam_m30deg-chiller_m10deg-dee_lampon_XXX_YYY.asc" \
+    --geomFile "data/geometry_carbonFoam.xlsx" \
+    --moduleType "PS" \
+    --ringOpt "odd" \
+    --side "bottom" \
+    --originX 0 \
+    --originY 245 \
+    --motorRefX 23503 0\
+    --stepxtomm 1565.44/28506 \
+    --stepytomm 626.78/499919 \
+    --mmtopix 311.67/55.26 \
+    --cadImage "data/dee_cad_bottom_side.png" \
+    --cadImageOrigin 1513 105 \
+    --mmtopixCad 2492/1920 \
