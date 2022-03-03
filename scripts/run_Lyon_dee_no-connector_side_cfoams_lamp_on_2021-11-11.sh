@@ -1,6 +1,6 @@
 python -u python/stitch_images.py \
-    --inputDir "/media/soham/D/Programs/DESY/IR-setup/Data/2021-10-05/Lyon_dee/no-disk2disk-connector_side/lamp_off" \
-    --inputPattern "cfoam_m30deg-chiller_m10deg-dee_lampoff_XXX_YYY.asc" \
+    --inputDir "/media/soham/D/Programs/DESY/IR-setup/Data/2021-11-11/Lyon_dee/no-disk2disk-connector_side/lamp_on" \
+    --inputPattern "cfoam_m25deg-chiller_m10deg-dee_lampon_XXX_YYY.asc" \
     --geomFile "data/geometry_carbonFoam.xlsx" \
     --moduleType "PS" \
     --ringOpt "odd" \
@@ -14,3 +14,4 @@ python -u python/stitch_images.py \
     --cadImage "data/Lyon_Dee_cad_no-disk-to-disk-connector_side.png" \
     --cadImageOrigin 595 33 \
     --mmtopixCad 780/1565.44 \
+

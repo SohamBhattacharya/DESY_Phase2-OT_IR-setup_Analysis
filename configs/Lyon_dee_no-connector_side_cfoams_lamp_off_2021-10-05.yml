@@ -1,80 +1,85 @@
 GeometryInfo:
-  R1/CF1: cfoam_m30deg-chiller_m10deg-dee_lampoff_28147_240464.asc
-  R1/CF10: cfoam_m30deg-chiller_m10deg-dee_lampoff_18992_239432.asc
-  R1/CF2: cfoam_m30deg-chiller_m10deg-dee_lampoff_27723_301023.asc
-  R1/CF3: cfoam_m30deg-chiller_m10deg-dee_lampoff_26952_356471.asc
-  R1/CF4: cfoam_m30deg-chiller_m10deg-dee_lampoff_25746_393164.asc
-  R1/CF5: cfoam_m30deg-chiller_m10deg-dee_lampoff_24280_416841.asc
-  R1/CF6: cfoam_m30deg-chiller_m10deg-dee_lampoff_22931_420830.asc
-  R1/CF7: cfoam_m30deg-chiller_m10deg-dee_lampoff_21443_398285.asc
-  R1/CF8: cfoam_m30deg-chiller_m10deg-dee_lampoff_20277_364944.asc
-  R1/CF9: cfoam_m30deg-chiller_m10deg-dee_lampoff_19352_303259.asc
-  R3/CF1: cfoam_m30deg-chiller_m10deg-dee_lampoff_29658_240464.asc
-  R3/CF10: cfoam_m30deg-chiller_m10deg-dee_lampoff_18561_380432.asc
-  R3/CF11: cfoam_m30deg-chiller_m10deg-dee_lampoff_17800_316493.asc
-  R3/CF12: cfoam_m30deg-chiller_m10deg-dee_lampoff_17389_247972.asc
-  R3/CF2: cfoam_m30deg-chiller_m10deg-dee_lampoff_29263_315698.asc
-  R3/CF3: cfoam_m30deg-chiller_m10deg-dee_lampoff_28413_382327.asc
-  R3/CF4: cfoam_m30deg-chiller_m10deg-dee_lampoff_27229_430452.asc
-  R3/CF5: cfoam_m30deg-chiller_m10deg-dee_lampoff_25824_467353.asc
-  R3/CF6: cfoam_m30deg-chiller_m10deg-dee_lampoff_24398_481082.asc
-  R3/CF7: cfoam_m30deg-chiller_m10deg-dee_lampoff_22643_482970.asc
-  R3/CF8: cfoam_m30deg-chiller_m10deg-dee_lampoff_21102_465257.asc
-  R3/CF9: cfoam_m30deg-chiller_m10deg-dee_lampoff_19744_430237.asc
-  R5/CF1: cfoam_m30deg-chiller_m10deg-dee_lampoff_31229_242156.asc
-  R5/CF10: cfoam_m30deg-chiller_m10deg-dee_lampoff_21290_537071.asc
-  R5/CF11: cfoam_m30deg-chiller_m10deg-dee_lampoff_19839_511986.asc
-  R5/CF12: cfoam_m30deg-chiller_m10deg-dee_lampoff_18647_469991.asc
-  R5/CF13: cfoam_m30deg-chiller_m10deg-dee_lampoff_17570_427566.asc
-  R5/CF14: cfoam_m30deg-chiller_m10deg-dee_lampoff_16751_370994.asc
-  R5/CF15: cfoam_m30deg-chiller_m10deg-dee_lampoff_16189_316785.asc
-  R5/CF16: cfoam_m30deg-chiller_m10deg-dee_lampoff_15861_247972.asc
-  R5/CF2: cfoam_m30deg-chiller_m10deg-dee_lampoff_30889_314060.asc
-  R5/CF3: cfoam_m30deg-chiller_m10deg-dee_lampoff_30332_373733.asc
-  R5/CF4: cfoam_m30deg-chiller_m10deg-dee_lampoff_29502_431287.asc
-  R5/CF5: cfoam_m30deg-chiller_m10deg-dee_lampoff_28444_473146.asc
-  R5/CF6: cfoam_m30deg-chiller_m10deg-dee_lampoff_27108_506577.asc
-  R5/CF7: cfoam_m30deg-chiller_m10deg-dee_lampoff_25763_539204.asc
-  R5/CF8: cfoam_m30deg-chiller_m10deg-dee_lampoff_24286_550341.asc
-  R5/CF9: cfoam_m30deg-chiller_m10deg-dee_lampoff_22748_550341.asc
-  R7/CF1: cfoam_m30deg-chiller_m10deg-dee_lampoff_32713_242156.asc
-  R7/CF10: cfoam_m30deg-chiller_m10deg-dee_lampoff_22698_614298.asc
-  R7/CF11: cfoam_m30deg-chiller_m10deg-dee_lampoff_21141_600162.asc
-  R7/CF12: cfoam_m30deg-chiller_m10deg-dee_lampoff_19632_575954.asc
-  R7/CF13: cfoam_m30deg-chiller_m10deg-dee_lampoff_18273_543218.asc
-  R7/CF14: cfoam_m30deg-chiller_m10deg-dee_lampoff_16969_499555.asc
-  R7/CF15: cfoam_m30deg-chiller_m10deg-dee_lampoff_16032_444539.asc
-  R7/CF16: cfoam_m30deg-chiller_m10deg-dee_lampoff_15135_384758.asc
-  R7/CF17: cfoam_m30deg-chiller_m10deg-dee_lampoff_14689_317840.asc
-  R7/CF18: cfoam_m30deg-chiller_m10deg-dee_lampoff_14355_250601.asc
-  R7/CF2: cfoam_m30deg-chiller_m10deg-dee_lampoff_32358_318325.asc
-  R7/CF3: cfoam_m30deg-chiller_m10deg-dee_lampoff_31871_387053.asc
-  R7/CF4: cfoam_m30deg-chiller_m10deg-dee_lampoff_31007_444950.asc
-  R7/CF5: cfoam_m30deg-chiller_m10deg-dee_lampoff_30051_496080.asc
-  R7/CF6: cfoam_m30deg-chiller_m10deg-dee_lampoff_28779_542524.asc
-  R7/CF7: cfoam_m30deg-chiller_m10deg-dee_lampoff_27344_579395.asc
-  R7/CF8: cfoam_m30deg-chiller_m10deg-dee_lampoff_25842_602528.asc
-  R7/CF9: cfoam_m30deg-chiller_m10deg-dee_lampoff_24364_614298.asc
-  R9/CF1: cfoam_m30deg-chiller_m10deg-dee_lampoff_34070_242968.asc
-  R9/CF10: cfoam_m30deg-chiller_m10deg-dee_lampoff_24336_677112.asc
-  R9/CF11: cfoam_m30deg-chiller_m10deg-dee_lampoff_22668_677112.asc
-  R9/CF12: cfoam_m30deg-chiller_m10deg-dee_lampoff_21064_668657.asc
-  R9/CF13: cfoam_m30deg-chiller_m10deg-dee_lampoff_19381_640293.asc
-  R9/CF14: cfoam_m30deg-chiller_m10deg-dee_lampoff_18106_612349.asc
-  R9/CF15: cfoam_m30deg-chiller_m10deg-dee_lampoff_16698_567695.asc
-  R9/CF16: cfoam_m30deg-chiller_m10deg-dee_lampoff_15473_511972.asc
-  R9/CF17: cfoam_m30deg-chiller_m10deg-dee_lampoff_14519_455397.asc
-  R9/CF18: cfoam_m30deg-chiller_m10deg-dee_lampoff_13731_389208.asc
-  R9/CF19: cfoam_m30deg-chiller_m10deg-dee_lampoff_13198_322187.asc
-  R9/CF2: cfoam_m30deg-chiller_m10deg-dee_lampoff_33837_322633.asc
-  R9/CF20: cfoam_m30deg-chiller_m10deg-dee_lampoff_12904_239058.asc
-  R9/CF3: cfoam_m30deg-chiller_m10deg-dee_lampoff_33328_393192.asc
-  R9/CF4: cfoam_m30deg-chiller_m10deg-dee_lampoff_32568_457975.asc
-  R9/CF5: cfoam_m30deg-chiller_m10deg-dee_lampoff_31587_516767.asc
-  R9/CF6: cfoam_m30deg-chiller_m10deg-dee_lampoff_30461_565238.asc
-  R9/CF7: cfoam_m30deg-chiller_m10deg-dee_lampoff_28976_611543.asc
-  R9/CF8: cfoam_m30deg-chiller_m10deg-dee_lampoff_27557_643048.asc
-  R9/CF9: cfoam_m30deg-chiller_m10deg-dee_lampoff_26034_666716.asc
+  R1/CF10: cfoam_m30deg-chiller_m10deg-dee_lampoff_28147_240464.asc
+  R1/CF9: cfoam_m30deg-chiller_m10deg-dee_lampoff_27723_301023.asc
+  R1/CF8: cfoam_m30deg-chiller_m10deg-dee_lampoff_26952_356471.asc
+  R1/CF7: cfoam_m30deg-chiller_m10deg-dee_lampoff_25746_393164.asc
+  R1/CF6: cfoam_m30deg-chiller_m10deg-dee_lampoff_24280_416841.asc
+  R1/CF5: cfoam_m30deg-chiller_m10deg-dee_lampoff_22931_420830.asc
+  R1/CF4: cfoam_m30deg-chiller_m10deg-dee_lampoff_21443_398285.asc
+  R1/CF3: cfoam_m30deg-chiller_m10deg-dee_lampoff_20277_364944.asc
+  R1/CF2: cfoam_m30deg-chiller_m10deg-dee_lampoff_19352_303259.asc
+  R1/CF1: cfoam_m30deg-chiller_m10deg-dee_lampoff_18992_239432.asc
+  
+  R3/CF12: cfoam_m30deg-chiller_m10deg-dee_lampoff_29658_240464.asc
+  R3/CF11: cfoam_m30deg-chiller_m10deg-dee_lampoff_29263_315698.asc
+  R3/CF10: cfoam_m30deg-chiller_m10deg-dee_lampoff_28413_382327.asc
+  R3/CF9: cfoam_m30deg-chiller_m10deg-dee_lampoff_27229_430452.asc
+  R3/CF8: cfoam_m30deg-chiller_m10deg-dee_lampoff_25824_467353.asc
+  R3/CF7: cfoam_m30deg-chiller_m10deg-dee_lampoff_24398_481082.asc
+  R3/CF6: cfoam_m30deg-chiller_m10deg-dee_lampoff_22643_482970.asc
+  R3/CF5: cfoam_m30deg-chiller_m10deg-dee_lampoff_21102_465257.asc
+  R3/CF4: cfoam_m30deg-chiller_m10deg-dee_lampoff_19744_430237.asc
+  R3/CF3: cfoam_m30deg-chiller_m10deg-dee_lampoff_18561_380432.asc
+  R3/CF2: cfoam_m30deg-chiller_m10deg-dee_lampoff_17800_316493.asc
+  R3/CF1: cfoam_m30deg-chiller_m10deg-dee_lampoff_17389_247972.asc
+  
+  R5/CF16: cfoam_m30deg-chiller_m10deg-dee_lampoff_31229_242156.asc
+  R5/CF15: cfoam_m30deg-chiller_m10deg-dee_lampoff_30889_314060.asc
+  R5/CF14: cfoam_m30deg-chiller_m10deg-dee_lampoff_30332_373733.asc
+  R5/CF13: cfoam_m30deg-chiller_m10deg-dee_lampoff_29502_431287.asc
+  R5/CF12: cfoam_m30deg-chiller_m10deg-dee_lampoff_28444_473146.asc
+  R5/CF11: cfoam_m30deg-chiller_m10deg-dee_lampoff_27108_506577.asc
+  R5/CF10: cfoam_m30deg-chiller_m10deg-dee_lampoff_25763_539204.asc
+  R5/CF9: cfoam_m30deg-chiller_m10deg-dee_lampoff_24286_550341.asc
+  R5/CF8: cfoam_m30deg-chiller_m10deg-dee_lampoff_22748_550341.asc
+  R5/CF7: cfoam_m30deg-chiller_m10deg-dee_lampoff_21290_537071.asc
+  R5/CF6: cfoam_m30deg-chiller_m10deg-dee_lampoff_19839_511986.asc
+  R5/CF5: cfoam_m30deg-chiller_m10deg-dee_lampoff_18647_469991.asc
+  R5/CF4: cfoam_m30deg-chiller_m10deg-dee_lampoff_17570_427566.asc
+  R5/CF3: cfoam_m30deg-chiller_m10deg-dee_lampoff_16751_370994.asc
+  R5/CF2: cfoam_m30deg-chiller_m10deg-dee_lampoff_16189_316785.asc
+  R5/CF1: cfoam_m30deg-chiller_m10deg-dee_lampoff_15861_247972.asc
+  
+  R7/CF18: cfoam_m30deg-chiller_m10deg-dee_lampoff_32713_242156.asc
+  R7/CF17: cfoam_m30deg-chiller_m10deg-dee_lampoff_32358_318325.asc
+  R7/CF16: cfoam_m30deg-chiller_m10deg-dee_lampoff_31871_387053.asc
+  R7/CF15: cfoam_m30deg-chiller_m10deg-dee_lampoff_31007_444950.asc
+  R7/CF14: cfoam_m30deg-chiller_m10deg-dee_lampoff_30051_496080.asc
+  R7/CF13: cfoam_m30deg-chiller_m10deg-dee_lampoff_28779_542524.asc
+  R7/CF12: cfoam_m30deg-chiller_m10deg-dee_lampoff_27344_579395.asc
+  R7/CF11: cfoam_m30deg-chiller_m10deg-dee_lampoff_25842_602528.asc
+  R7/CF10: cfoam_m30deg-chiller_m10deg-dee_lampoff_24364_614298.asc
+  R7/CF9: cfoam_m30deg-chiller_m10deg-dee_lampoff_22698_614298.asc
+  R7/CF8: cfoam_m30deg-chiller_m10deg-dee_lampoff_21141_600162.asc
+  R7/CF7: cfoam_m30deg-chiller_m10deg-dee_lampoff_19632_575954.asc
+  R7/CF6: cfoam_m30deg-chiller_m10deg-dee_lampoff_18273_543218.asc
+  R7/CF5: cfoam_m30deg-chiller_m10deg-dee_lampoff_16969_499555.asc
+  R7/CF4: cfoam_m30deg-chiller_m10deg-dee_lampoff_16032_444539.asc
+  R7/CF3: cfoam_m30deg-chiller_m10deg-dee_lampoff_15135_384758.asc
+  R7/CF2: cfoam_m30deg-chiller_m10deg-dee_lampoff_14689_317840.asc
+  R7/CF1: cfoam_m30deg-chiller_m10deg-dee_lampoff_14355_250601.asc
+  
+  R9/CF20: cfoam_m30deg-chiller_m10deg-dee_lampoff_34070_242968.asc
+  R9/CF19: cfoam_m30deg-chiller_m10deg-dee_lampoff_33837_322633.asc
+  R9/CF18: cfoam_m30deg-chiller_m10deg-dee_lampoff_33328_393192.asc
+  R9/CF17: cfoam_m30deg-chiller_m10deg-dee_lampoff_32568_457975.asc
+  R9/CF16: cfoam_m30deg-chiller_m10deg-dee_lampoff_31587_516767.asc
+  R9/CF15: cfoam_m30deg-chiller_m10deg-dee_lampoff_30461_565238.asc
+  R9/CF14: cfoam_m30deg-chiller_m10deg-dee_lampoff_28976_611543.asc
+  R9/CF13: cfoam_m30deg-chiller_m10deg-dee_lampoff_27557_643048.asc
+  R9/CF12: cfoam_m30deg-chiller_m10deg-dee_lampoff_26034_666716.asc
+  R9/CF11: cfoam_m30deg-chiller_m10deg-dee_lampoff_24336_677112.asc
+  R9/CF10: cfoam_m30deg-chiller_m10deg-dee_lampoff_22668_677112.asc
+  R9/CF9: cfoam_m30deg-chiller_m10deg-dee_lampoff_21064_668657.asc
+  R9/CF8: cfoam_m30deg-chiller_m10deg-dee_lampoff_19381_640293.asc
+  R9/CF7: cfoam_m30deg-chiller_m10deg-dee_lampoff_18106_612349.asc
+  R9/CF6: cfoam_m30deg-chiller_m10deg-dee_lampoff_16698_567695.asc
+  R9/CF5: cfoam_m30deg-chiller_m10deg-dee_lampoff_15473_511972.asc
+  R9/CF4: cfoam_m30deg-chiller_m10deg-dee_lampoff_14519_455397.asc
+  R9/CF3: cfoam_m30deg-chiller_m10deg-dee_lampoff_13731_389208.asc
+  R9/CF2: cfoam_m30deg-chiller_m10deg-dee_lampoff_13198_322187.asc
+  R9/CF1: cfoam_m30deg-chiller_m10deg-dee_lampoff_12904_239058.asc
+
   origin_x0: 0.0
   origin_y0: 245.0
 ImageInfo:
@@ -639,17 +644,17 @@ ImageInfo:
     - 102
     - 870
 args:
-  cadImage: data/dee_cad_bottom_side.png
+  cadImage: data/Lyon_Dee_cad_no-disk-to-disk-connector_side.png
   cadImageOrigin:
-  - 1513.0
-  - 105.0
+  - 595.0
+  - 33.0
   coolCircFiles: null
   geomFile: data/geometry_carbonFoam.xlsx
   inputDir: /media/soham/D/Programs/DESY/IR-setup/Data/2021-10-05/Lyon_dee/no-disk2disk-connector_side/lamp_off
   inputEncoding: ISO-8859-1
   inputPattern: cfoam_m30deg-chiller_m10deg-dee_lampoff_XXX_YYY.asc
   mmtopix: 311.67/55.26
-  mmtopixCad: 2492/1920
+  mmtopixCad: 780/1565.44
   moduleType: PS
   motorRefX:
   - 23503.0
@@ -659,6 +664,6 @@ args:
   originX: 0.0
   originY: 245.0
   ringOpt: odd
-  side: bottom
+  side: top
   stepxtomm: 1565.44/28506
   stepytomm: 626.78/499919

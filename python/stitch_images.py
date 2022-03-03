@@ -164,6 +164,20 @@ def main() :
     )
     
     parser.add_argument(
+        "--minTemp",
+        help = "Minimum temperature",
+        type = float,
+        required = False,
+    )
+    
+    parser.add_argument(
+        "--maxTemp",
+        help = "Maximum temperature",
+        type = float,
+        required = False,
+    )
+    
+    parser.add_argument(
         "--cadImage",
         help = "CAD image",
         type = str,

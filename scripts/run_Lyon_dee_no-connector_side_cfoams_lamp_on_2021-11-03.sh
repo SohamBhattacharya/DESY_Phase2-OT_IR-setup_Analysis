@@ -1,6 +1,6 @@
 python -u python/stitch_images.py \
-    --inputDir "/media/soham/D/Programs/DESY/IR-setup/Data/2021-10-05/Lyon_dee/no-disk2disk-connector_side/lamp_off" \
-    --inputPattern "cfoam_m30deg-chiller_m10deg-dee_lampoff_XXX_YYY.asc" \
+    --inputDir "/media/soham/D/Programs/DESY/IR-setup/Data/2021-11-03/Lyon_dee/no-disk2disk-connector_side/lamp_on" \
+    --inputPattern "cfoam_m15deg-chiller_m4deg-dee_lampon_XXX_YYY.asc" \
     --geomFile "data/geometry_carbonFoam.xlsx" \
     --moduleType "PS" \
     --ringOpt "odd" \

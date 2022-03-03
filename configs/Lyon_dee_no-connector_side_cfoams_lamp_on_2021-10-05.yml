@@ -1,80 +1,85 @@
 GeometryInfo:
-  R1/CF1: cfoam_m30deg-chiller_m10deg-dee_lampon_28181_241127.asc
-  R1/CF10: cfoam_m30deg-chiller_m10deg-dee_lampon_18992_239492.asc
-  R1/CF2: cfoam_m30deg-chiller_m10deg-dee_lampon_27644_307603.asc
-  R1/CF3: cfoam_m30deg-chiller_m10deg-dee_lampon_26916_353223.asc
-  R1/CF4: cfoam_m30deg-chiller_m10deg-dee_lampon_25640_391899.asc
-  R1/CF5: cfoam_m30deg-chiller_m10deg-dee_lampon_24311_417184.asc
-  R1/CF6: cfoam_m30deg-chiller_m10deg-dee_lampon_22820_417184.asc
-  R1/CF7: cfoam_m30deg-chiller_m10deg-dee_lampon_21385_398051.asc
-  R1/CF8: cfoam_m30deg-chiller_m10deg-dee_lampon_20170_359745.asc
-  R1/CF9: cfoam_m30deg-chiller_m10deg-dee_lampon_19423_306605.asc
-  R3/CF1: cfoam_m30deg-chiller_m10deg-dee_lampon_29746_241127.asc
-  R3/CF10: cfoam_m30deg-chiller_m10deg-dee_lampon_18558_379065.asc
-  R3/CF11: cfoam_m30deg-chiller_m10deg-dee_lampon_17777_317768.asc
-  R3/CF12: cfoam_m30deg-chiller_m10deg-dee_lampon_17394_239822.asc
-  R3/CF2: cfoam_m30deg-chiller_m10deg-dee_lampon_29268_316860.asc
-  R3/CF3: cfoam_m30deg-chiller_m10deg-dee_lampon_28414_381523.asc
-  R3/CF4: cfoam_m30deg-chiller_m10deg-dee_lampon_27113_435018.asc
-  R3/CF5: cfoam_m30deg-chiller_m10deg-dee_lampon_25820_467799.asc
-  R3/CF6: cfoam_m30deg-chiller_m10deg-dee_lampon_24358_482014.asc
-  R3/CF7: cfoam_m30deg-chiller_m10deg-dee_lampon_22674_482014.asc
-  R3/CF8: cfoam_m30deg-chiller_m10deg-dee_lampon_21129_466394.asc
-  R3/CF9: cfoam_m30deg-chiller_m10deg-dee_lampon_19702_428256.asc
-  R5/CF1: cfoam_m30deg-chiller_m10deg-dee_lampon_31231_240936.asc
-  R5/CF10: cfoam_m30deg-chiller_m10deg-dee_lampon_21335_538289.asc
-  R5/CF11: cfoam_m30deg-chiller_m10deg-dee_lampon_19915_512834.asc
-  R5/CF12: cfoam_m30deg-chiller_m10deg-dee_lampon_18598_476048.asc
-  R5/CF13: cfoam_m30deg-chiller_m10deg-dee_lampon_17551_432465.asc
-  R5/CF14: cfoam_m30deg-chiller_m10deg-dee_lampon_16819_374702.asc
-  R5/CF15: cfoam_m30deg-chiller_m10deg-dee_lampon_16217_321553.asc
-  R5/CF16: cfoam_m30deg-chiller_m10deg-dee_lampon_15829_239822.asc
-  R5/CF2: cfoam_m30deg-chiller_m10deg-dee_lampon_30855_311244.asc
-  R5/CF3: cfoam_m30deg-chiller_m10deg-dee_lampon_30313_375903.asc
-  R5/CF4: cfoam_m30deg-chiller_m10deg-dee_lampon_29502_430267.asc
-  R5/CF5: cfoam_m30deg-chiller_m10deg-dee_lampon_28493_474326.asc
-  R5/CF6: cfoam_m30deg-chiller_m10deg-dee_lampon_27224_509275.asc
-  R5/CF7: cfoam_m30deg-chiller_m10deg-dee_lampon_25784_538491.asc
-  R5/CF8: cfoam_m30deg-chiller_m10deg-dee_lampon_24395_553015.asc
-  R5/CF9: cfoam_m30deg-chiller_m10deg-dee_lampon_22851_553015.asc
-  R7/CF1: cfoam_m30deg-chiller_m10deg-dee_lampon_32707_240936.asc
-  R7/CF10: cfoam_m30deg-chiller_m10deg-dee_lampon_22626_616553.asc
-  R7/CF11: cfoam_m30deg-chiller_m10deg-dee_lampon_21019_600884.asc
-  R7/CF12: cfoam_m30deg-chiller_m10deg-dee_lampon_19626_578896.asc
-  R7/CF13: cfoam_m30deg-chiller_m10deg-dee_lampon_18242_542696.asc
-  R7/CF14: cfoam_m30deg-chiller_m10deg-dee_lampon_16993_498791.asc
-  R7/CF15: cfoam_m30deg-chiller_m10deg-dee_lampon_15944_444530.asc
-  R7/CF16: cfoam_m30deg-chiller_m10deg-dee_lampon_15175_385237.asc
-  R7/CF17: cfoam_m30deg-chiller_m10deg-dee_lampon_14705_319392.asc
-  R7/CF18: cfoam_m30deg-chiller_m10deg-dee_lampon_14331_239675.asc
-  R7/CF2: cfoam_m30deg-chiller_m10deg-dee_lampon_32367_322023.asc
-  R7/CF3: cfoam_m30deg-chiller_m10deg-dee_lampon_31846_388147.asc
-  R7/CF4: cfoam_m30deg-chiller_m10deg-dee_lampon_31004_446745.asc
-  R7/CF5: cfoam_m30deg-chiller_m10deg-dee_lampon_30027_499373.asc
-  R7/CF6: cfoam_m30deg-chiller_m10deg-dee_lampon_28803_545488.asc
-  R7/CF7: cfoam_m30deg-chiller_m10deg-dee_lampon_27388_580541.asc
-  R7/CF8: cfoam_m30deg-chiller_m10deg-dee_lampon_25851_603368.asc
-  R7/CF9: cfoam_m30deg-chiller_m10deg-dee_lampon_24292_616553.asc
-  R9/CF1: cfoam_m30deg-chiller_m10deg-dee_lampon_34084_243167.asc
-  R9/CF10: cfoam_m30deg-chiller_m10deg-dee_lampon_24409_679312.asc
-  R9/CF11: cfoam_m30deg-chiller_m10deg-dee_lampon_22728_679312.asc
-  R9/CF12: cfoam_m30deg-chiller_m10deg-dee_lampon_21037_666448.asc
-  R9/CF13: cfoam_m30deg-chiller_m10deg-dee_lampon_19438_643776.asc
-  R9/CF14: cfoam_m30deg-chiller_m10deg-dee_lampon_18172_612343.asc
-  R9/CF15: cfoam_m30deg-chiller_m10deg-dee_lampon_16635_568876.asc
-  R9/CF16: cfoam_m30deg-chiller_m10deg-dee_lampon_15483_517669.asc
-  R9/CF17: cfoam_m30deg-chiller_m10deg-dee_lampon_14546_457666.asc
-  R9/CF18: cfoam_m30deg-chiller_m10deg-dee_lampon_13780_392813.asc
-  R9/CF19: cfoam_m30deg-chiller_m10deg-dee_lampon_13244_327639.asc
-  R9/CF2: cfoam_m30deg-chiller_m10deg-dee_lampon_33778_327595.asc
-  R9/CF20: cfoam_m30deg-chiller_m10deg-dee_lampon_12930_239675.asc
-  R9/CF3: cfoam_m30deg-chiller_m10deg-dee_lampon_33306_398382.asc
-  R9/CF4: cfoam_m30deg-chiller_m10deg-dee_lampon_32550_463811.asc
-  R9/CF5: cfoam_m30deg-chiller_m10deg-dee_lampon_31596_516433.asc
-  R9/CF6: cfoam_m30deg-chiller_m10deg-dee_lampon_30418_571390.asc
-  R9/CF7: cfoam_m30deg-chiller_m10deg-dee_lampon_29051_613662.asc
-  R9/CF8: cfoam_m30deg-chiller_m10deg-dee_lampon_27631_638237.asc
-  R9/CF9: cfoam_m30deg-chiller_m10deg-dee_lampon_26004_668469.asc
+  R1/CF10: cfoam_m30deg-chiller_m10deg-dee_lampon_28181_241127.asc
+  R1/CF9: cfoam_m30deg-chiller_m10deg-dee_lampon_27644_307603.asc
+  R1/CF8: cfoam_m30deg-chiller_m10deg-dee_lampon_26916_353223.asc
+  R1/CF7: cfoam_m30deg-chiller_m10deg-dee_lampon_25640_391899.asc
+  R1/CF6: cfoam_m30deg-chiller_m10deg-dee_lampon_24311_417184.asc
+  R1/CF5: cfoam_m30deg-chiller_m10deg-dee_lampon_22820_417184.asc
+  R1/CF4: cfoam_m30deg-chiller_m10deg-dee_lampon_21385_398051.asc
+  R1/CF3: cfoam_m30deg-chiller_m10deg-dee_lampon_20170_359745.asc
+  R1/CF2: cfoam_m30deg-chiller_m10deg-dee_lampon_19423_306605.asc
+  R1/CF1: cfoam_m30deg-chiller_m10deg-dee_lampon_18992_239492.asc
+
+  R3/CF12: cfoam_m30deg-chiller_m10deg-dee_lampon_29746_241127.asc
+  R3/CF11: cfoam_m30deg-chiller_m10deg-dee_lampon_29268_316860.asc
+  R3/CF10: cfoam_m30deg-chiller_m10deg-dee_lampon_28414_381523.asc
+  R3/CF9: cfoam_m30deg-chiller_m10deg-dee_lampon_27113_435018.asc
+  R3/CF8: cfoam_m30deg-chiller_m10deg-dee_lampon_25820_467799.asc
+  R3/CF7: cfoam_m30deg-chiller_m10deg-dee_lampon_24358_482014.asc
+  R3/CF6: cfoam_m30deg-chiller_m10deg-dee_lampon_22674_482014.asc
+  R3/CF5: cfoam_m30deg-chiller_m10deg-dee_lampon_21129_466394.asc
+  R3/CF4: cfoam_m30deg-chiller_m10deg-dee_lampon_19702_428256.asc
+  R3/CF3: cfoam_m30deg-chiller_m10deg-dee_lampon_18558_379065.asc
+  R3/CF2: cfoam_m30deg-chiller_m10deg-dee_lampon_17777_317768.asc
+  R3/CF1: cfoam_m30deg-chiller_m10deg-dee_lampon_17394_239822.asc
+
+  R5/CF16: cfoam_m30deg-chiller_m10deg-dee_lampon_31231_240936.asc
+  R5/CF15: cfoam_m30deg-chiller_m10deg-dee_lampon_30855_311244.asc
+  R5/CF14: cfoam_m30deg-chiller_m10deg-dee_lampon_30313_375903.asc
+  R5/CF13: cfoam_m30deg-chiller_m10deg-dee_lampon_29502_430267.asc
+  R5/CF12: cfoam_m30deg-chiller_m10deg-dee_lampon_28493_474326.asc
+  R5/CF11: cfoam_m30deg-chiller_m10deg-dee_lampon_27224_509275.asc
+  R5/CF10: cfoam_m30deg-chiller_m10deg-dee_lampon_25784_538491.asc
+  R5/CF9: cfoam_m30deg-chiller_m10deg-dee_lampon_24395_553015.asc
+  R5/CF8: cfoam_m30deg-chiller_m10deg-dee_lampon_22851_553015.asc
+  R5/CF7: cfoam_m30deg-chiller_m10deg-dee_lampon_21335_538289.asc
+  R5/CF6: cfoam_m30deg-chiller_m10deg-dee_lampon_19915_512834.asc
+  R5/CF5: cfoam_m30deg-chiller_m10deg-dee_lampon_18598_476048.asc
+  R5/CF4: cfoam_m30deg-chiller_m10deg-dee_lampon_17551_432465.asc
+  R5/CF3: cfoam_m30deg-chiller_m10deg-dee_lampon_16819_374702.asc
+  R5/CF2: cfoam_m30deg-chiller_m10deg-dee_lampon_16217_321553.asc
+  R5/CF1: cfoam_m30deg-chiller_m10deg-dee_lampon_15829_239822.asc
+
+  R7/CF18: cfoam_m30deg-chiller_m10deg-dee_lampon_32707_240936.asc
+  R7/CF17: cfoam_m30deg-chiller_m10deg-dee_lampon_32367_322023.asc
+  R7/CF16: cfoam_m30deg-chiller_m10deg-dee_lampon_31846_388147.asc
+  R7/CF15: cfoam_m30deg-chiller_m10deg-dee_lampon_31004_446745.asc
+  R7/CF14: cfoam_m30deg-chiller_m10deg-dee_lampon_30027_499373.asc
+  R7/CF13: cfoam_m30deg-chiller_m10deg-dee_lampon_28803_545488.asc
+  R7/CF12: cfoam_m30deg-chiller_m10deg-dee_lampon_27388_580541.asc
+  R7/CF11: cfoam_m30deg-chiller_m10deg-dee_lampon_25851_603368.asc
+  R7/CF10: cfoam_m30deg-chiller_m10deg-dee_lampon_24292_616553.asc
+  R7/CF9: cfoam_m30deg-chiller_m10deg-dee_lampon_22626_616553.asc
+  R7/CF8: cfoam_m30deg-chiller_m10deg-dee_lampon_21019_600884.asc
+  R7/CF7: cfoam_m30deg-chiller_m10deg-dee_lampon_19626_578896.asc
+  R7/CF6: cfoam_m30deg-chiller_m10deg-dee_lampon_18242_542696.asc
+  R7/CF5: cfoam_m30deg-chiller_m10deg-dee_lampon_16993_498791.asc
+  R7/CF4: cfoam_m30deg-chiller_m10deg-dee_lampon_15944_444530.asc
+  R7/CF3: cfoam_m30deg-chiller_m10deg-dee_lampon_15175_385237.asc
+  R7/CF2: cfoam_m30deg-chiller_m10deg-dee_lampon_14705_319392.asc
+  R7/CF1: cfoam_m30deg-chiller_m10deg-dee_lampon_14331_239675.asc
+
+  R9/CF20: cfoam_m30deg-chiller_m10deg-dee_lampon_34084_243167.asc
+  R9/CF19: cfoam_m30deg-chiller_m10deg-dee_lampon_33778_327595.asc
+  R9/CF18: cfoam_m30deg-chiller_m10deg-dee_lampon_33306_398382.asc
+  R9/CF17: cfoam_m30deg-chiller_m10deg-dee_lampon_32550_463811.asc
+  R9/CF16: cfoam_m30deg-chiller_m10deg-dee_lampon_31596_516433.asc
+  R9/CF15: cfoam_m30deg-chiller_m10deg-dee_lampon_30418_571390.asc
+  R9/CF14: cfoam_m30deg-chiller_m10deg-dee_lampon_29051_613662.asc
+  R9/CF13: cfoam_m30deg-chiller_m10deg-dee_lampon_27631_638237.asc
+  R9/CF12: cfoam_m30deg-chiller_m10deg-dee_lampon_26004_668469.asc
+  R9/CF11: cfoam_m30deg-chiller_m10deg-dee_lampon_24409_679312.asc
+  R9/CF10: cfoam_m30deg-chiller_m10deg-dee_lampon_22728_679312.asc
+  R9/CF9: cfoam_m30deg-chiller_m10deg-dee_lampon_21037_666448.asc
+  R9/CF8: cfoam_m30deg-chiller_m10deg-dee_lampon_19438_643776.asc
+  R9/CF7: cfoam_m30deg-chiller_m10deg-dee_lampon_18172_612343.asc
+  R9/CF6: cfoam_m30deg-chiller_m10deg-dee_lampon_16635_568876.asc
+  R9/CF5: cfoam_m30deg-chiller_m10deg-dee_lampon_15483_517669.asc
+  R9/CF4: cfoam_m30deg-chiller_m10deg-dee_lampon_14546_457666.asc
+  R9/CF3: cfoam_m30deg-chiller_m10deg-dee_lampon_13780_392813.asc
+  R9/CF2: cfoam_m30deg-chiller_m10deg-dee_lampon_13244_327639.asc
+  R9/CF1: cfoam_m30deg-chiller_m10deg-dee_lampon_12930_239675.asc
+
   origin_x0: 0.0
   origin_y0: 245.0
 ImageInfo:
@@ -611,17 +616,17 @@ ImageInfo:
     - 100
     - 868
 args:
-  cadImage: data/dee_cad_bottom_side.png
+  cadImage: data/Lyon_Dee_cad_no-disk-to-disk-connector_side.png
   cadImageOrigin:
-  - 1513.0
-  - 105.0
+  - 595.0
+  - 33.0
   coolCircFiles: null
   geomFile: data/geometry_carbonFoam.xlsx
   inputDir: /media/soham/D/Programs/DESY/IR-setup/Data/2021-10-05/Lyon_dee/no-disk2disk-connector_side/lamp_on
   inputEncoding: ISO-8859-1
   inputPattern: cfoam_m30deg-chiller_m10deg-dee_lampon_XXX_YYY.asc
   mmtopix: 311.67/55.26
-  mmtopixCad: 2492/1920
+  mmtopixCad: 780/1565.44
   moduleType: PS
   motorRefX:
   - 23503.0
@@ -631,6 +636,6 @@ args:
   originX: 0.0
   originY: 245.0
   ringOpt: odd
-  side: bottom
+  side: top
   stepxtomm: 1565.44/28506
   stepytomm: 626.78/499919

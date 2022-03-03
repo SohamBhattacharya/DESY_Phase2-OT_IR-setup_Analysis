@@ -58,6 +58,9 @@ class ProfileLine :
             dRow = dRow,
             dCol = dCol,
         )
+        
+        self.xx = []
+        self.yy = []
     
     
     
@@ -91,3 +94,14 @@ class ProfileLine :
         )
         
         return (self.rr, self.cc)
+    
+    
+    def setProfileTemp(
+        self,
+        xx,
+        yy,
+    ) :
+        
+        self.xx = xx
+        self.yy = yy
+        

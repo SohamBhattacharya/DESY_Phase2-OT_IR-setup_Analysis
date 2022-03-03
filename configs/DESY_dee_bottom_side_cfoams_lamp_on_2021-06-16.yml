@@ -541,7 +541,7 @@ ImageInfo:
     - 1167
     - 1935
 args:
-  cadImage: data/dee_cad_bottom_side.png
+  cadImage: data/DESY_dee_cad_bottom_side.png
   cadImageOrigin:
   - 1513.0
   - 105.0

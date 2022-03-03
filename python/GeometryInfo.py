@@ -310,9 +310,11 @@ class GeometryInfo :
             rOut = r + radL/2.0
             
             l_rad_prof = [
-                r - 0.15*radL/2.0,
+                r - 0.150*radL/2.0,
+                r - 0.075*radL/2.0,
                 r,
-                r + 0.15*radL/2.0,
+                r + 0.075*radL/2.0,
+                r + 0.150*radL/2.0,
             ]
             
             #print(rInn, rOut)
@@ -482,11 +484,22 @@ class GeometryInfo :
                 
                 
                 # C-foam text
+                
+                if (side == constants.side_top_str) :
+                    
+                    xy = (0.5*(xOut1+xOut2), 0.5*(yOut1+yOut2))
+                
+                elif (side == constants.side_bottom_str) :
+                    
+                    xy = (0.5*(xInn1+xInn2), 0.5*(yInn1+yInn2))
+                
                 cfoamText = matplotlib.text.Annotation(
                     text = cfoamLabel,
-                    xy = (0.5*(xInn1+xInn2), 0.5*(yInn1+yInn2)),
+                    #xy = (0.5*(xInn1+xInn2), 0.5*(yInn1+yInn2)),
+                    xy = xy,
                     rotation = phi_deg - 90,
                     size = "small",
+                    fontweight = "bold",
                     horizontalalignment = "center",
                     verticalalignment = "center",
                     zorder = constants.zorder_geometryText,
@@ -831,39 +844,64 @@ class GeometryInfo :
         
         self.imgInfo.save_figures(outdir = savedir)
         
-        for label in self.d_geomObj :
+        if (self.args.moduleType == constants.module_PS_str) :
             
-            #if (hasattr(self.d_geomObj[label], "plot_profiles")) :
-            if (isinstance(self.d_geomObj[label], CarbonFoamInfo.CarbonFoamInfo)) :
+            d_profileTemp = {}
+            
+            for label in self.d_geomObj :
                 
-                outlabel = label.replace("/", "_")
-                outdir = "%s/%s" %(savedir, outlabel)
-                os.system("mkdir -p %s" %(outdir))
+                #if (hasattr(self.d_geomObj[label], "plot_profiles")) :
+                if (isinstance(self.d_geomObj[label], CarbonFoamInfo.CarbonFoamInfo)) :
+                    
+                    outlabel = label.replace("/", "_")
+                    outdir = "%s/%s" %(savedir, outlabel)
+                    os.system("mkdir -p %s" %(outdir))
+                    
+                    self.clear(axis = self.axis_profile)
+                    self.d_geomObj[label].plot_profiles(axis = self.axis_profile, use_prof_color = True)
+                    
+                    outname = "%s_profiles" %(outlabel)
+                    
+                    outpath = "%s/%s" %(outdir, outname)
+                    
+                    self.axis_profile.figure.savefig("%s.pdf" %(outpath))
+                    self.axis_profile.figure.savefig("%s.png" %(outpath))
+                    
+                    d_profileTemp[label] = {}
+                    
+                    for prof_label in self.d_geomObj[label].d_profileLine :
+                        
+                        d_profileTemp[label][prof_label] = {
+                            "xx": self.d_geomObj[label].d_profileLine[prof_label].xx,
+                            "yy": self.d_geomObj[label].d_profileLine[prof_label].yy,
+                        }
+                    
+                    self.d_geomObj[label].save_figures(outdir = outdir)
+                    
+                    # Dynamic range
+                    self.axis_profile.set_ylim(self.d_geomObj[label].minTemp_zoom, self.d_geomObj[label].maxTemp_zoom)
+                    self.axis_profile.figure.savefig("%s_zoomTemp.pdf" %(outpath))
+                    self.axis_profile.figure.savefig("%s_zoomTemp.png" %(outpath))
+                    
+                    
+                    self.clear(axis = self.axis_profile)
                 
-                self.clear(axis = self.axis_profile)
-                self.d_geomObj[label].plot_profiles(axis = self.axis_profile, use_prof_color = True)
                 
-                outname = "%s_profiles" %(outlabel)
-                
-                outpath = "%s/%s" %(outdir, outname)
-                
-                self.axis_profile.figure.savefig("%s.pdf" %(outpath))
-                self.axis_profile.figure.savefig("%s.png" %(outpath))
-                
-                
-                self.d_geomObj[label].save_figures(outdir = outdir)
-                
-                self.clear(axis = self.axis_profile)
+                #elif (hasattr(self.d_geomObj[label], "plot_2Sinserts")) :
+                if (isinstance(self.d_geomObj[label], Module2SInfo.Module2SInfo)) :
+                    
+                    outlabel = label.replace("/", "_")
+                    outdir = "%s/%s" %(savedir, outlabel)
+                    os.system("mkdir -p %s" %(outdir))
+                    
+                    self.d_geomObj[label].save_figures(outdir = outdir)
             
             
-            #elif (hasattr(self.d_geomObj[label], "plot_2Sinserts")) :
-            if (isinstance(self.d_geomObj[label], Module2SInfo.Module2SInfo)) :
+            saveFileName = "%s/profiles.yml" %(savedir)
+            
+            with open(saveFileName, "w") as fopen :
                 
-                outlabel = label.replace("/", "_")
-                outdir = "%s/%s" %(savedir, outlabel)
-                os.system("mkdir -p %s" %(outdir))
-                
-                self.d_geomObj[label].save_figures(outdir = outdir)
+                fopen.write(yaml.dump(d_profileTemp))
         
         
         if (self.args.moduleType == constants.module_2S_str) :

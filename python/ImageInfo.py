@@ -236,8 +236,8 @@ class ImageInfo :
         temp_mean = numpy.nanmean(self.l_inputData)
         temp_std = numpy.nanstd(self.l_inputData)
         
-        self.minTemp = temp_mean - 3*temp_std
-        self.maxTemp = temp_mean + 3*temp_std
+        self.minTemp = (temp_mean - 3*temp_std) if (args.minTemp is None) else args.minTemp
+        self.maxTemp = (temp_mean + 3*temp_std) if (args.maxTemp is None) else args.maxTemp
         
         print("minTemp %f, maxTemp %f" %(self.minTemp, self.maxTemp))
         
@@ -366,7 +366,7 @@ class ImageInfo :
         self.tkroot_stitchedDee.wm_title("Stitched image")
         self.tkroot_stitchedDee.bind_all("<Button-1>", lambda event: event.widget.focus_set())
         
-        self.fig_stitchedDee = matplotlib.figure.Figure(figsize = [10, 6])
+        self.fig_stitchedDee = matplotlib.figure.Figure(figsize = [12, 8])
         self.fig_stitchedDee.canvas = FigureCanvasTkAgg(self.fig_stitchedDee, master = self.tkroot_stitchedDee)
         
         #self.fig_stitchedDee.canvas.mpl_connect("pick_event", self.on_pick)
@@ -407,7 +407,8 @@ class ImageInfo :
                 #picker = True,
                 label = self.l_inputFileName[imgIdx],
                 #animated = False,
-                alpha = 0.75,
+                #alpha = 0.75,
+                alpha = 0.9,
             )
             
             if (not imgIdx) :
@@ -470,7 +471,7 @@ class ImageInfo :
         self.tkroot_cadImg.bind_all("<Button-1>", lambda event: event.widget.focus_set())
         
         
-        self.fig_cadImg = matplotlib.figure.Figure(figsize = [10, 6])
+        self.fig_cadImg = matplotlib.figure.Figure(figsize = [12, 8])
         self.fig_cadImg.canvas = FigureCanvasTkAgg(self.fig_cadImg, master = self.tkroot_cadImg)
         
         self.fig_cadImg.canvas.mpl_connect("pick_event", self.on_pick)

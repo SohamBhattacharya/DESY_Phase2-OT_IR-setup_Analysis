@@ -1,0 +1,7 @@
+#!/bin/bash
+
+./scripts/run_analyze_profiles_DESY_dee_top_side_cfoams_lamp_off.sh  DESY_dee_top_side_cfoams_lamp_off_2021-06-21_5-profiles
+./scripts/run_analyze_profiles_DESY_dee_bottom_side_cfoams_lamp_off.sh  DESY_dee_bottom_side_cfoams_lamp_off_2021-06-16_5-profiles
+
+./scripts/run_analyze_profiles_Lyon_dee_no-connector_side_cfoams_lamp_off.sh  Lyon_dee_no-connector_side_cfoams_lamp_off_2021-11-11_5-profiles
+./scripts/run_analyze_profiles_Lyon_dee_disk2disk-connector_side_cfoams_lamp_off.sh  Lyon_dee_disk2disk-connector_side_cfoams_lamp_off_2021-11-26_5-profiles

@@ -64,6 +64,9 @@ class CarbonFoamInfo :
         
         self.event_startDrag = None
         self.l_cid_dragImg = []
+        
+        self.minTemp_zoom = None
+        self.maxTemp_zoom = None
     
     
     def destroy(self) :
@@ -205,7 +208,8 @@ class CarbonFoamInfo :
                 
                 continue
             
-            val = self.imgInfo.l_inputData[self.imgIdx][r, c]
+            val = float(self.imgInfo.l_inputData[self.imgIdx][r, c])
+            #print(type(val))
             
             #try :
             #    
@@ -220,6 +224,11 @@ class CarbonFoamInfo :
             
             #print(rgb, val)
             
+        
+        self.d_profileLine[label].setProfileTemp(
+            xx = xx,
+            yy = yy,
+        )
         
         xx = numpy.array(xx)
         yy = numpy.array(yy)
@@ -251,6 +260,37 @@ class CarbonFoamInfo :
         axis.set_ylim((self.imgInfo.minTemp, self.imgInfo.maxTemp))
         
         axis.figure.canvas.draw()
+        
+        
+        # Dynamic range
+        if (len(yy)) :
+            
+            yMin = numpy.nanmin(yy)
+            yMax = numpy.nanmax(yy)
+            
+            if (self.minTemp_zoom is None or self.maxTemp_zoom is None) :
+                
+                self.minTemp_zoom = yMin
+                self.maxTemp_zoom = yMax
+            
+            else :
+                
+                yMin = min(yMin, self.minTemp_zoom)
+                yMax = max(yMax, self.maxTemp_zoom)
+                
+                dy = 0.5*(yMax-yMin)
+                yMid = 0.5*(yMax+yMin)
+                
+                yMax = yMid + 1.3 * dy
+                yMin = yMid - 1.3 * dy
+                
+                self.minTemp_zoom = yMin
+                self.maxTemp_zoom = yMax
+        
+        else :
+            
+            self.minTemp_zoom = self.imgInfo.minTemp
+            self.maxTemp_zoom = self.imgInfo.maxTemp
     
     
     def plot_profiles(self, axis, use_prof_color = False, update = False) :
@@ -832,5 +872,35 @@ class CarbonFoamInfo :
         
         self.fig_img.savefig("%s.pdf" %(outpath))
         self.fig_img.savefig("%s.png" %(outpath))
+        
+        
+        #if (len(self.d_profileLine)) :
+        if (self.minTemp_zoom is not None and self.maxTemp_zoom  is not None) :
+            
+            #yMin = +9999
+            #yMax = -9999
+            #
+            ## Dynamic range
+            #for label in self.d_profileLine :
+            #    
+            #    yy = self.d_drawnArtist[label].get_ydata()
+            #    
+            #    yMin = min(yMin, numpy.nanmin(yy))
+            #    yMax = max(yMax, numpy.nanmax(yy))
+            #
+            #dy = 0.5*(yMax-yMin)
+            #yMid = 0.5*(yMax+yMin)
+            #
+            #yMax = yMid + 1.2 * dy
+            #yMin = yMid - 1.2 * dy
+            ##print(yMin, yMax)
+            #
+            #self.img.set_clim(yMin, yMax)
+            
+            self.img.set_clim(self.minTemp_zoom, self.maxTemp_zoom)
+            
+            self.fig_img.savefig("%s_zoomTemp.pdf" %(outpath))
+            self.fig_img.savefig("%s_zoomTemp.png" %(outpath))
+        
         
         self.on_fig_close(event = None)
