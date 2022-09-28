@@ -46,9 +46,6 @@ class Module2SInfo :
         self.imgIdx = imgIdx
         self.label = label
         
-        self.offsetRow = -self.imgInfo.l_imgExtent_pixelY[imgIdx][0]
-        self.offsetCol = -self.imgInfo.l_imgExtent_pixelX[imgIdx][0]
-        
         self.d_geomArtist = {}
         self.d_insertDisk = {}
         
@@ -64,6 +61,14 @@ class Module2SInfo :
         
         self.event_startDrag = None
         self.l_cid_dragImg = []
+        
+        self.offsetRow = 0
+        self.offsetCol = 0
+        
+        if (imgIdx is not None) :
+            
+            self.offsetRow = -self.imgInfo.l_imgExtent_pixelY[imgIdx][0]
+            self.offsetCol = -self.imgInfo.l_imgExtent_pixelX[imgIdx][0]
     
     
     def destroy(self) :
@@ -74,6 +79,10 @@ class Module2SInfo :
     
     
     def get_imgName(self) :
+        
+        if (self.imgIdx is None) :
+            
+            return None 
         
         return self.imgInfo.l_inputFileName[self.imgIdx]
     
@@ -181,6 +190,11 @@ class Module2SInfo :
     
     
     def get_minTemp(self, label) :
+        
+        if (self.imgIdx is None) :
+            
+            #return 0.0
+            return None
         
         rr = self.d_insertDisk[label].rr
         cc = self.d_insertDisk[label].cc
@@ -333,6 +347,10 @@ class Module2SInfo :
     
     
     def draw(self) :
+        
+        if (self.imgIdx is None) :
+            
+            return
         
         if (self.fig_img is None) :
             
@@ -691,6 +709,10 @@ class Module2SInfo :
     
     
     def save_figures(self, outdir) :
+        
+        if (self.imgIdx is None) :
+            
+            return
         
         outname = "%s" %(self.label.replace("/", "_"))
         

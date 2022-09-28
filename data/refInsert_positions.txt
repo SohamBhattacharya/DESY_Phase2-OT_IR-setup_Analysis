@@ -1,0 +1,6 @@
+sides:
+    x = +-960 mm
+    y = 80 mm
+center:
+    x = 0
+    y = 975mm

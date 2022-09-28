@@ -41,7 +41,7 @@ import utils
 def main() :
     
     # Argument parser
-    parser = argparse.ArgumentParser(formatter_class = argparse.RawTextHelpFormatter)
+    parser = argparse.ArgumentParser(formatter_class = argparse.ArgumentDefaultsHelpFormatter)
     
     parser.add_argument(
         "--inputDir",
@@ -108,6 +108,13 @@ def main() :
         required = False,
         default = "odd",
         choices = [constants.odd_str, constants.even_str],
+    )
+    
+    parser.add_argument(
+        "--isPrototype",
+        help = "Is a prototype dee",
+        default = False,
+        action = "store_true",
     )
     
     parser.add_argument(

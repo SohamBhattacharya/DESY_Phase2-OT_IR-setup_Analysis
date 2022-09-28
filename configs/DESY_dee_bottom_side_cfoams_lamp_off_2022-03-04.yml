@@ -1,0 +1,556 @@
+GeometryInfo:
+  R1/CF1: cfoam_m25deg-chiller_m11deg-dee_lampoff_28144_212700.asc
+  R1/CF10: cfoam_m25deg-chiller_m11deg-dee_lampoff_19452_273438.asc
+  R1/CF2: cfoam_m25deg-chiller_m11deg-dee_lampoff_27682_276715.asc
+  R1/CF3: cfoam_m25deg-chiller_m11deg-dee_lampoff_26898_321808.asc
+  R1/CF4: cfoam_m25deg-chiller_m11deg-dee_lampoff_25671_360282.asc
+  R1/CF5: cfoam_m25deg-chiller_m11deg-dee_lampoff_24260_380955.asc
+  R1/CF6: cfoam_m25deg-chiller_m11deg-dee_lampoff_22801_380955.asc
+  R1/CF7: cfoam_m25deg-chiller_m11deg-dee_lampoff_21451_361787.asc
+  R1/CF8: cfoam_m25deg-chiller_m11deg-dee_lampoff_20314_323815.asc
+  R1/CF9: cfoam_m25deg-chiller_m11deg-dee_lampoff_19452_273438.asc
+  R3/CF1: cfoam_m25deg-chiller_m11deg-dee_lampoff_29688_215058.asc
+  R3/CF10: cfoam_m25deg-chiller_m11deg-dee_lampoff_18629_347059.asc
+  R3/CF11: cfoam_m25deg-chiller_m11deg-dee_lampoff_18629_347059.asc
+  R3/CF12: cfoam_m25deg-chiller_m11deg-dee_lampoff_19452_273438.asc
+  R3/CF2: cfoam_m25deg-chiller_m11deg-dee_lampoff_29220_285569.asc
+  R3/CF3: cfoam_m25deg-chiller_m11deg-dee_lampoff_28469_348027.asc
+  R3/CF4: cfoam_m25deg-chiller_m11deg-dee_lampoff_27331_398147.asc
+  R3/CF5: cfoam_m25deg-chiller_m11deg-dee_lampoff_25881_430845.asc
+  R3/CF6: cfoam_m25deg-chiller_m11deg-dee_lampoff_24393_450134.asc
+  R3/CF7: cfoam_m25deg-chiller_m11deg-dee_lampoff_22761_450134.asc
+  R3/CF8: cfoam_m25deg-chiller_m11deg-dee_lampoff_21148_432660.asc
+  R3/CF9: cfoam_m25deg-chiller_m11deg-dee_lampoff_19760_398328.asc
+  R5/CF1: cfoam_m25deg-chiller_m11deg-dee_lampoff_31195_215058.asc
+  R5/CF10: cfoam_m25deg-chiller_m11deg-dee_lampoff_21237_503291.asc
+  R5/CF11: cfoam_m25deg-chiller_m11deg-dee_lampoff_19899_478145.asc
+  R5/CF12: cfoam_m25deg-chiller_m11deg-dee_lampoff_18620_440623.asc
+  R5/CF13: cfoam_m25deg-chiller_m11deg-dee_lampoff_17614_392306.asc
+  R5/CF14: cfoam_m25deg-chiller_m11deg-dee_lampoff_17614_392306.asc
+  R5/CF15: cfoam_m25deg-chiller_m11deg-dee_lampoff_18629_347059.asc
+  R5/CF16: cfoam_m25deg-chiller_m11deg-dee_lampoff_19452_273438.asc
+  R5/CF2: cfoam_m25deg-chiller_m11deg-dee_lampoff_30921_280886.asc
+  R5/CF3: cfoam_m25deg-chiller_m11deg-dee_lampoff_30357_338234.asc
+  R5/CF4: cfoam_m25deg-chiller_m11deg-dee_lampoff_29505_392517.asc
+  R5/CF5: cfoam_m25deg-chiller_m11deg-dee_lampoff_28432_443271.asc
+  R5/CF6: cfoam_m25deg-chiller_m11deg-dee_lampoff_27188_481230.asc
+  R5/CF7: cfoam_m25deg-chiller_m11deg-dee_lampoff_25793_503788.asc
+  R5/CF8: cfoam_m25deg-chiller_m11deg-dee_lampoff_24309_516790.asc
+  R5/CF9: cfoam_m25deg-chiller_m11deg-dee_lampoff_22725_516790.asc
+  R7/CF1: cfoam_m25deg-chiller_m11deg-dee_lampoff_32687_213987.asc
+  R7/CF10: cfoam_m25deg-chiller_m11deg-dee_lampoff_22769_582879.asc
+  R7/CF11: cfoam_m25deg-chiller_m11deg-dee_lampoff_21176_567607.asc
+  R7/CF12: cfoam_m25deg-chiller_m11deg-dee_lampoff_19669_546490.asc
+  R7/CF13: cfoam_m25deg-chiller_m11deg-dee_lampoff_18346_506474.asc
+  R7/CF14: cfoam_m25deg-chiller_m11deg-dee_lampoff_17107_464092.asc
+  R7/CF15: cfoam_m25deg-chiller_m11deg-dee_lampoff_16073_410864.asc
+  R7/CF16: cfoam_m25deg-chiller_m11deg-dee_lampoff_16073_410864.asc
+  R7/CF17: cfoam_m25deg-chiller_m11deg-dee_lampoff_14532_422672.asc
+  R7/CF18: cfoam_m25deg-chiller_m11deg-dee_lampoff_14532_422672.asc
+  R7/CF2: cfoam_m25deg-chiller_m11deg-dee_lampoff_32400_284602.asc
+  R7/CF3: cfoam_m25deg-chiller_m11deg-dee_lampoff_31850_354268.asc
+  R7/CF4: cfoam_m25deg-chiller_m11deg-dee_lampoff_31028_413103.asc
+  R7/CF5: cfoam_m25deg-chiller_m11deg-dee_lampoff_30030_466013.asc
+  R7/CF6: cfoam_m25deg-chiller_m11deg-dee_lampoff_28801_510643.asc
+  R7/CF7: cfoam_m25deg-chiller_m11deg-dee_lampoff_27432_544240.asc
+  R7/CF8: cfoam_m25deg-chiller_m11deg-dee_lampoff_25968_568714.asc
+  R7/CF9: cfoam_m25deg-chiller_m11deg-dee_lampoff_24351_582879.asc
+  R9/CF1: cfoam_m25deg-chiller_m11deg-dee_lampoff_34123_213987.asc
+  R9/CF10: cfoam_m25deg-chiller_m11deg-dee_lampoff_24352_643754.asc
+  R9/CF11: cfoam_m25deg-chiller_m11deg-dee_lampoff_22696_643754.asc
+  R9/CF12: cfoam_m25deg-chiller_m11deg-dee_lampoff_21056_633814.asc
+  R9/CF13: cfoam_m25deg-chiller_m11deg-dee_lampoff_19476_611719.asc
+  R9/CF14: cfoam_m25deg-chiller_m11deg-dee_lampoff_18023_578512.asc
+  R9/CF15: cfoam_m25deg-chiller_m11deg-dee_lampoff_16686_533732.asc
+  R9/CF16: cfoam_m25deg-chiller_m11deg-dee_lampoff_15444_484449.asc
+  R9/CF17: cfoam_m25deg-chiller_m11deg-dee_lampoff_14532_422672.asc
+  R9/CF18: cfoam_m25deg-chiller_m11deg-dee_lampoff_14532_422672.asc
+  R9/CF19: cfoam_m25deg-chiller_m11deg-dee_lampoff_14532_422672.asc
+  R9/CF2: cfoam_m25deg-chiller_m11deg-dee_lampoff_33901_290488.asc
+  R9/CF20: cfoam_m25deg-chiller_m11deg-dee_lampoff_14532_422672.asc
+  R9/CF3: cfoam_m25deg-chiller_m11deg-dee_lampoff_33349_358619.asc
+  R9/CF4: cfoam_m25deg-chiller_m11deg-dee_lampoff_32591_423445.asc
+  R9/CF5: cfoam_m25deg-chiller_m11deg-dee_lampoff_31582_483949.asc
+  R9/CF6: cfoam_m25deg-chiller_m11deg-dee_lampoff_30428_535933.asc
+  R9/CF7: cfoam_m25deg-chiller_m11deg-dee_lampoff_29084_576429.asc
+  R9/CF8: cfoam_m25deg-chiller_m11deg-dee_lampoff_27623_612064.asc
+  R9/CF9: cfoam_m25deg-chiller_m11deg-dee_lampoff_26004_632886.asc
+  origin_x0: 0.0
+  origin_y0: 0.0
+ImageInfo:
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_14532_422672.asc:
+    imgExtent_pixelX: !!python/tuple
+    - -3287
+    - -2263
+    imgExtent_pixelY: !!python/tuple
+    - 1289
+    - 2057
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_15444_484449.asc:
+    imgExtent_pixelX: !!python/tuple
+    - -3006
+    - -1982
+    imgExtent_pixelY: !!python/tuple
+    - 1724
+    - 2492
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_16073_410864.asc:
+    imgExtent_pixelX: !!python/tuple
+    - -2812
+    - -1788
+    imgExtent_pixelY: !!python/tuple
+    - 1205
+    - 1973
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_16686_533732.asc:
+    imgExtent_pixelX: !!python/tuple
+    - -2625
+    - -1601
+    imgExtent_pixelY: !!python/tuple
+    - 2073
+    - 2841
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_17107_464092.asc:
+    imgExtent_pixelX: !!python/tuple
+    - -2494
+    - -1470
+    imgExtent_pixelY: !!python/tuple
+    - 1581
+    - 2349
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_17614_392306.asc:
+    imgExtent_pixelX: !!python/tuple
+    - -2337
+    - -1313
+    imgExtent_pixelY: !!python/tuple
+    - 1075
+    - 1843
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_18023_578512.asc:
+    imgExtent_pixelX: !!python/tuple
+    - -2211
+    - -1187
+    imgExtent_pixelY: !!python/tuple
+    - 2387
+    - 3155
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_18346_506474.asc:
+    imgExtent_pixelX: !!python/tuple
+    - -2112
+    - -1088
+    imgExtent_pixelY: !!python/tuple
+    - 1879
+    - 2647
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_18620_440623.asc:
+    imgExtent_pixelX: !!python/tuple
+    - -2027
+    - -1003
+    imgExtent_pixelY: !!python/tuple
+    - 1415
+    - 2183
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_18629_347059.asc:
+    imgExtent_pixelX: !!python/tuple
+    - -2025
+    - -1001
+    imgExtent_pixelY: !!python/tuple
+    - 751
+    - 1519
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_19452_273438.asc:
+    imgExtent_pixelX: !!python/tuple
+    - -1761
+    - -737
+    imgExtent_pixelY: !!python/tuple
+    - 232
+    - 1000
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_19476_611719.asc:
+    imgExtent_pixelX: !!python/tuple
+    - -1764
+    - -740
+    imgExtent_pixelY: !!python/tuple
+    - 2621
+    - 3389
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_19669_546490.asc:
+    imgExtent_pixelX: !!python/tuple
+    - -1704
+    - -680
+    imgExtent_pixelY: !!python/tuple
+    - 2161
+    - 2929
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_19760_398328.asc:
+    imgExtent_pixelX: !!python/tuple
+    - -1666
+    - -642
+    imgExtent_pixelY: !!python/tuple
+    - 1112
+    - 1880
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_19899_478145.asc:
+    imgExtent_pixelX: !!python/tuple
+    - -1633
+    - -609
+    imgExtent_pixelY: !!python/tuple
+    - 1680
+    - 2448
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_20314_323815.asc:
+    imgExtent_pixelX: !!python/tuple
+    - -1497
+    - -473
+    imgExtent_pixelY: !!python/tuple
+    - 584
+    - 1352
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_21056_633814.asc:
+    imgExtent_pixelX: !!python/tuple
+    - -1277
+    - -253
+    imgExtent_pixelY: !!python/tuple
+    - 2777
+    - 3545
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_21148_432660.asc:
+    imgExtent_pixelX: !!python/tuple
+    - -1243
+    - -219
+    imgExtent_pixelY: !!python/tuple
+    - 1354
+    - 2122
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_21176_567607.asc:
+    imgExtent_pixelX: !!python/tuple
+    - -1240
+    - -216
+    imgExtent_pixelY: !!python/tuple
+    - 2310
+    - 3078
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_21237_503291.asc:
+    imgExtent_pixelX: !!python/tuple
+    - -1221
+    - -197
+    imgExtent_pixelY: !!python/tuple
+    - 1857
+    - 2625
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_21451_361787.asc:
+    imgExtent_pixelX: !!python/tuple
+    - -1145
+    - -121
+    imgExtent_pixelY: !!python/tuple
+    - 850
+    - 1618
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_22696_643754.asc:
+    imgExtent_pixelX: !!python/tuple
+    - -771
+    - 253
+    imgExtent_pixelY: !!python/tuple
+    - 2847
+    - 3615
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_22725_516790.asc:
+    imgExtent_pixelX: !!python/tuple
+    - -762
+    - 262
+    imgExtent_pixelY: !!python/tuple
+    - 1952
+    - 2720
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_22761_450134.asc:
+    imgExtent_pixelX: !!python/tuple
+    - -743
+    - 280
+    imgExtent_pixelY: !!python/tuple
+    - 1477
+    - 2245
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_22769_582879.asc:
+    imgExtent_pixelX: !!python/tuple
+    - -749
+    - 275
+    imgExtent_pixelY: !!python/tuple
+    - 2418
+    - 3186
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_22801_380955.asc:
+    imgExtent_pixelX: !!python/tuple
+    - -736
+    - 287
+    imgExtent_pixelY: !!python/tuple
+    - 987
+    - 1755
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_24260_380955.asc:
+    imgExtent_pixelX: !!python/tuple
+    - -298
+    - 725
+    imgExtent_pixelY: !!python/tuple
+    - 985
+    - 1753
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_24309_516790.asc:
+    imgExtent_pixelX: !!python/tuple
+    - -274
+    - 750
+    imgExtent_pixelY: !!python/tuple
+    - 1952
+    - 2720
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_24351_582879.asc:
+    imgExtent_pixelX: !!python/tuple
+    - -263
+    - 760
+    imgExtent_pixelY: !!python/tuple
+    - 2410
+    - 3178
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_24352_643754.asc:
+    imgExtent_pixelX: !!python/tuple
+    - -261
+    - 763
+    imgExtent_pixelY: !!python/tuple
+    - 2847
+    - 3615
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_24393_450134.asc:
+    imgExtent_pixelX: !!python/tuple
+    - -248
+    - 776
+    imgExtent_pixelY: !!python/tuple
+    - 1477
+    - 2245
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_25671_360282.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 142
+    - 1166
+    imgExtent_pixelY: !!python/tuple
+    - 841
+    - 1609
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_25793_503788.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 182
+    - 1206
+    imgExtent_pixelY: !!python/tuple
+    - 1860
+    - 2628
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_25881_430845.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 199
+    - 1223
+    imgExtent_pixelY: !!python/tuple
+    - 1336
+    - 2104
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_25968_568714.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 236
+    - 1260
+    imgExtent_pixelY: !!python/tuple
+    - 2318
+    - 3086
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_26004_632886.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 247
+    - 1271
+    imgExtent_pixelY: !!python/tuple
+    - 2770
+    - 3538
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_26898_321808.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 494
+    - 1518
+    imgExtent_pixelY: !!python/tuple
+    - 580
+    - 1348
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_27188_481230.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 607
+    - 1631
+    imgExtent_pixelY: !!python/tuple
+    - 1696
+    - 2464
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_27331_398147.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 648
+    - 1672
+    imgExtent_pixelY: !!python/tuple
+    - 1111
+    - 1879
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_27432_544240.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 682
+    - 1706
+    imgExtent_pixelY: !!python/tuple
+    - 2148
+    - 2916
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_27623_612064.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 743
+    - 1767
+    imgExtent_pixelY: !!python/tuple
+    - 2616
+    - 3384
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_27682_276715.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 731
+    - 1755
+    imgExtent_pixelY: !!python/tuple
+    - 257
+    - 1025
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_28144_212700.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 878
+    - 1902
+    imgExtent_pixelY: !!python/tuple
+    - -178
+    - 589
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_28432_443271.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 991
+    - 2015
+    imgExtent_pixelY: !!python/tuple
+    - 1431
+    - 2199
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_28469_348027.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 985
+    - 2009
+    imgExtent_pixelY: !!python/tuple
+    - 751
+    - 1519
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_28801_510643.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 1109
+    - 2133
+    imgExtent_pixelY: !!python/tuple
+    - 1909
+    - 2677
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_29084_576429.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 1196
+    - 2220
+    imgExtent_pixelY: !!python/tuple
+    - 2372
+    - 3140
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_29220_285569.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 1226
+    - 2250
+    imgExtent_pixelY: !!python/tuple
+    - 319
+    - 1087
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_29505_392517.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 1314
+    - 2338
+    imgExtent_pixelY: !!python/tuple
+    - 1068
+    - 1836
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_29688_215058.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 1366
+    - 2390
+    imgExtent_pixelY: !!python/tuple
+    - -174
+    - 594
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_30030_466013.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 1488
+    - 2512
+    imgExtent_pixelY: !!python/tuple
+    - 1594
+    - 2362
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_30357_338234.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 1581
+    - 2605
+    imgExtent_pixelY: !!python/tuple
+    - 689
+    - 1457
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_30428_535933.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 1606
+    - 2630
+    imgExtent_pixelY: !!python/tuple
+    - 2082
+    - 2850
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_30921_280886.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 1746
+    - 2770
+    imgExtent_pixelY: !!python/tuple
+    - 291
+    - 1059
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_31028_413103.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 1796
+    - 2820
+    imgExtent_pixelY: !!python/tuple
+    - 1221
+    - 1989
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_31195_215058.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 1830
+    - 2854
+    imgExtent_pixelY: !!python/tuple
+    - -174
+    - 594
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_31582_483949.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 1958
+    - 2982
+    imgExtent_pixelY: !!python/tuple
+    - 1713
+    - 2481
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_31850_354268.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 2030
+    - 3054
+    imgExtent_pixelY: !!python/tuple
+    - 799
+    - 1567
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_32400_284602.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 2201
+    - 3225
+    imgExtent_pixelY: !!python/tuple
+    - 311
+    - 1079
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_32591_423445.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 2265
+    - 3289
+    imgExtent_pixelY: !!python/tuple
+    - 1291
+    - 2059
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_32687_213987.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 2295
+    - 3319
+    imgExtent_pixelY: !!python/tuple
+    - -185
+    - 582
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_33349_358619.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 2501
+    - 3525
+    imgExtent_pixelY: !!python/tuple
+    - 832
+    - 1600
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_33901_290488.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 2671
+    - 3695
+    imgExtent_pixelY: !!python/tuple
+    - 354
+    - 1122
+  cfoam_m25deg-chiller_m11deg-dee_lampoff_34123_213987.asc:
+    imgExtent_pixelX: !!python/tuple
+    - 2734
+    - 3758
+    imgExtent_pixelY: !!python/tuple
+    - -178
+    - 589
+args:
+  cadImage: data/DESY_dee_cad_bottom_side.png
+  cadImageOrigin:
+  - 1487.0
+  - 105.0
+  coolCircFiles: null
+  geomFile: data/geometry_carbonFoam.xlsx
+  inputDir: /media/soham/D/Programs/DESY/IR-setup/Data/2022-03-04/DESY_dee/bottom_side/lamp_off
+  inputEncoding: ISO-8859-1
+  inputPattern: cfoam_m25deg-chiller_m11deg-dee_lampoff_XXX_YYY.asc
+  maxTemp: null
+  minTemp: null
+  mmtopix: 310/55.26
+  mmtopixCad: 2492/1920
+  moduleType: PS
+  motorRefX:
+  - 23538.75
+  - 0.0
+  motorRefY:
+  - 248953.0
+  - -80.0
+  nCol: 1024
+  originX: 0.0
+  originY: 0.0
+  ringOpt: odd
+  side: bottom
+  stepxtomm: 1920/34949
+  stepytomm: 895/712360

@@ -1,52 +1,100 @@
 GeometryInfo:
-  R11/2S10: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_28599_720204.asc
-  R11/2S12: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_25725_760410.asc
-  R11/2S14: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_22813_770073.asc
-  R11/2S16: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_19792_743468.asc
-  R11/2S18: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_16998_692539.asc
-  R11/2S2: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_35803_319939.asc
-  R11/2S20: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_14542_605254.asc
-  R11/2S22: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_12679_501067.asc
-  R11/2S24: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_11414_386045.asc
-  R11/2S26: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_10803_251099.asc
-  R11/2S4: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_34915_446826.asc
-  R11/2S6: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_33392_558477.asc
-  R11/2S8: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_31177_651752.asc
-  R13/2S10: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_32887_781149.asc
-  R13/2S12: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_30191_847800.asc
-  R13/2S14: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_27187_897069.asc
-  R13/2S16: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_24214_916187.asc
-  R13/2S18: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_21093_904665.asc
-  R13/2S2: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_39256_323393.asc
-  R13/2S20: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_18076_875408.asc
-  R13/2S22: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_15182_814432.asc
-  R13/2S24: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_12750_734791.asc
-  R13/2S26: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_10678_633928.asc
-  R13/2S28: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_9127_513040.asc
-  R13/2S30: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_7886_383338.asc
-  R13/2S32: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_7465_251449.asc
-  R13/2S4: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_38386_457511.asc
-  R13/2S6: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_37059_578668.asc
-  R13/2S8: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_35220_688467.asc
-  R15/2S10: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_37070_815913.asc
-  R15/2S12: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_34546_904822.asc
-  R15/2S14: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_31849_971974.asc
-  R15/2S16: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_28971_1023394.asc
-  R15/2S18: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_25905_1047997.asc
-  R15/2S2: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_42375_323984.asc
-  R15/2S20: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_22820_1054616.asc
-  R15/2S22: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_19583_1037888.asc
-  R15/2S24: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_16524_1002258.asc
-  R15/2S26: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_13645_936669.asc
-  R15/2S28: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_11098_856741.asc
-  R15/2S30: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_8934_758225.asc
-  R15/2S32: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_7139_645363.asc
-  R15/2S34: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_5696_521236.asc
-  R15/2S36: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_4736_390276.asc
-  R15/2S38: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_4296_251449.asc
-  R15/2S4: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_41686_457900.asc
-  R15/2S6: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_40635_588952.asc
-  R15/2S8: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_39005_709800.asc
+  R11/2S1: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_10803_251099.asc
+  R11/2S10: null
+  R11/2S11: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_19792_743468.asc
+  R11/2S12: null
+  R11/2S13: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_22813_770073.asc
+  R11/2S14: null
+  R11/2S15: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_25725_760410.asc
+  R11/2S16: null
+  R11/2S17: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_28599_720204.asc
+  R11/2S18: null
+  R11/2S19: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_31177_651752.asc
+  R11/2S2: null
+  R11/2S20: null
+  R11/2S21: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_33392_558477.asc
+  R11/2S22: null
+  R11/2S23: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_34915_446826.asc
+  R11/2S24: null
+  R11/2S25: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_35803_319939.asc
+  R11/2S26: null
+  R11/2S3: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_11414_386045.asc
+  R11/2S4: null
+  R11/2S5: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_12679_501067.asc
+  R11/2S6: null
+  R11/2S7: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_14542_605254.asc
+  R11/2S8: null
+  R11/2S9: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_16998_692539.asc
+  R13/2S1: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_7465_251449.asc
+  R13/2S10: null
+  R13/2S11: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_15182_814432.asc
+  R13/2S12: null
+  R13/2S13: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_18076_875408.asc
+  R13/2S14: null
+  R13/2S15: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_21093_904665.asc
+  R13/2S16: null
+  R13/2S17: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_24214_916187.asc
+  R13/2S18: null
+  R13/2S19: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_27187_897069.asc
+  R13/2S2: null
+  R13/2S20: null
+  R13/2S21: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_30191_847800.asc
+  R13/2S22: null
+  R13/2S23: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_32887_781149.asc
+  R13/2S24: null
+  R13/2S25: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_35220_688467.asc
+  R13/2S26: null
+  R13/2S27: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_37059_578668.asc
+  R13/2S28: null
+  R13/2S29: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_38386_457511.asc
+  R13/2S3: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_7886_383338.asc
+  R13/2S30: null
+  R13/2S31: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_39256_323393.asc
+  R13/2S32: null
+  R13/2S4: null
+  R13/2S5: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_9127_513040.asc
+  R13/2S6: null
+  R13/2S7: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_10678_633928.asc
+  R13/2S8: null
+  R13/2S9: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_12750_734791.asc
+  R15/2S1: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_4296_251449.asc
+  R15/2S10: null
+  R15/2S11: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_11098_856741.asc
+  R15/2S12: null
+  R15/2S13: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_13645_936669.asc
+  R15/2S14: null
+  R15/2S15: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_16524_1002258.asc
+  R15/2S16: null
+  R15/2S17: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_19583_1037888.asc
+  R15/2S18: null
+  R15/2S19: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_22820_1054616.asc
+  R15/2S2: null
+  R15/2S20: null
+  R15/2S21: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_25905_1047997.asc
+  R15/2S22: null
+  R15/2S23: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_28971_1023394.asc
+  R15/2S24: null
+  R15/2S25: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_31849_971974.asc
+  R15/2S26: null
+  R15/2S27: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_34546_904822.asc
+  R15/2S28: null
+  R15/2S29: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_37070_815913.asc
+  R15/2S3: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_4736_390276.asc
+  R15/2S30: null
+  R15/2S31: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_39005_709800.asc
+  R15/2S32: null
+  R15/2S33: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_40635_588952.asc
+  R15/2S34: null
+  R15/2S35: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_41686_457900.asc
+  R15/2S36: null
+  R15/2S37: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_42375_323984.asc
+  R15/2S38: null
+  R15/2S4: null
+  R15/2S5: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_5696_521236.asc
+  R15/2S6: null
+  R15/2S7: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_7139_645363.asc
+  R15/2S8: null
+  R15/2S9: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_8934_758225.asc
   origin_x0: 0.0
   origin_y0: 232.0
 ImageInfo:
@@ -392,11 +440,14 @@ args:
   - 595.0
   - 33.0
   coolCircFiles:
-  - data/coolingCircuit_bottom_side_2Sinserts.yml
+  - data/coolingCircuit_2Sinserts_Lyon-dee-prototype.yml
   geomFile: data/geometry_carbonFoam.xlsx
   inputDir: /media/soham/D/Programs/DESY/IR-setup/Data/2021-10-13/Lyon_dee/no-disk2disk-connector_side/lamp_off
   inputEncoding: ISO-8859-1
   inputPattern: 2Sinserts_m15deg-chiller_0deg-dee_lampoff_XXX_YYY.asc
+  isPrototype: true
+  maxTemp: null
+  minTemp: null
   mmtopix: 364/93
   mmtopixCad: 780/1565.44
   moduleType: 2S
@@ -408,6 +459,6 @@ args:
   originX: 0.0
   originY: 232.0
   ringOpt: odd
-  side: bottom
+  side: top
   stepxtomm: 1565.44/28506
   stepytomm: 626.78/499614

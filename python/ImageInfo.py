@@ -322,6 +322,10 @@ class ImageInfo :
     
     def get_imgIdx_from_fName(self, fName) :
         
+        if (fName is None) :
+            
+            return None
+        
         imgIdx = self.l_inputFileName.index(fName)
         
         return imgIdx
@@ -513,7 +517,8 @@ class ImageInfo :
         self.axis_cadImg.axhline(y = self.origin_y0, color = "k", linewidth = 0.8, linestyle = "--")
         self.axis_cadImg.axvline(x = self.origin_x0, color = "k", linewidth = 0.8, linestyle = "--")
         
-        self.axis_cadImg.autoscale_view()
+        #self.axis_cadImg.autoscale_view()
+        self.axis_cadImg.autoscale(enable = True, tight = True)
         
         self.fig_cadImg.tight_layout()
         self.fig_cadImg.canvas.draw()

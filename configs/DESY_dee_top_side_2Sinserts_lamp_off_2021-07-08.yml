@@ -1,51 +1,99 @@
 GeometryInfo:
   R11/2S1: 2Sinserts_m15deg_lampoff_15102_225458.asc
+  R11/2S10: null
   R11/2S11: 2Sinserts_m15deg_lampoff_24092_714357.asc
+  R11/2S12: null
   R11/2S13: 2Sinserts_m15deg_lampoff_27065_738713.asc
+  R11/2S14: null
   R11/2S15: 2Sinserts_m15deg_lampoff_30147_732395.asc
+  R11/2S16: null
   R11/2S17: 2Sinserts_m15deg_lampoff_32950_693980.asc
+  R11/2S18: null
   R11/2S19: 2Sinserts_m15deg_lampoff_35471_627288.asc
+  R11/2S2: null
+  R11/2S20: null
   R11/2S21: 2Sinserts_m15deg_lampoff_37675_532559.asc
+  R11/2S22: null
   R11/2S23: 2Sinserts_m15deg_lampoff_37675_532559.asc
+  R11/2S24: null
   R11/2S25: 2Sinserts_m15deg_lampoff_37675_532559.asc
+  R11/2S26: null
   R11/2S3: 2Sinserts_m15deg_lampoff_15770_358078.asc
+  R11/2S4: null
   R11/2S5: 2Sinserts_m15deg_lampoff_17033_479657.asc
+  R11/2S6: null
   R11/2S7: 2Sinserts_m15deg_lampoff_18967_582439.asc
+  R11/2S8: null
   R11/2S9: 2Sinserts_m15deg_lampoff_21308_661175.asc
   R13/2S1: 2Sinserts_m15deg_lampoff_11822_224472.asc
+  R13/2S10: null
   R13/2S11: 2Sinserts_m15deg_lampoff_19637_786028.asc
+  R13/2S12: null
   R13/2S13: 2Sinserts_m15deg_lampoff_22393_847688.asc
+  R13/2S14: null
   R13/2S15: 2Sinserts_m15deg_lampoff_25423_878328.asc
+  R13/2S16: null
   R13/2S17: 2Sinserts_m15deg_lampoff_28545_888946.asc
+  R13/2S18: null
   R13/2S19: 2Sinserts_m15deg_lampoff_31643_869346.asc
+  R13/2S2: null
+  R13/2S20: null
   R13/2S21: 2Sinserts_m15deg_lampoff_34614_826695.asc
+  R13/2S22: null
   R13/2S23: 2Sinserts_m15deg_lampoff_37203_754125.asc
+  R13/2S24: null
   R13/2S25: 2Sinserts_m15deg_lampoff_39557_660563.asc
+  R13/2S26: null
   R13/2S27: 2Sinserts_m15deg_lampoff_41433_549531.asc
+  R13/2S28: null
   R13/2S29: 2Sinserts_m15deg_lampoff_41433_549531.asc
   R13/2S3: 2Sinserts_m15deg_lampoff_12214_360516.asc
+  R13/2S30: null
   R13/2S31: 2Sinserts_m15deg_lampoff_41433_549531.asc
+  R13/2S32: null
+  R13/2S4: null
   R13/2S5: 2Sinserts_m15deg_lampoff_13439_487459.asc
+  R13/2S6: null
   R13/2S7: 2Sinserts_m15deg_lampoff_14978_605646.asc
+  R13/2S8: null
   R13/2S9: 2Sinserts_m15deg_lampoff_17072_706547.asc
   R15/2S1: 2Sinserts_m15deg_lampoff_8592_224392.asc
+  R15/2S10: null
   R15/2S11: 2Sinserts_m15deg_lampoff_15475_830448.asc
+  R15/2S12: null
   R15/2S13: 2Sinserts_m15deg_lampoff_18041_911145.asc
+  R15/2S14: null
   R15/2S15: 2Sinserts_m15deg_lampoff_20868_971711.asc
+  R15/2S16: null
   R15/2S17: 2Sinserts_m15deg_lampoff_23900_1010039.asc
+  R15/2S18: null
   R15/2S19: 2Sinserts_m15deg_lampoff_27056_1028170.asc
+  R15/2S2: null
+  R15/2S20: null
   R15/2S21: 2Sinserts_m15deg_lampoff_30282_1023161.asc
+  R15/2S22: null
   R15/2S23: 2Sinserts_m15deg_lampoff_33237_992672.asc
+  R15/2S24: null
   R15/2S25: 2Sinserts_m15deg_lampoff_36187_942687.asc
+  R15/2S26: null
   R15/2S27: 2Sinserts_m15deg_lampoff_38885_872627.asc
+  R15/2S28: null
   R15/2S29: 2Sinserts_m15deg_lampoff_41321_784767.asc
   R15/2S3: 2Sinserts_m15deg_lampoff_9059_363998.asc
+  R15/2S30: null
   R15/2S31: 2Sinserts_m15deg_lampoff_43312_676905.asc
+  R15/2S32: null
   R15/2S33: 2Sinserts_m15deg_lampoff_43312_676905.asc
+  R15/2S34: null
   R15/2S35: 2Sinserts_m15deg_lampoff_41433_549531.asc
+  R15/2S36: null
   R15/2S37: 2Sinserts_m15deg_lampoff_41433_549531.asc
+  R15/2S38: null
+  R15/2S4: null
   R15/2S5: 2Sinserts_m15deg_lampoff_9954_495699.asc
+  R15/2S6: null
   R15/2S7: 2Sinserts_m15deg_lampoff_11407_620153.asc
+  R15/2S8: null
   R15/2S9: 2Sinserts_m15deg_lampoff_13344_733073.asc
   origin_x0: 0.0
   origin_y0: 0.0
@@ -338,17 +386,19 @@ ImageInfo:
     - 1097
     - 1865
 args:
-  cadImage: data/dee_cad_top_side.png
+  cadImage: data/DESY_dee_cad_top_side.png
   cadImageOrigin:
   - 1487.0
   - 105.0
   coolCircFiles:
-  - data/coolingCircuit_top_side_2Sinserts.yml
+  - data/coolingCircuit_2Sinserts_DESY-dee-prototype.yml
   geomFile: data/geometry_carbonFoam.xlsx
   inputDir: /media/soham/D/Programs/DESY/IR-setup/Data/2021-07-08/DESY_dee/top_side/lamp_off
   inputEncoding: ISO-8859-1
   inputPattern: 2Sinserts_m15deg_lampoff_XXX_YYY.asc
-  loadSave: null
+  isPrototype: true
+  maxTemp: null
+  minTemp: null
   mmtopix: 361/93
   mmtopixCad: 2492/1920
   moduleType: 2S

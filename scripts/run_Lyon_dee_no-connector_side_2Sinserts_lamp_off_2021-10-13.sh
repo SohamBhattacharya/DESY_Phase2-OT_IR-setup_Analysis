@@ -4,8 +4,9 @@ python -u python/stitch_images.py \
     --geomFile "data/geometry_carbonFoam.xlsx" \
     --moduleType "2S" \
     --ringOpt "odd" \
-    --side "bottom" \
+    --side "top" \
     --originX 0 \
+    --isPrototype \
     --originY 232 \
     --motorRefX 23427 0 \
     --stepxtomm 1565.44/28506 \
@@ -14,4 +15,4 @@ python -u python/stitch_images.py \
     --cadImage "data/Lyon_Dee_cad_no-disk-to-disk-connector_side.png" \
     --cadImageOrigin 595 33 \
     --mmtopixCad 780/1565.44 \
-    --coolCircFiles "data/coolingCircuit_bottom_side_2Sinserts.yml" \
+    --coolCircFiles "data/coolingCircuit_2Sinserts_Lyon-dee-prototype.yml" \

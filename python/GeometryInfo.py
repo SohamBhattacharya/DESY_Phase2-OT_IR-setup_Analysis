@@ -66,9 +66,11 @@ class GeometryInfo :
             
             for fName in args.coolCircFiles :
                 
-                with open(fName, "r") as fopen :
-                    
-                    self.d_coolCirc2S.update(yaml.load(fopen.read(), Loader = yaml.FullLoader))
+                self.d_coolCirc2S.update(utils.getCoolingCircuits(fName))
+                
+                #with open(fName, "r") as fopen :
+                #    
+                #    self.d_coolCirc2S.update(yaml.load(fopen.read(), Loader = yaml.FullLoader))
             
             #print(self.d_coolCirc2S)
         
@@ -275,7 +277,8 @@ class GeometryInfo :
             
             
             if (
-                (self.args.moduleType == constants.module_2S_str and side == constants.side_bottom_str) or
+                #(self.args.moduleType == constants.module_2S_str and side == constants.side_bottom_str) or
+                (self.args.moduleType == constants.module_2S_str and self.args.side == constants.side_bottom_str) or
                 (self.args.moduleType == constants.module_PS_str and self.args.side == constants.side_bottom_str)
             ) :
                 
@@ -514,9 +517,9 @@ class GeometryInfo :
                 self.l_module2SNum[ring-1] += 1
                 #print(side)
                 
-                if (side != self.args.side) :
-                    
-                    continue
+                #if (side != self.args.side) :
+                #    
+                #    continue
                 
                 color = constants.d_side_color[side]
                 
@@ -536,6 +539,10 @@ class GeometryInfo :
                     
                     nearestImgIdx = self.imgInfo.get_imgIdx_from_fName(self.loadInfo[module2SLabel])
                 
+                
+                if (self.args.side != side) :
+                    
+                    nearestImgIdx = None
                 
                 self.d_geomObj[module2SLabel] = Module2SInfo.Module2SInfo(
                     imgInfo = self.imgInfo,
@@ -564,14 +571,50 @@ class GeometryInfo :
                 #insertCenter_xx = [xInn1, xInn2, xMid1, xMid2, xOut1, xOut2]
                 #insertCenter_yy = [yInn1, yInn2, yMid1, yMid2, yOut1, yOut2]
                 
-                insertCenter_xx = [xInn2, xInn1, xMid2, xOut2, xOut1]
-                insertCenter_yy = [yInn2, yInn1, yMid2, yOut2, yOut1]
+                #insertCenter_xx = [xInn2, xInn1, xMid2, xOut2, xOut1]
+                #insertCenter_yy = [yInn2, yInn1, yMid2, yOut2, yOut1]
                 
-                # Simply change the order
-                if (side == constants.side_bottom_str) :
+                if (self.args.side == constants.side_top_str) :
                     
-                    insertCenter_xx = [xInn1, xInn2, xMid2, xOut1, xOut2]
-                    insertCenter_yy = [yInn1, yInn2, yMid2, yOut1, yOut2]
+                    if (self.args.isPrototype) :
+                        
+                        insertCenter_xx = [xInn2, xInn1, xMid2, xOut2, xOut1]
+                        insertCenter_yy = [yInn2, yInn1, yMid2, yOut2, yOut1]
+                        
+                        if (side == constants.side_bottom_str) :
+                            
+                            insertCenter_xx = [xInn2, xInn1, xMid1, xOut2, xOut1]
+                            insertCenter_yy = [yInn2, yInn1, yMid1, yOut2, yOut1]
+                    
+                    else :
+                        
+                        insertCenter_xx = [xInn2, xInn1, xMid2, xMid1, xOut2, xOut1]
+                        insertCenter_yy = [yInn2, yInn1, yMid2, yMid1, yOut2, yOut1]
+                    
+                
+                elif (self.args.side == constants.side_bottom_str) :
+                    
+                    if (self.args.isPrototype) :
+                        
+                        insertCenter_xx = [xInn1, xInn2, xMid2, xOut1, xOut2]
+                        insertCenter_yy = [yInn1, yInn2, yMid2, yOut1, yOut2]
+                        
+                        if (side == constants.side_top_str) :
+                            
+                            insertCenter_xx = [xInn1, xInn2, xMid1, xOut2, xOut1]
+                            insertCenter_yy = [yInn1, yInn2, yMid1, yOut2, yOut1]
+                    
+                    else :
+                        
+                        insertCenter_xx = [xInn1, xInn2, xMid1, xMid2, xOut1, xOut2]
+                        insertCenter_yy = [yInn1, yInn2, yMid1, yMid2, yOut1, yOut2]
+                
+                ## Simply change the order
+                #if (side == constants.side_bottom_str) :
+                ##if (self.args.side == constants.side_bottom_str and side == constants.side_bottom_str) :
+                #    
+                #    insertCenter_xx = [xInn1, xInn2, xMid2, xOut1, xOut2]
+                #    insertCenter_yy = [yInn1, yInn2, yMid2, yOut1, yOut2]
                 
                 
                 for iInsert, insertPos in enumerate(zip(insertCenter_xx, insertCenter_yy)) :
@@ -741,8 +784,13 @@ class GeometryInfo :
             
             for px, py in zip(xdata, ydata) :
                 
-                px, py = self.axis_coolCirc.transData.transform_point([px, py])
-                dist2 = (px - clickX)**2 + (py - clickY)**2
+                dist2 = 1e9
+                
+                if (not numpy.isnan(py)) :
+                    
+                    px, py = self.axis_coolCirc.transData.transform_point([px, py])
+                    dist2 = (px - clickX)**2 + (py - clickY)**2
+                
                 a_dist2.append(dist2)
             
             idx_minDist = numpy.argmin(a_dist2)
@@ -885,16 +933,6 @@ class GeometryInfo :
                     
                     
                     self.clear(axis = self.axis_profile)
-                
-                
-                #elif (hasattr(self.d_geomObj[label], "plot_2Sinserts")) :
-                if (isinstance(self.d_geomObj[label], Module2SInfo.Module2SInfo)) :
-                    
-                    outlabel = label.replace("/", "_")
-                    outdir = "%s/%s" %(savedir, outlabel)
-                    os.system("mkdir -p %s" %(outdir))
-                    
-                    self.d_geomObj[label].save_figures(outdir = outdir)
             
             
             saveFileName = "%s/profiles.yml" %(savedir)
@@ -906,10 +944,24 @@ class GeometryInfo :
         
         if (self.args.moduleType == constants.module_2S_str) :
             
+            for label in self.d_geomObj :
+                
+                if (isinstance(self.d_geomObj[label], Module2SInfo.Module2SInfo)) :
+                    
+                    outlabel = label.replace("/", "_")
+                    outdir = "%s/%s" %(savedir, outlabel)
+                    os.system("mkdir -p %s" %(outdir))
+                    
+                    self.d_geomObj[label].save_figures(outdir = outdir)
+            
+            d_coolCircTemp = {}
+            
             for circuitLabel in self.d_coolCirc2S :
                 
                 self.d_coolCirc2SInfo[circuitLabel].unplot_circuits()
                 self.d_coolCirc2SInfo[circuitLabel].draw(annotate = True, color = "black")
+                
+                d_coolCircTemp[circuitLabel] = [{str(_insLab): float(_insTemp)} for _insLab, _insTemp in zip(self.d_coolCirc2SInfo[circuitLabel].l_insertLabel, self.d_coolCirc2SInfo[circuitLabel].line.get_ydata())]
                 
                 outname = "%s" %(circuitLabel)
                 
@@ -919,6 +971,12 @@ class GeometryInfo :
                 self.axis_coolCirc.figure.savefig("%s.png" %(outpath))
                 
                 self.d_coolCirc2SInfo[circuitLabel].unplot_circuits()
+            
+            saveFileName = "%s/coolingCircuits.yml" %(savedir)
+            
+            with open(saveFileName, "w") as fopen :
+                
+                fopen.write(yaml.dump(d_coolCircTemp))
         
     
     

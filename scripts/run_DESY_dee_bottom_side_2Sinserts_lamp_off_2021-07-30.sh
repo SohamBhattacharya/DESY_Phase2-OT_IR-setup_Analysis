@@ -6,13 +6,14 @@ python -u python/stitch_images.py \
     --ringOpt "odd" \
     --side "bottom" \
     --originX 0 \
+    --isPrototype \
     --originY 0 \
     --motorRefX 26775 0 \
     --motorRefY -112523.5 -80 \
     --stepxtomm 1920/34961 \
     --stepytomm 895/711538 \
     --mmtopix 364/93 \
-    --cadImage "data/dee_cad_bottom_side.png" \
+    --cadImage "data/DESY_dee_cad_bottom_side.png" \
     --cadImageOrigin 1513 105 \
     --mmtopixCad 2492/1920 \
-    --coolCircFiles "data/coolingCircuit_bottom_side_2Sinserts.yml" \
+    --coolCircFiles "data/coolingCircuit_2Sinserts_DESY-dee-prototype.yml" \

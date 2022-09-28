@@ -75,6 +75,11 @@ class CoolingCircuit2SInfo :
     def getTemp(self, insertLabel) :
         
         moduleLabel = insertLabel.split("_")[0]
+        
+        #if (moduleLabel not in self.d_geomObj) :
+        #    
+        #    return None
+        
         minTemp = self.d_geomObj[moduleLabel].get_minTemp(label = insertLabel)
         
         return minTemp
@@ -95,7 +100,12 @@ class CoolingCircuit2SInfo :
             
             yy.append(self.getTemp(insertLabel = insertLabel))
         
-        xx = list(range(1, len(yy)+1))
+        xx = numpy.array(list(range(1, len(yy)+1)))
+        yy = numpy.array(yy).astype(numpy.double)
+        
+        #finite_idx = numpy.isfinite(yy)
+        #xx = xx[finite_idx]
+        #yy = yy[finite_idx]
         
         self.line, = axis.plot(xx, yy, "o--", color = color, label = self.label, picker = True, pickradius = 3)
         
@@ -122,6 +132,10 @@ class CoolingCircuit2SInfo :
         axis.autoscale_view()
         
         axis.figure.canvas.draw()
+        
+        yy = [self.getTemp(insertLabel = _insLab) for _insLab in self.l_insertLabel]
+        
+        print(self.label, list(zip(self.l_insertLabel, yy)))
     
     
     def update(self, l_insertLabel, axis = None) :
@@ -161,6 +175,8 @@ class CoolingCircuit2SInfo :
     
     
     def fit(self, axis = None) :
+        
+        return
         
         if (axis is None) :
             
