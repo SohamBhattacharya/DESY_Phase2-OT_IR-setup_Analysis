@@ -498,7 +498,7 @@ def main() :
             "\u2022 On the \"Stitched image\" window:",
             "    <ctrl>+<shift>+<left click> on a CF profile or a 2S insert to bring up its associated image in a new window.",
             "        - <shift>+<left click> on CF profile or 2S insert to plot its temperature.",
-            "        - <ctrl>+<shift>+<left click drag> on the image in this new window to reposition the mesh.",
+            "        - <ctrl>+<shift>+<left click drag> on the image in this new window to reposition the mesh. This can be a bit laggy depending on the machine specs. Try dragging slowly.",
             "        - Reset: go back to the original position.",
             "        - Center image: center the image on the mesh.",
             "        - Set image: Associate the entered filename with this module.",

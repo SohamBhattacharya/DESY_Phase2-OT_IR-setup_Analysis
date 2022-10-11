@@ -52,7 +52,7 @@ def main() :
     
     parser.add_argument(
         "--coolXls",
-        help = "The df_coolCircXls file containing the insert distances along the cooling circuits",
+        help = "The xls file containing the insert distances along the cooling circuits",
         type = str,
         required = True,
     )

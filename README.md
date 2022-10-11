@@ -1,3 +1,10 @@
+- [Inputs](#inputs)
+    - [Geometry](#geometry)
+    - [Module and insert numbering scheme](#module-and-insert-numbering-scheme)
+    - [2S insert cooling circuit roadmap](#2s-insert-cooling-circuit-roadmap)
+- [Extracting data from IR images](#extracting-data-from-ir-images)
+- [Running the PS carbon foam analysis](#running-the-ps-carbon-foam-analysis)
+- [Running the 2S insert analysis](#running-the-2s-insert-analysis)
 # Inputs
 
 ## Geometry
@@ -91,12 +98,16 @@ circuit_3h:
          ...
 ```
 
-# Extracting information from IR images
+# Extracting data from IR images
 
 Reference for the coordinate system and alignment:<br/>
 <img src="./data/cad_DESY-dee-prototype_refs.png" alt="drawing" width="600"/>
 
-Run `python python/stitch_images.py --help` to see the options.
+To see the argument description, run:<br/>
+`python python/stitch_images.py --help`
+
+1. `--moduleType`:
+module type should be `PS` or `2S`.
 
 1. `--motorRefX` and `--motorRefY`:
 record the motor coordinates (i.e. steps) of one reference insert on each half of the dee.
@@ -149,9 +160,34 @@ once the alignment, module-image association, etc. are satisfactory, the configu
 This configuration can be loaded again with this argument.
 
 1. `--saveFigsTo <directory>`:
-will save figures and extracted data to this directory and close the program. No interactive GUI.
+will save figures and extracted data to this directory and close the program.
+No interactive GUI.<br/>
+For `PS` CFs, the profile temperatures are saved in `profiles.yml` under this directory.<br/>
+For `2S` inserts, the insert temperatures along cooling circuits are saved in `coolingCircuits.yml` under this directory.
 
-# Obtaining the insert list of a cooling circuit
+
+# Running the PS carbon foam analysis
+To see the argument description, run:<br/>
+`python python/analyze_profiles.py --help`
+
+1. `--datayml`:
+path to the `profiles.yml` file mentioned above.
+
+1. Other options should be self explanator from the help message.
 
 
-# Running t
+# Running the 2S insert analysis
+To see the argument description, run:<br/>
+`python python/analyze_2Smodules.py --help`
+
+1. `--coolYml`:
+path to the `coolingCircuits.yml` file mentioned above.
+
+1. `--coolXls`:
+the cooling circuit roadmap `.xls`file mentioned above.
+
+1. Other options should be self explanatory from the help message.
+
+
+# Examples
+Several example scripts executing `stitch_images.py`, `analyze_profiles.py` and `analyze_2Smodules.py` can be found in [scripts](scripts/).
