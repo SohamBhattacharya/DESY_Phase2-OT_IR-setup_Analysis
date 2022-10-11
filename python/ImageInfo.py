@@ -55,6 +55,10 @@ class ImageInfo :
         self.l_inputFilePath = glob.glob("%s/**" %(args.inputDir))
         self.l_inputFilePath = [fName for fName in self.l_inputFilePath if re.match(self.inputFileNamePattern, fName)]
         
+        if (args.loadMaxN > 0) :
+            
+            self.l_inputFilePath = self.l_inputFilePath[0: args.loadMaxN]
+        
         print(self.l_inputFilePath)
         
         self.l_inputFileName = [fName.split("/")[-1] for fName in self.l_inputFilePath]
@@ -312,7 +316,7 @@ class ImageInfo :
         
         for key in self.d_geomObj :
             
-            if (self.l_inputFileName[self.d_geomObj[key].imgIdx] == fName) :
+            if (self.d_geomObj[key].imgIdx is not None and self.l_inputFileName[self.d_geomObj[key].imgIdx] == fName) :
                 
                 l_cfoamInfo.append(self.d_geomObj[key])
                 
@@ -558,7 +562,13 @@ class ImageInfo :
             
             imgIdx = self.d_geomObj[key].imgIdx
             
+            if (imgIdx is None) :
+                
+                continue
+            
             arr_img = self.l_inputData[imgIdx]
+            
+            label = self.l_inputFileName[imgIdx]
             
             r = int(count / nPlot_col)
             c = (count - (r*nPlot_col)) % nPlot_col
@@ -566,20 +576,28 @@ class ImageInfo :
             print((self.l_imgCenter_pixelY[imgIdx], self.l_imgCenter_pixelX[imgIdx]), (r, c))
             
             
+            label_imgName = tkinter.Entry(master = frame, state = "readonly")
+            #label_imgName.pack(side = tkinter.TOP, fill = tkinter.X, expand = True)
+            label_imgName.grid(row = 2*r, column = c, padx = 5, pady = 5, sticky = "ew")
+            
+            label_imgName.config(state = "normal")
+            label_imgName.delete(0, tkinter.END)
+            label_imgName.insert(0, label)
+            label_imgName.config(state = "readonly")
+            
+            
             fig = matplotlib.figure.Figure(figsize = (4, 3.75*self.nRow/self.nCol))
             
             fig.canvas = FigureCanvasTkAgg(fig, master = frame)  # A tk.DrawingArea.
             #fig.canvas.draw()
-            fig.canvas.get_tk_widget().grid(row = 2*r, column = c, padx = 5, pady = 5, sticky = "nsew")
+            fig.canvas.get_tk_widget().grid(row = 2*r+1, column = c, padx = 5, pady = 5, sticky = "nsew")
             
-            toolbar = NavigationToolbar2Tk(fig.canvas, frame, pack_toolbar = False)
-            toolbar.update()
-            toolbar.grid(row = 2*r+1, column = c, sticky = "nsew")
+            #toolbar = NavigationToolbar2Tk(fig.canvas, frame, pack_toolbar = False)
+            #toolbar.update()
+            #toolbar.grid(row = 2*r+2, column = c, sticky = "nsew")
             
             axis = fig.add_subplot(1, 1, 1)
             axis.set_aspect("equal", "box")
-            
-            label = self.l_inputFileName[imgIdx]
             
             axis.imshow(
                 arr_img,
@@ -656,8 +674,9 @@ class ImageInfo :
         #nPlot_row = 10
         #nPlot_col = int(nPlot/nPlot_row) + int(nPlot%nPlot_row > 0)
         
-        nPlot_col = 8
-        nPlot_row = int(nPlot/nPlot_col) + int(nPlot%nPlot_col > 0)
+        nPlot_col = min(8, nPlot)
+        nPlot_row = max(2, int(nPlot/nPlot_col) + int(nPlot%nPlot_col > 0))
+        print(nPlot_row, nPlot_col)
         
         self.l_axis_allImages = self.fig_allImages.subplots(nrows = nPlot_row, ncols = nPlot_col)
         #print(nPlot, self.l_axis_allImages.shape)
@@ -699,6 +718,8 @@ class ImageInfo :
                 picker = True,
                 label = label,
             )
+            
+            #self.l_axis_allImages[r, c].set_title(label)
             
             #cfoamInfo = self.get_cfoamInfo(label)
             #

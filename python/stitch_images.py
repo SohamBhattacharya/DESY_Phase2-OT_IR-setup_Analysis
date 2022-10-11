@@ -22,6 +22,7 @@ import sys
 import textwrap
 import time
 import tkinter
+import tkinter.scrolledtext
 import yaml
 
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2Tk
@@ -49,6 +50,14 @@ def main() :
         type = str,
         #required = True,
         required = False,
+    )
+    
+    parser.add_argument(
+        "--loadMaxN",
+        help = "Maximum input files to load (for debugging the GUI)",
+        type = int,
+        required = False,
+        default = -1,
     )
     
     parser.add_argument(
@@ -172,28 +181,28 @@ def main() :
     
     parser.add_argument(
         "--minTemp",
-        help = "Minimum temperature",
+        help = "Minimum temperature for the plot axes",
         type = float,
         required = False,
     )
     
     parser.add_argument(
         "--maxTemp",
-        help = "Maximum temperature",
+        help = "Maximum temperature for the plot axes",
         type = float,
         required = False,
     )
     
     parser.add_argument(
         "--cadImage",
-        help = "CAD image",
+        help = "Path to CAD image",
         type = str,
         required = False,
     )
     
     parser.add_argument(
         "--cadImageOrigin",
-        help = "CAD image origin: <x> <y>",
+        help = "CAD image origin (in pixels): <x> <y>",
         type = float,
         nargs = 2,
         required = False,
@@ -224,7 +233,7 @@ def main() :
     
     parser.add_argument(
         "--saveFigsTo",
-        help = "Save figures to this directory",
+        help = "Save figures and extracted data to this directory and close the program. No interactive GUI",
         type = str,
         required = False,
         default = None,
@@ -438,7 +447,6 @@ def main() :
     
     button = tkinter.Button(master = tkroot, text = "Save configuration", takefocus = 0, command = lambda: save_config())
     button.grid(row = row, column = 0, sticky = "ew")
-    row += 1
     
     
     def save_figures(savedir = None) :
@@ -455,13 +463,82 @@ def main() :
         geomInfo.save_figures(savedir = savedir)
     
     
+    #tkroot.grid_rowconfigure(index = row, minsize = 30)
+    #row += 1
+    
+    button = tkinter.Button(master = tkroot, text = "Save figures", takefocus = 0, command = lambda: save_figures())
+    button.grid(row = row, column = 1, sticky = "ew")
+    row += 1
+    
     tkroot.grid_rowconfigure(index = row, minsize = 30)
     row += 1
     
-    button = tkinter.Button(master = tkroot, text = "Save figures", takefocus = 0, command = lambda: save_figures())
+    
+    help_window = None
+    
+    def show_help() :
+        
+        nonlocal help_window
+        
+        if (help_window is not None and tkinter.Toplevel.winfo_exists(help_window)) :
+            
+            #print(help_window.winfo_exists())
+            #print(tkinter.Toplevel.winfo_exists(help_window))
+            help_window.lift()
+            return
+        
+        #help_window = tkinter.messagebox.showinfo(title = "Help", message = "HELP!!!")
+        
+        help_window = tkinter.Toplevel(class_ = "Help")
+        help_window.wm_title("Help")
+        help_scrolltext = tkinter.scrolledtext.ScrolledText(master = help_window, width = 150, height = 30)
+        help_scrolltext.pack(fill = tkinter.BOTH, side = tkinter.LEFT, expand = True)
+        
+        l_helptext = [
+            "\u2022 On the \"Stitched image\" window:",
+            "    <ctrl>+<shift>+<left click> on a CF profile or a 2S insert to bring up its associated image in a new window.",
+            "        - <shift>+<left click> on CF profile or 2S insert to plot its temperature.",
+            "        - <ctrl>+<shift>+<left click drag> on the image in this new window to reposition the mesh.",
+            "        - Reset: go back to the original position.",
+            "        - Center image: center the image on the mesh.",
+            "        - Set image: Associate the entered filename with this module.",
+            
+            "\u2022 CAD image:",
+            "    show the CAD image with the geometry mesh. Can click on an insert to print its label in the terminal.",
+            "    So, click on inserts along a circuit to get its insert sequence.",
+            
+            "\u2022 All images:",
+            "    will show all the images and which module(s) they are associated to.",
+            "    NOTE: this can take some time to start.",
+            
+            "\u2022 All modules:",
+            "    will show all the modules meshes and their associated images. Can be used to check the alignments of all the modules.",
+            "    NOTE: this can take some time to start.",
+            
+            "\u2022 Get origin:",
+                "    get the current origin (in pixels)",
+            
+            "\u2022 Set origin:",
+                "    set the entered velues (in pixels) as the new origin. This will redraw everything.",
+            
+            "\u2022 Save configuration:",
+                "    save the configuration (positioning, module-image association, etc.), which can be loaded later.",
+            
+        ]
+        
+        help_scrolltext.insert(
+            tkinter.INSERT,
+            "\n".join(l_helptext),
+        )
+        
+        help_scrolltext.config(state = tkinter.DISABLED)
+        
+        #help_window.protocol(tkinter.WM_DELETE_WINDOW, command = lambda: (help_window := None))
+    
+    
+    button = tkinter.Button(master = tkroot, text = "Help", takefocus = 0, command = lambda: show_help())
     button.grid(row = row, column = 0, sticky = "ew")
     row += 1
-    
     
     
     if (args.saveFigsTo is not None) :

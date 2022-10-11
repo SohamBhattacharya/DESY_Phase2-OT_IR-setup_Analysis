@@ -4,6 +4,59 @@ import re
 import yaml
 
 
+def get_cfoam_slide_template() :
+    
+    cfoam_slide_template = r"""
+        \begin{frame}
+            \frametitle{<frametitle>}
+            
+            \vspace{-10pt}
+            
+            <text_above>
+            
+            \begin{minipage}[t]{0.075\textwidth}
+                \begin{adjustbox}{valign=t, max width=\columnwidth, totalheight=\textheight-2\baselineskip-2\baselineskip, keepaspectratio}
+                \begin{tabular}{l}
+                    <framelinks>
+                \end{tabular}%
+                \end{adjustbox}%
+            \end{minipage}%
+            %
+            \begin{minipage}[t]{0.475\textwidth}
+                \centering
+                
+                \fcolorbox{red}{yellow}{Lamp off}
+                
+                \begin{figure}
+                    \centering
+                    \includegraphics[width=\columnwidth]{<cfoam_lampoff>} \\
+                    \includegraphics[width=0.8\columnwidth]{<prof_lampoff>}
+                \end{figure}
+                
+            \end{minipage}%
+            %
+            \begin{minipage}[t]{0.475\textwidth}
+                \centering
+                
+                \fcolorbox{red}{yellow}{Lamp on}
+                
+                \begin{figure}
+                    \centering
+                    \includegraphics[width=\columnwidth]{<cfoam_lampon>} \\
+                    \includegraphics[width=0.8\columnwidth]{<prof_lampon>}
+                \end{figure}
+                
+            \end{minipage}
+            
+            \label{<framelabel>}
+        \end{frame}
+        
+        
+    """
+    
+    return cfoam_slide_template
+
+
 def clean_string(s, l_clean = [" "]) :
     
     for cl in l_clean :
@@ -184,3 +237,8 @@ def clip_and_plot_outliers_y(
                     weight = "bold",
                     clip_on = False,
                 )
+
+
+if (__name__ == "__main__") :
+    
+    pass

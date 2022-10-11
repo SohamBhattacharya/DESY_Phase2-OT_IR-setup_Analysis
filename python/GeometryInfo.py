@@ -144,12 +144,12 @@ class GeometryInfo :
         print(self.dframe_geometry.keys())
         
         self.d_geometry = {
-            "ring"             : self.dframe_geometry["Ring"].to_numpy(),
-            "r"                : self.dframe_geometry["r(mm)"].to_numpy(),
-            "phi"              : self.dframe_geometry["phi(deg)"].to_numpy(),
-            "arcL"             : self.dframe_geometry["meanWidth(mm) (orthoradial)"].to_numpy(),
-            "radL"             : self.dframe_geometry["length(mm) (radial)"].to_numpy(),
-            "insert_outR"      : self.dframe_geometry["insert outer radius (mm)"].to_numpy(),
+            "ring"             : self.dframe_geometry["ring"].to_numpy(),
+            "r"                : self.dframe_geometry["r [mm]"].to_numpy(),
+            "phi"              : self.dframe_geometry["phi [deg]"].to_numpy(),
+            "arcL"             : self.dframe_geometry["meanWidth (orthoradial) [mm]"].to_numpy(),
+            "radL"             : self.dframe_geometry["length (radial) [mm]"].to_numpy(),
+            "insert_outR"      : self.dframe_geometry["insert outer radius [mm]"].to_numpy(),
             "side"             : self.dframe_geometry["side"].to_numpy(),
         }
         
