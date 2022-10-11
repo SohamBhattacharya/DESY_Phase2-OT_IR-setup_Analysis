@@ -2,9 +2,11 @@
     - [Geometry](#geometry)
     - [Module and insert numbering scheme](#module-and-insert-numbering-scheme)
     - [2S insert cooling circuit roadmap](#2s-insert-cooling-circuit-roadmap)
+    - [The CAD image](#the-cad-image)
 - [Extracting data from IR images](#extracting-data-from-ir-images)
 - [Running the PS carbon foam analysis](#running-the-ps-carbon-foam-analysis)
 - [Running the 2S insert analysis](#running-the-2s-insert-analysis)
+- [Examples](#examples)
 # Inputs
 
 ## Geometry
@@ -97,6 +99,10 @@ circuit_3h:
          - R15/2S3_ins4
          ...
 ```
+
+## The CAD image
+A PNG image of the dee CAD model.
+This is not used for any computation, but needed to extract the cooling circuit insert sequence in the GUI.
 
 # Extracting data from IR images
 
