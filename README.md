@@ -3,27 +3,35 @@
 ## Geometry
 The geometry is provided in an `.xls` or `.xlsx` file (for e.g. [this](data/geometry_carbonFoam.xlsx)) containing the following columns:
 
-1. `Ring`:
+1. `ring`:
 the ring number
-2. `r [mm]`:
+
+1. `r [mm]`:
 the radial position (in mm) of the ring center
-3. `phi [deg]`:
+
+1. `phi [deg]`:
 the $\phi$ position (in degrees) of the module centers
-4. `meanWidth (orthoradial) [mm]`:<br>
+
+1. `meanWidth (orthoradial) [mm]`:<br>
 PS: the active area length (in mm) perpendicular to the radius.<br>
 2S: the insert-to-insert distance perpendicular to the radius, as shown below.<br>
 <img src="./data/2S_modul_01.png" alt="drawing" width="300"/>
-5. `length (radial) [mm]`:<br>
+
+1. `length (radial) [mm]`:<br>
 PS: the active area length (in mm) along the radius.<br>
 2S: the insert-to-insert distance along the radius, as shown below.<br>
 <img src="./data/2S_modul_02.png" alt="drawing" width="300"/>
-6. `side`:
+
+1. `side`:
 the module side should be `top` or `bottom`. Note that the DESY dee **top** (**bottom**) side corresponds to the side **without** (**with**) disk-to-disk inserts on the Lyon dee.
-7. `insert outer radius (actual) [mm]`:
+
+1. `insert outer radius (actual) [mm]`:
 the 2S insert outer radius in mm.
-8. `insert outer radius [mm]`:
+
+1. `insert outer radius [mm]`:
 the 2S insert outer radius scaled by `radius scale`. The code will pick the minimum temperature in this circle as the insert temperature. Using a slightly larger radius makes the insert alignment (and hence temperature extraction) easier.
-9. `radius scale`:
+
+1. `radius scale`:
 a value of 2 is reasonable.
 
 ## Module and insert numbering scheme
