@@ -15,12 +15,12 @@ the $\phi$ position (in degrees) of the module centers
 1. `meanWidth (orthoradial) [mm]`:<br/>
 PS: the active area length (in mm) perpendicular to the radius.<br/>
 2S: the insert-to-insert distance perpendicular to the radius, as shown below.<br/>
-<img src="./data/2S_modul_01.png" alt="drawing" width="300"/>
+    <img src="./data/2S_modul_01.png" alt="drawing" width="300"/>
 
 1. `length (radial) [mm]`:<br/>
 PS: the active area length (in mm) along the radius.<br/>
 2S: the insert-to-insert distance along the radius, as shown below.<br/>
-<img src="./data/2S_modul_02.png" alt="drawing" width="300"/>
+    <img src="./data/2S_modul_02.png" alt="drawing" width="300"/>
 
 1. `side`:
 the module side should be `top` or `bottom`. Note that the DESY dee **top** (**bottom**) side corresponds to the side **without** (**with**) disk-to-disk inserts on the Lyon dee.
@@ -41,7 +41,7 @@ The CF labels must have the form `R<ring #>/CF<module #>`.<br/>
 The 2S module numbering follows the same convention as described above.
 Each module has 3 rings of inserts. They are numbered counterclockwise from 1, starting from the innermost ring.
 The 2S module and insert label must have the form `R<ring #>/2S<module #>_ins<insert #>`.<br/>
-<img src="./data/numbering-2S_DESY-dee-prototype.png" alt="drawing" width="400"/>
+    <img src="./data/numbering-2S_DESY-dee-prototype.png" alt="drawing" width="400"/>
 
 ## 2S insert cooling circuit roadmap
 The cooling circuit numbering follows the convention shown below.<br/>
@@ -125,7 +125,7 @@ knowing the absolute lengths (in mm) $L^\text{abs}_x$ and $L^\text{abs}_y$, one 
 measuring the distance between inserts in pixels one can provide (math operations are allowed in the string):<br/>
 `--mmtopix "<length in pixels>/<length in mm>"`<br/>
 Example for PS modules shown below. Numbers for 2S modules can be obtained similarly.<br/>
-<img src="./data/PS-insert_distances.png" alt="drawing" width="200"/>
+    <img src="./data/PS-insert_distances.png" alt="drawing" width="200"/>
 
 1. `--cadImage <PNG file>`:
 path to the CAD image.
