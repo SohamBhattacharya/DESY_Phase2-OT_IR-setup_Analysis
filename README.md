@@ -99,10 +99,10 @@ circuit_3h:
 # Extracting information from IR images
 
 Reference for the coordinate system and alignment:<br>
-<img src="./data/cad_DESY-dee-prototype_refs.png" alt="drawing" width="400"/>
-<br>
+<img src="./data/cad_DESY-dee-prototype_refs.png" alt="drawing" width="600"/>
+
 Run `python python/stitch_images.py --help` to see the options.
-<br>
+
 1. `--motorRefX` and `--motorRefY`:
 record the motor coordinates (i.e. steps) of one reference insert on each half of the dee.
 Choose a pair of symmetric ones to make life easier, and call them the upper left (UL) and upper right (UR) reference inserts.
@@ -121,7 +121,6 @@ One, both, or neither of these can be provided, but it is recommended to provide
 1. `--originX` and `--originY`:
 it might happen that `motorRefX` and `motorRefY` do not align the stitched image and the mesh well enough (say there is an offset), or say $y^\text{abs}_\text{UL}$ is not known.
 Then one can provide the pixel position where the origin should be placed.
-<br>
 One, both, or neither of these can be provided.
 
 1. `--stepxtomm` and `--stepytomm`:
