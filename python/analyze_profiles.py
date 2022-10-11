@@ -29,9 +29,6 @@ import yaml
 matplotlib.pyplot.rcParams["text.usetex"] = True
 matplotlib.pyplot.rcParams["text.latex.preamble"] = r"\usepackage{amsmath}"
 
-#import ROOT
-#ROOT.gROOT.SetBatch(1)
-
 import constants
 import colors
 import utils

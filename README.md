@@ -7,6 +7,7 @@
 - [Running the PS carbon foam analysis](#running-the-ps-carbon-foam-analysis)
 - [Running the 2S insert analysis](#running-the-2s-insert-analysis)
 - [Examples](#examples)
+- [IR image data](#ir-image-data)
 # Inputs
 
 ## Geometry
@@ -197,3 +198,8 @@ the cooling circuit roadmap `.xls`file mentioned above.
 
 # Examples
 Several example scripts executing `stitch_images.py`, `analyze_profiles.py` and `analyze_2Smodules.py` can be found in [scripts](scripts/).
+
+
+# IR image data
+1. DESY and Lyon prototypes: `/nfs/dust/cms/user/sobhatta/work/IR-setup/Data`
+1. ...
